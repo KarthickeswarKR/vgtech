@@ -1,0 +1,159 @@
+{
+    "port": 80,
+    "env":"development",
+    "virtualgodownId":"0123456789",
+    "mongoose": {
+        "uri": "mongodb://heroku_01mhmhnw:903uc7ceculh0n7a2l8ln88ejv@ds153494.mlab.com:53494/heroku_01mhmhnw"
+    },
+    "auth":{
+      "issuer": "https://cryptic-meadow-48081.herokuapp.com/api/oauth/token",
+      "nonce": "Qgn78/5DF?",
+      "aud": "vg",
+      "secret":"V137u@l5Od0wN",
+      "securedurl":"/api/secured"
+    },
+    "category":{
+      "product":"10dsfd89ejofiw9eojfw01",
+      "brand":"510dsfd89ejofiw9eojfw01343fe35tfw"
+    },
+"status":
+{
+  "notification":{
+    "unread":201,
+    "read":200
+  },
+  "message":{
+    "unread":201,
+    "read":200
+  },
+"user":{
+"active":{
+"After_signup":200,
+"After_Reactivation":201
+},
+"inactive":{
+"userDeleted":500
+}
+},
+"organisation":{
+"active":{
+"default":201,
+"createdByuser":200,
+"Verified":202
+},
+"inactive":{
+"userDeleted":500,
+"organisationDeleted":501
+}
+},
+"product":{
+"active":{
+  "created":200,
+  "createdwithsell":201
+},
+"inactive":{
+"userDeleted":500,
+"organisationDeleted":501,
+"productDeleted":502,
+"pendingApproval":503
+}
+},
+"stockarea":{
+"active":{
+"created":200,
+"FindingDistance":202,
+"After_Reactivation":203
+},
+"inactive":{
+"userDeleted":500,
+"organisationDeleted":501,
+"stockareaDeleted":502
+}
+},
+"inventory":{
+"active":{
+"created":200
+},
+"inactive":{
+"userDeleted":500,
+"organisationDeleted":501,
+"stockareaDeleted":502,
+"RemovedFromInventory":503
+}
+},
+"quote":{
+"active":{
+"created":200
+},
+"inactive":{
+"userDeleted":500,
+"organisationDeleted":501,
+"stockareaDeleted":502,
+"RemovedFromInventory":503,
+"nostock":504,
+"quoteDeleted":505
+}
+}
+},
+"type":{
+  "notification":{
+    "accept":"hjkjmnhjk45j3k4kj564kjknj6h5k3",
+    "request":"df6543542343swsesdf3434",
+    "reject":"5hjkjmnhjk45j3k4kj5dcfg342h5k3",
+    "source":"1475441hjkjmnhjk45j3k4kj5dcfg342h5k3",
+    "stop":"5441hjkjmnhjk45j3k4kj5dcfg342h5k3"
+  }
+},
+    "deleteType":{
+      "user":1,
+      "organisation":2,
+      "stockarea":3,
+      "product":4,
+      "productstock":5,
+      "sell":6
+    },
+    "product":{
+    "type":{
+      "virtualgodown":1000,
+      "pendingApproval":1006,
+      "withInOrganisation":1001,
+      "withInNetwork":1002
+  }
+    },
+    "stockarea":{
+    "type":{
+      "public":1003,
+      "private":1004,
+      "onlyme":1005
+      }
+    },
+    "errorcodes":{
+        "InternalServerError":500,
+        "InputsError":625,
+        "DuplicateUser":360,
+        "DuplicateEmail/Mobile":385,
+        "tokenExpired":362,
+        "unauthorised":400,
+        "passwordNotMatch":403,
+        "Email/MobileNotverified":413
+      },
+    "default": {
+        "api": {
+            "version" : "v1"
+        },
+        "user": {
+            "username": "myapi",
+            "password": "abc1234"
+        },
+        "client": {
+            "name": "vgAppClient",
+            "clientId": "$vgodown1",
+            "clientSecret": "grnklnio576543hyjvbk"
+
+        }
+    },
+    "domain" : {
+      "emailURL":"http//localhost/api/userbasic/verfication?token="
+  },
+  "defaultImageUrl":"https://s3-us-west-2.amazonaws.com/virtualgodown/avatar.png"
+}

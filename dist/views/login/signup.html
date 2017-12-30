@@ -1,0 +1,274 @@
+<!-- Including header -->
+<style>
+.redborder:focus{
+  border-color:red;
+}
+.redborder{
+  border-color:red;
+}
+</style>
+<div>
+  <div ng-controller="loginDashBoardController" style="
+      border-bottom: #eee;
+      border-bottom-width: thin;
+      border-bottom-style: inset;" class="headertab ng-scope">
+    <div class="loginheaderlogodiv"><div style="display:inline-block;float:left;" ui-serf="login"><img  src="assets/img/unnamed.png" class="headerlogoimg"><sup><font style="
+  font-size: 0.7vw;
+  margin-left: 5px;
+  position:inherit;
+  color:#72bb53;">BETA</font></sup></div>
+      <div class="cmpnamediv" style="cursor: pointer;left:-10px;"><a ui-sref="login" style="text-decoration: none;color: #4c81bf;">VIRTUALGODOWN</a></div>
+    </div>
+  </div>
+
+</div>
+<div id="page_content" class="ng-scope" ng-init="init()">
+  <div ng-hide="!errormessage" id="page_content_inner" style="
+    padding: 20px;
+    border-style:none;
+    margin-left: 400px;
+    margin-right: 400px;
+    color:#86181d;
+    background-color:#ffdce0;
+    border-color:rgba(27,31,35,0.15);
+">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+    <center>
+      {{errormessage}}
+    </center>
+  </div>
+  <div ng-hide="info==null" id="page_content_inner" style="
+    padding: 20px;
+    border-style:none;
+    margin-left: 400px;
+    margin-right: 400px;
+    color:#86181d;
+    background-color:#dcffe5;
+    border-color:rgba(27,31,35,0.15);
+">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+    <center>
+      {{smsg}}
+    </center>
+  </div>
+  <div id="page_content_inner" >
+    <div class="container marginTopAlign">
+      <div style="    margin-left: 10vw;
+                margin-top: 5vw;" class="row">
+
+        <div style="
+       margin-left:-4vw;
+        width: 29vw;
+        height: 24vw !important;
+        text-align: center;
+        padding: 2vw;
+    ">
+
+          <div>
+            <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMS4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ1Ljk4NSA0NS45ODUiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQ1Ljk4NSA0NS45ODU7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTI4cHgiIGhlaWdodD0iMTI4cHgiPgo8Zz4KCTxnPgoJCTxwYXRoIGQ9Ik0yMi45OTMsMEMxMC4zMTUsMCwwLDEwLjMxNCwwLDIyLjk5MUMwLDM1LjY3LDEwLjMxNCw0NS45ODUsMjIuOTkzLDQ1Ljk4NSAgICBjMTIuNjc4LDAsMjIuOTkyLTEwLjMxNSwyMi45OTItMjIuOTk0QzQ1Ljk4NSwxMC4zMTQsMzUuNjcxLDAsMjIuOTkzLDB6IE0zOS44MzMsMzMuNzIzYy0xLjIyMi0wLjU3Ni0zLjM5Ni0xLjI4LTcuMTI4LTEuNzIzICAgIGMxLjE2Ny0yLjYyNSwxLjk4LTUuNTA4LDIuMDYzLTguNTA5aDguMTkxQzQyLjg2NiwyNy4yNTEsNDEuNzM0LDMwLjc1MSwzOS44MzMsMzMuNzIzeiBNMy4wMjYsMjMuNDkxaDguMDk4ICAgIGMwLjA4NCwzLjA2LDAuOTI2LDUuOTk5LDIuMTMsOC42NjVjLTMuNzM5LDAuNDY0LTUuODY5LDEuMTE2LTcuMDU1LDEuNjQzQzQuMjY5LDMwLjgxMiwzLjEyLDI3LjI4MywzLjAyNiwyMy40OTF6IE02LjE0OSwxMi4yNjYgICAgYzEuMTcyLDAuNTI5LDMuMjk4LDEuMTg5LDcuMDYzLDEuNjZjLTEuMTgsMi42NC0yLjAwNCw1LjU0My0yLjA4Nyw4LjU2NUgzLjAyN0MzLjExOSwxOC43MzUsNC4yNSwxNS4yMzcsNi4xNDksMTIuMjY2eiAgICAgTTIzLjQ5MywxNC41MTZjMC4yNzEsMC4wMDIsMC41NDQsMC4wMDUsMC44MDcsMC4wMDVjMi45MjYsMCw1LjM1NC0wLjEyNiw3LjM3Ny0wLjMyNWMxLjE3NiwyLjU3MiwyLjAwMyw1LjM5LDIuMDksOC4yOTVIMjMuNDkzICAgIFYxNC41MTZ6IE0yMy40OTMsMTMuNTE2VjMuMDI1YzAuMDkzLDAuMDAyLDAuMTg0LDAuMDEsMC4yNzYsMC4wMTRjMS43NjksMS43OTgsNS4xMTQsNS41MzYsNy40NTEsMTAuMjAxICAgIEMyOS4xMjgsMTMuNDMxLDI2LjU3OSwxMy41NDEsMjMuNDkzLDEzLjUxNnogTTIyLjQ5MywzLjAyNXYxMC40NzljLTMuMDk4LTAuMDUtNS42NDktMC4yMDUtNy43NDItMC40MTkgICAgYzIuMzM1LTQuNTk2LDUuNjItOC4yNjUsNy4zNjctMTAuMDQxQzIyLjI0NCwzLjAzOCwyMi4zNjcsMy4wMjgsMjIuNDkzLDMuMDI1eiBNMjIuNDkzLDE0LjUwNHY3Ljk4N0gxMi4xMzQgICAgYzAuMDg5LTIuOTYyLDAuOTQ1LTUuODI5LDIuMTU4LTguNDQxQzE2LjQ5MiwxNC4yODMsMTkuMTksMTQuNDUxLDIyLjQ5MywxNC41MDR6IE0xMi4xMzQsMjMuNDkxaDEwLjM1OXY4LjA5MiAgICBjLTMuMjgsMC4wNTItNS45NjMsMC4yMTgtOC4xNTQsMC40NDlDMTMuMTAyLDI5LjM5NCwxMi4yMjUsMjYuNDkxLDEyLjEzNCwyMy40OTF6IE0yMi40OTMsMzIuNTg0VjQyLjk2ICAgIGMtMC4xMjYtMC4wMDMtMC4yNS0wLjAxMy0wLjM3NS0wLjAxOWMtMS43MzUtMS43NjMtNC45ODItNS4zOTQtNy4zMTQtOS45NDNDMTYuODg3LDMyLjc4NiwxOS40MjIsMzIuNjMzLDIyLjQ5MywzMi41ODR6ICAgICBNMjMuNDkzLDQyLjk2VjMyLjU3MmMzLjA2LTAuMDIyLDUuNTkxLDAuMDg3LDcuNjc0LDAuMjc1Yy0yLjMzNCw0LjYxNy01LjY0Myw4LjMxNC03LjM5OCwxMC4wOTkgICAgQzIzLjY3Nyw0Mi45NDksMjMuNTg2LDQyLjk1NywyMy40OTMsNDIuOTZ6IE0yMy40OTMsMzEuNTcydi04LjA4MWgxMC4yNzVjLTAuMDg4LDIuOTQyLTAuOTM0LDUuNzk1LTIuMTMzLDguMzkzICAgIEMyOS40MzgsMzEuNjcsMjYuNzU2LDMxLjU0NiwyMy40OTMsMzEuNTcyeiBNMzQuNzY4LDIyLjQ5MWMtMC4wODItMi45NjQtMC44NzctNS44MTItMi4wMjEtOC40MTEgICAgYzMuNzYtMC40NSw1LjkyNy0xLjE2Myw3LjEzNC0xLjc0YzEuODcsMi45NTUsMi45ODUsNi40MjUsMy4wNzgsMTAuMTUxSDM0Ljc2OHogTTM5LjMyNywxMS41MDIgICAgYy0xLjEzMywwLjUyMi0zLjI1MSwxLjIwNS03LjAxOCwxLjYyOGMtMi4wOTctNC4zNDMtNS4wNjYtNy45MDItNy4wMzUtOS45OUMzMS4wNzQsMy44MDIsMzYuMTE5LDYuOTU2LDM5LjMyNywxMS41MDJ6ICAgICBNMjAuNjAyLDMuMTU2Yy0xLjk0NCwyLjA2NC00Ljg1NCw1LjU1LTYuOTQsOS44MDdjLTMuNzIzLTAuNDUtNS44MTQtMS4wODItNi45MzQtMS41NTRDOS45MTgsNi45NDMsMTQuODg4LDMuODQyLDIwLjYwMiwzLjE1NnogICAgIE02Ljc4NywzNC42NTRjMS4xMzgtMC40NzIsMy4yMzQtMS4wOTMsNi45MjItMS41MzZjMi4wODMsNC4yMTQsNC45NjMsNy42NjIsNi44OTMsOS43MUMxNC45MjMsNDIuMTQ3LDkuOTgsMzkuMDc3LDYuNzg3LDM0LjY1NHogICAgIE0yNS4yNzQsNDIuODQ1YzEuOTU0LTIuMDcyLDQuODkzLTUuNTksNi45ODYtOS44ODdjMy43MzQsMC40MTcsNS44NTYsMS4wODUsNy4wMDgsMS42MDQgICAgQzM2LjA1NywzOS4wNjUsMzEuMDM5LDQyLjE4NiwyNS4yNzQsNDIuODQ1eiIgZmlsbD0iIzgwODA4MCIvPgoJPC9nPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" style="
+    width: 9vw;
+    height: 9vw;
+">
+          </div>
+          <div style="
+        padding-top: 3vw;
+    ">
+
+        Virtualgodown connects source and destination to form a business network . It maps warehouses, factories, mines, retail stores across the globe thereby optimizing the distribution of resources.
+      </div><input ng-click="login()" type="submit" value="Login" style="
+    background-color: #4c81bf;
+    color: white;
+    border: 1px;
+    height: 2.5vw;
+    width: 23vw;
+    font-weight: 500 !important;
+    margin-top:30px
+    ">
+
+
+                                    </div>
+
+    <div style="
+margin-left:35vw;
+margin-top:-24vw;
+width: 28vw;
+height: 50vw;
+padding: 2.9vw;
+line-height:1.5vw !important;
+background-color: #f9f9f9;">
+    <form autocomplete="off" role="form" name="myForm" novalidate angular-validator> <!--form-horizontal-->
+
+        <div class="form-group" style="color: black;">Name</div>
+        <div class="form-group">
+            <input type="text" autocomplete="off" style="margin-top:1vw;" ng-class="{redborder : namestate=='empty' }" ng-change="namechange()"  ng-model="fullName" validate-on="dirty" class=" inputAll form-control input-sm loginInput inputMaxWidth ng-pristine ng-invalid ng-invalid-required ng-touched ng-untouched " required-message="'Name Cannot be Blank'" placeholder="Your Name" required>
+        </div>
+        <div class="form-group" style="color: black;margin-top:3.5vw">Email</div>
+<div class="form-group" style="margin-bottom:0px !important;height:7.5vw;">
+            <input type="text" autocomplete="off" ng-model="email" ng-class="{redborder : emailstate=='empty' }" ng-change="emailchange()" style="margin-top:10px;" validate-on="dirty" class="inputAll form-control input-sm loginInput inputMaxWidth ng-pristine ng-invalid ng-invalid-required ng-touched ng-untouched " required-message="'Email Address Cannot be Blank'" placeholder="email" required="">
+<br>
+            <i ng-show="emailstate=='Not exist!'" style="
+                color: #a94442;
+                float: left;
+                position: relative;
+                top: -1vw;
+                margin-left:0.3vw;
+                height:1.5vw;
+            "
+            ><font class="help-block">Email id is invalid or already taken</font></i>
+<br>
+        </div>
+        <div class="form-group" style="color: black;">userId</div>
+<div class="form-group" style="height:7vw;">
+            <input type="text" style="height:3vw;font-size:1vw;width:23vw;" autocomplete="off" ng-model="userid"   ng-class="{redborder : useridstate=='empty' }" ng-change="useridchange()" style="margin-top:10px;" validate-on="dirty" class="inputAll form-control input-sm loginInput inputMaxWidth ng-pristine ng-invalid ng-invalid-required ng-touched ng-untouched " required-message="'userid cannot be Blank'" placeholder="userId" required="">
+            <font  style="color: orange;"><i class="fa fa-info-circle" style="color:orangefont-size:  1vw !important;" aria-hidden="true"></i> userid should have more than 6 letters</font>
+
+<br>
+
+            <i ng-show="useridstate=='Not exist!'" style="
+                color: #a94442;
+                float: left;
+                position: relative;
+                top: -0.3vw;
+                margin-left:0.3vw;
+                height:1.5vw;
+            "
+            ><font class="help-block">userId is invalid or already taken</font></i>
+
+        </div><br>
+        <div class="form-group" style="color: black;margin-top:-2.1vw"> Password
+
+</div>
+        <div class="form-group">
+            <input  type="password" style="height:3vw;font-size:1vw;width:23vw;" ng-class="{redborder : passworderror=='empty' }" autocomplete="off"  ng-model="userPassword" ng-change="passwordchange()" validate-on="dirty" class="inputAll form-control input-sm loginInput inputMaxWidth ng-pristine ng-untouched ng-invalid ng-invalid-required inputAll" required-message="'Password Cannot be Blank'" placeholder="password" style="margin-top:1vw;"  required="">
+            <font  style="color: orange;font-size:  1vw !important;"><i class="fa fa-info-circle" style="color:orangefont-size:  1vw !important;" aria-hidden="true"></i> password should have more than 8 letters, one numeric, one special character and a uppercase </font>
+<br>
+<i ng-show="passworderror==true" style="
+    color: #a94442;
+    float: left;
+    position: relative;
+    margin-left:0.3vw;
+    height:1.5vw;
+"
+><font class="help-block">password should be in correct format</font></i>
+        </div>
+
+        <input type="submit" ng-click="fnRegisterUser()" style="border-radius: 0px;font-weight:500 !important;margin-top:2.5vw;height:2.5vw;" value="SignUp"   class="addstockareabtn btn btn-block singinButton inputMaxWidth">
+
+<div class="form-group" class="margin10" style="color: grey;    margin-top: 0.5vw; font-weight: 400;">By clicking signup you agree to<a style="cursor: pointer;" ng-click="viewTerms()"> terms and conditions.</a></div>
+
+
+    </form></div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+
+
+      <div class="" style="
+        padding: 30px;
+        text-align: center;
+        background-color: #4c81bf;
+        margin-top: 100px;
+        padding-bottom: 70px;
+    ">
+        <div>
+          <div style="
+        margin: 30px;
+        font-size: 1.9vw;
+        color: white;
+    "> Create unique stockarea</div>
+          <div>
+            <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMS4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ1OS40MTkgNDU5LjQxOSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDU5LjQxOSA0NTkuNDE5OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjEyOHB4IiBoZWlnaHQ9IjEyOHB4Ij4KPGc+Cgk8Zz4KCQk8cG9seWdvbiBwb2ludHM9IjgzLjExNSwxNzIuOTExIDM3Ni4zMDQsMTcyLjkxMSAzNzYuMzA0LDQ1OS40MTkgNDU4Ljc3Nyw0NTkuNDE5IDQ1OC43NzcsMTA2Ljk1NiAgICAgMjIzLjE3OCwwIDAuNjQyLDEwNi45NTYgMC42NDIsNDU5LjQxOSA4My4xMTUsNDU5LjQxOSAgICIgZmlsbD0iI0ZGRkZGRiIvPgoJCTxyZWN0IHg9IjE3MS4xNTUiIHk9IjQwMy41NDMiIHdpZHRoPSI1Mi4wMjMiIGhlaWdodD0iNDQuODc4IiBmaWxsPSIjRkZGRkZGIi8+CgkJPHJlY3QgeD0iMjM1LjAwNSIgeT0iNDAzLjU0MyIgd2lkdGg9IjUyLjAyMyIgaGVpZ2h0PSI0NC44NzgiIGZpbGw9IiNGRkZGRkYiLz4KCQk8cmVjdCB4PSIxMDcuMzEzIiB5PSI0MDMuNTQzIiB3aWR0aD0iNTIuMDIzIiBoZWlnaHQ9IjQ0Ljg3OCIgZmlsbD0iI0ZGRkZGRiIvPgoJCTxyZWN0IHg9IjE3MS4xNTUiIHk9IjM0MS45ODUiIHdpZHRoPSI1Mi4wMjMiIGhlaWdodD0iNDQuODc4IiBmaWxsPSIjRkZGRkZGIi8+CgkJPHJlY3QgeD0iMTA3LjMxMyIgeT0iMzQxLjk4NSIgd2lkdGg9IjUyLjAyMyIgaGVpZ2h0PSI0NC44NzgiIGZpbGw9IiNGRkZGRkYiLz4KCQk8cmVjdCB4PSIyMzUuMDA1IiB5PSIzNDEuOTg1IiB3aWR0aD0iNTIuMDIzIiBoZWlnaHQ9IjQ0Ljg3OCIgZmlsbD0iI0ZGRkZGRiIvPgoJCTxyZWN0IHg9IjE3MS4xNTUiIHk9IjI4MC40MzYiIHdpZHRoPSI1Mi4wMjMiIGhlaWdodD0iNDQuODc4IiBmaWxsPSIjRkZGRkZGIi8+CgkJPHJlY3QgeD0iMTA3LjMxMyIgeT0iMjgwLjQzNiIgd2lkdGg9IjUyLjAyMyIgaGVpZ2h0PSI0NC44NzgiIGZpbGw9IiNGRkZGRkYiLz4KCQk8cmVjdCB4PSIyOTguODQ3IiB5PSI0MDMuNTQzIiB3aWR0aD0iNTIuMDIzIiBoZWlnaHQ9IjQ0Ljg3OCIgZmlsbD0iI0ZGRkZGRiIvPgoJPC9nPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" style="width:10vw;height:10vw;">
+          </div>
+          <div style="
+        padding: 3vw;
+        padding-left: 20vw;
+        color: white;
+        padding-right: 20vw;
+    ">
+
+            Stockarea can be your physical inventory location or delivery address or trade connection location from where you will be able to sell or buy the product.&nbsp;Stockareas will be connected to form a trade nervous system
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="" style="
+      padding: 3vw;
+      text-align: center;
+      /* background-color: #87D37C; */
+    ">
+
+        <div style="
+      margin: 30px;
+      font-size: 1.9vw;
+      color: grey;
+    ">Build your network by connecting other stockarea</div>
+        <div>
+          <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ4OC45IDQ4OC45IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA0ODguOSA0ODguOTsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSIxMjhweCIgaGVpZ2h0PSIxMjhweCI+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTI3NS42LDIyMy44NWM1LjctMjcuMS03LjMtMjgtNy4zLTI4cy0xLjktMy43LTcuMS02LjZjLTMuNC0yLTguMi0zLjYtMTQuNS0zLjFjLTIsMC4xLTQsMC41LTUuOCwxLjFsMCwwICAgIGMtMi4zLDAuOC00LjQsMS45LTYuNCwzLjNjLTIuNCwxLjUtNC42LDMuMy02LjYsNS40Yy0zLjEsMy4yLTUuOSw3LjMtNy4xLDEyLjRjLTEuMSw0LjQtMS4xLDkuMSwwLjYsMTMuOSAgICBjLTIuMy0wLjItNS4xLDEuMS0yLjUsMTAuMmMxLjksNi43LDMuNiw4LjUsNSw4LjZjMS41LDkuNiw2LjcsMjIsMjMuNCwyMy4zYzE2LjQtMC42LDIxLjQtMTIuOCwyMy4xLTIyLjIgICAgYzEuNCwwLjksMy42LDAuNCw2LjEtOC4zQzI3OC42LDIyNi43NSwyNzcuMywyMjQuNDUsMjc1LjYsMjIzLjg1eiIgZmlsbD0iIzgwODA4MCIvPgoJCTxwYXRoIGQ9Ik00NDQuNCwyMTcuNjVjLTE5LjcsMC0zNi41LDEyLjktNDIuMywzMC43bC02Mi43LTYuMmMtMC4yLTI5LjktMTQuNi01Ni40LTM2LjktNzMuMWw0My40LTczYzQuNCwxLjUsOS4xLDIuMywxNCwyLjMgICAgYzI0LjUsMCw0NC40LTE5LjksNDQuNC00NC40cy0xOS45LTQ0LjUtNDQuNC00NC41cy00NC40LDE5LjktNDQuNCw0NC40YzAsMTIuOCw1LjQsMjQuMywxNC4xLDMyLjRsLTQzLjQsNzMgICAgYy0xMS43LTUuNC0yNC43LTguNC0zOC40LTguNGMtMjIuOCwwLTQzLjcsOC40LTU5LjcsMjIuMmwtMzUuMi0zMy4zYzQtNi43LDYuMy0xNC41LDYuMy0yMi45YzAtMjQuNS0xOS45LTQ0LjQtNDQuNC00NC40ICAgIHMtNDQuNCwxOS45LTQ0LjQsNDQuNHMxOS45LDQ0LjQsNDQuNCw0NC40YzkuMywwLDE3LjktMi44LDI1LTcuN2wzNS4yLDMzLjNjLTExLjgsMTUuNC0xOC45LDM0LjctMTguOSw1NS43ICAgIGMwLDYuOCwwLjgsMTMuNSwyLjIsMTkuOWwtNzUuOCwyNS4zYy03LjgtMTMtMjEuOS0yMS42LTM4LjEtMjEuNmMtMjQuNSwwLTQ0LjQsMTkuOS00NC40LDQ0LjRzMTkuOSw0NC40LDQ0LjQsNDQuNCAgICBzNDQuNC0xOS45LDQ0LjQtNDQuNGMwLTEuNi0wLjEtMy4yLTAuMy00LjdsNzUuOC0yNS4zYzE0LjQsMzEuNyw0Ni40LDUzLjgsODMuNSw1My44YzMuOCwwLDcuNS0wLjMsMTEuMS0wLjdsMTQsNjEuMiAgICBjLTE1LDcuMS0yNS40LDIyLjQtMjUuNCw0MC4yYzAsMjQuNSwxOS45LDQ0LjQsNDQuNCw0NC40czQ0LjQtMTkuOSw0NC40LTQ0LjRzLTE5LjktNDQuNC00NC40LTQ0LjRjLTAuMSwwLTAuMywwLTAuNCwwbC0xNC02MS4yICAgIGMzMC40LTEwLjQsNTMuNy0zNi4zLDYwLjItNjguM2w2Mi43LDYuMmMyLjYsMjIuMSwyMS4zLDM5LjIsNDQuMSwzOS4yYzI0LjUsMCw0NC40LTE5LjksNDQuNC00NC40UzQ2OSwyMTcuNjUsNDQ0LjQsMjE3LjY1eiAgICAgTTMwNS44LDI4OS4wNWMtMC43LTYtMy4yLTEyLjctMTAuOC0xNC42Yy0xNC41LTMuNy0yNi4zLTEyLTI2LjMtMTJsLTkuMiwyOS4xbC0xLjcsNS41di0wLjFsLTEuNSw0LjZsLTQuOS0xMy44ICAgIGMxMi4zLTE3LjEtMy4zLTE2LjUtMy4zLTE2LjVzLTE1LjUtMC43LTMuMywxNi41bC00LjksMTMuOWwtMS41LTQuN2wtMTAuOS0zNC42YzAsMC0xMS44LDguMy0yNi4zLDEyICAgIGMtNy42LDEuOS0xMC4xLDguNy0xMC44LDE0LjZjLTEwLjItMTIuNy0xNi40LTI4LjgtMTYuNC00Ni40YzAtNDAuOSwzMy4yLTc0LDc0LTc0YzQwLjksMCw3NCwzMy4yLDc0LDc0ICAgIEMzMjIuMSwyNjAuMTUsMzE2LDI3Ni4zNSwzMDUuOCwyODkuMDV6IiBmaWxsPSIjODA4MDgwIi8+Cgk8L2c+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" style="width:10vw;height:10vw;">
+
+        </div>
+
+
+        <div style="
+      padding: 3vw;
+      padding-left: 20vw;
+      color: grey;
+      padding-right: 20vw;
+    ">If you are a buyer or seller, manage your inventory capacity for every product in the stock area. You will be able to explore other stock areas for the products you are interested in.
+        </div>
+
+      </div>
+
+
+
+
+      <div class="" style="
+      padding: 3vw;
+      text-align: center;
+      background-color: #4c81bf;
+      /* margin-top: 100px; */
+      padding-bottom: 7vw;
+    ">
+
+        <div style="
+      margin: 3vw;
+      font-size: 1.9vw;
+      color: white;
+    ">Connect to other possible trade</div>
+        <div>
+          <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjEyOHB4IiBoZWlnaHQ9IjEyOHB4IiB2aWV3Qm94PSIwIDAgNDUuMjIgNDUuMjIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQ1LjIyIDQ1LjIyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPGc+CgkJPGNpcmNsZSBjeD0iMjIuNjExIiBjeT0iNS4wMjQiIHI9IjMuNTUyIiBmaWxsPSIjRkZGRkZGIi8+CgkJPHBhdGggZD0iTTI2LjQzNiwxMi42NzVjLTAuMzk5LTItMi4yODktMy4zNzMtNC4zMzktMy4wOTljLTEuNjk2LDAuMjI1LTIuOTksMS41MS0zLjMwOSwzLjA5OWMxLjA3LTAuNzkyLDIuMzk0LTEuMjYyLDMuODI0LTEuMjYyICAgIFMyNS4zNjQsMTEuODg0LDI2LjQzNiwxMi42NzV6IiBmaWxsPSIjRkZGRkZGIi8+CgkJPHBhdGggZD0iTTM1LjI5MSwyOS40MDFjLTAuODE0LTAuNzE3LTIuMDU3LTAuNjM3LTIuNzcyLDAuMTc4bC0yLjgsMy4xOGMtMC43MTcsMC44MTQtMC42MzcsMi4wNTcsMC4xNzgsMi43NzMgICAgYzAuMzczLDAuMzI4LDAuODM2LDAuNDksMS4yOTcsMC40OWMwLjU0NSwwLDEuMDg3LTAuMjI3LDEuNDc2LTAuNjY4bDIuNzk4LTMuMTgxQzM2LjE4NiwzMS4zNiwzNi4xMDYsMzAuMTE4LDM1LjI5MSwyOS40MDF6IiBmaWxsPSIjRkZGRkZGIi8+CgkJPHBhdGggZD0iTTMyLjY2OSwxMC45MTFjLTAuNzE4LTAuODE0LTEuOTU5LTAuODk0LTIuNzcyLTAuMTc3Yy0wLjgxNCwwLjcxNy0wLjg5NSwxLjk1OS0wLjE3OCwyLjc3M2wyLjgsMy4xODEgICAgYzAuMzg5LDAuNDQxLDAuOTMxLDAuNjY3LDEuNDc3LDAuNjY3YzAuNDYxLDAsMC45MjMtMC4xNjEsMS4yOTctMC40ODljMC44MTQtMC43MTcsMC44OTUtMS45NTksMC4xNzctMi43NzNMMzIuNjY5LDEwLjkxMXoiIGZpbGw9IiNGRkZGRkYiLz4KCQk8Zz4KCQkJPHBhdGggZD0iTTIyLjYyOSwyMy41MTdjLTAuMDA2LDAtMC4wMzEsMC0wLjAzNywwYy0xLjI1MSwwLTIuNDQ0LDAuNTY3LTMuMjc4LDEuNTAyYy0wLjgzNCwwLjkzNC0xLjIzMSwyLjE5NC0xLjA5LDMuNDM4ICAgICBsMi4wMTksMTMuMDQ4YzAuMTM4LDEuMjI5LDEuMTQ0LDIuMjQ0LDIuMzY4LDIuMjQ0YzEuMjI2LDAsMi4yMjktMS4wMDcsMi4zNy0yLjIzOGwyLjAxNy0xMy4wNTYgICAgIGMwLjE0Mi0xLjI0My0wLjI1Ni0yLjUwNC0xLjA5LTMuNDM4QzI1LjA3MiwyNC4wODUsMjMuODgxLDIzLjUxNywyMi42MjksMjMuNTE3eiIgZmlsbD0iI0ZGRkZGRiIvPgoJCQk8Y2lyY2xlIGN4PSIyMi42MSIgY3k9IjE4LjA3OCIgcj0iNC4zMyIgZmlsbD0iI0ZGRkZGRiIvPgoJCTwvZz4KCQk8Zz4KCQkJPHBhdGggZD0iTTQxLjIxOSwxNy41MDljLTAuMDA1LDAtMC4wMjcsMC0wLjAzMywwYy0xLjE0LDAtMi4yMjYsMC41MTctMi45ODQsMS4zNjdjLTAuNzYsMC44NS0xLjEyMSwxLjk5OC0wLjk5MywzLjEzMSAgICAgbDEuODM3LDExLjg3OGMwLjEyNiwxLjEyLDEuMDQyLDIuMDQzLDIuMTU2LDIuMDQzYzEuMTE1LDAsMi4wMy0wLjkxNywyLjE1Ny0yLjAzNmwxLjgzNi0xMS44ODcgICAgIGMwLjEyOC0xLjEzMi0wLjIzMy0yLjI3OS0wLjk5Mi0zLjEyOVM0Mi4zNTgsMTcuNTA5LDQxLjIxOSwxNy41MDl6IiBmaWxsPSIjRkZGRkZGIi8+CgkJCTxjaXJjbGUgY3g9IjQxLjIwMiIgY3k9IjEyLjU1NyIgcj0iMy45NDIiIGZpbGw9IiNGRkZGRkYiLz4KCQk8L2c+Cgk8L2c+Cgk8Zz4KCQk8cGF0aCBkPSJNOS45MywyOS40MDFjMC44MTUtMC43MTcsMi4wNTctMC42MzcsMi43NzMsMC4xNzhsMi43OTksMy4xOGMwLjcxNywwLjgxNCwwLjYzNywyLjA1Ny0wLjE3NywyLjc3MyAgICBjLTAuMzczLDAuMzI4LTAuODM2LDAuNDktMS4yOTcsMC40OWMtMC41NDUsMC0xLjA4Ny0wLjIyNy0xLjQ3Ni0wLjY2OGwtMi43OTgtMy4xODFDOS4wMzYsMzEuMzYsOS4xMTQsMzAuMTE4LDkuOTMsMjkuNDAxeiIgZmlsbD0iI0ZGRkZGRiIvPgoJCTxwYXRoIGQ9Ik0xMi41NSwxMC45MTFjMC43MTgtMC44MTQsMS45NTktMC44OTQsMi43NzMtMC4xNzdjMC44MTQsMC43MTcsMC44OTQsMS45NTksMC4xNzcsMi43NzNsLTIuNzk5LDMuMTgxICAgIGMtMC4zODksMC40NDEtMC45MzEsMC42NjctMS40NzcsMC42NjdjLTAuNDYxLDAtMC45MjMtMC4xNjEtMS4yOTctMC40ODljLTAuODE0LTAuNzE3LTAuODk0LTEuOTU5LTAuMTc3LTIuNzczTDEyLjU1LDEwLjkxMXoiIGZpbGw9IiNGRkZGRkYiLz4KCQk8Zz4KCQkJPHBhdGggZD0iTTQuMDAxLDE3LjUwOWMwLjAwNSwwLDAuMDI4LDAsMC4wMzQsMGMxLjEzOSwwLDIuMjI1LDAuNTE3LDIuOTg0LDEuMzY3YzAuNzYsMC44NSwxLjEyMSwxLjk5OCwwLjk5MywzLjEzMUw2LjE3NCwzMy44ODUgICAgIGMtMC4xMjYsMS4xMi0xLjA0MiwyLjA0My0yLjE1NiwyLjA0M2MtMS4xMTUsMC0yLjAzLTAuOTE3LTIuMTU3LTIuMDM2TDAuMDI1LDIyLjAwNWMtMC4xMjgtMS4xMzIsMC4yMzMtMi4yNzksMC45OTItMy4xMjkgICAgIEMxLjc3NiwxOC4wMjYsMi44NjEsMTcuNTA5LDQuMDAxLDE3LjUwOXoiIGZpbGw9IiNGRkZGRkYiLz4KCQkJPGNpcmNsZSBjeD0iNC4wMTkiIGN5PSIxMi41NTciIHI9IjMuOTQyIiBmaWxsPSIjRkZGRkZGIi8+CgkJPC9nPgoJPC9nPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" style="width:10vw;height:10vw;">
+
+        </div>
+
+        <div style="
+      padding: 3vw;
+      padding-left: 20vw;
+      color: white;
+      padding-right: 20vw;
+    ">Trade possibilities exists between any possible space-time (location at specific time) based on various factors such as Bilateral Trade Policies, Trade Route, Cascading effect on other supply chain, Logistics planning, Market sentiments Virtualgodown
+          tries to find the possible trade opportunity between any space time.</div>
+
+      </div>
+      <div class="" style="
+      padding: 3vw;
+      text-align: center;
+      background-color: #ffffff;
+      /* margin-top: 100px; */
+    ">
+
+        Virtualgodown © 2017
+
+
+      </div>
+
+
+
+
+    </div>
+
+
+
+    </div>

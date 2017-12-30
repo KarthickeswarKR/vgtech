@@ -1,0 +1,29 @@
+{
+  "name": "virtualgodown",
+  "homepage": "https://github.com/virtualgodown/virtualgodown",
+  "authors": [
+    "cpalmurugan <palmurugan.c@virtualgodown.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-router": "~0.2.15",
+    "angular": "~1.4.9",
+    "angular-bootstrap": "~1.1.0",
+    "angular-loading-bar": "~0.8.0",
+    "angular-ui-notification": "~0.1.0",
+    "angular-local-storage": "~0.2.3",
+    "bootstrap": "~3.3.6",
+    "font-awesome": "fontawesome#~4.5.0",
+    "tg-angular-validator": "~1.2.8"
+  }
+}

@@ -1,0 +1,32 @@
+{
+      "replaceConsole": true,
+      "appenders": [
+        {
+          "type":"console"
+        },
+        {
+          "type": "logLevelFilter",
+          "level": "Info",
+          "appender": {
+            "type": "file",
+            "filename": "logs/info.log"
+          }
+        },
+    {
+      "type": "logLevelFilter",
+      "level": "Debug",
+      "appender": {
+        "type": "file",
+        "filename": "logs/debug.log"
+      }
+    },
+    {
+      "type": "logLevelFilter",
+      "level": "Error",
+      "appender": {
+        "type": "file",
+        "filename": "logs/error.log"
+      }
+    }
+]
+}

@@ -1,0 +1,547 @@
+[  {
+  "rest" : "/api/token/login",
+  "method" : "POST",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},
+    {
+    "rest" : "/api/users/adduser",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/users/geturl",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/package/addpackage",
+  "method" : "GET",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/package/deletepackage",
+  "method" : "GET",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/package/suggestpackage",
+  "method" : "GET",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/report/addreport",
+  "method" : "POST",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/users/autocomplete",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/users/messagetoautocomplete",
+  "method" : "GET",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/users/validatetoken",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/users/getcodes",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/users/update",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/users/checkemail",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/users/checkuserid",
+  "method" : "POST",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/users/checkphone",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/users/updateprofilepic",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/users/verify",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/users/mobile/verifyemail",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/users/verifyemail",
+  "method" : "POST",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/users/verifymobileotp",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/users/forgetPassword",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/users/mobile/forgetPassword",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/users/verifyemail",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/users/verifymobile",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/users/onVerifyAction",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/users/getemails",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/users/updateorganisation",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/users/deleteemail",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/users/deletemobile",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/users/deleteorganisation",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/users/editorganisation",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/users/addnewmail",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/users/addprimary",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/users/addnewmobile",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/users/addprimarymobile",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/users/addsecondary",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/users/updatepassword",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/users/getuser",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/users/deleteuser",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/authorize/products/getprivateproducts",
+  "method" : "GET",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/authorize/products/like",
+  "method" : "POST",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/authorize/products/movetovg",
+  "method" : "GET",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/authorize/products/unlike",
+  "method" : "POST",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/products/oneshot",
+  "method" : "GET",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/brand/autocomplete",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/brand/Id",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/authorize/brand/brandinfo",
+  "method" : "GET",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/authorize/brand/addbrand",
+  "method" : "POST",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/authorize/brand/editbrand",
+  "method" : "POST",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/authorize/brand/like",
+  "method" : "POST",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/authorize/brand/unlike",
+  "method" : "POST",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/authorize/brand/getbrands",
+  "method" : "GET",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/brandmaterial/addlike",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/authorize/notification/getinfo",
+  "method" : "GET",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/authorize/message/getinfo",
+  "method" : "GET",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/authorize/message/update",
+  "method" : "POST",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/authorize/message/addmessage",
+  "method" : "POST",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/authorize/notification/updatenotification",
+  "method" : "POST",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/brandmaterial/removelike",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/brandmaterial/addreview",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/brandmaterial/getinfo",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/material/getmaterial",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/material/getallmaterial",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/material/autocomplete",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/orders/getdestinationsforproduct",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/organisation/addorganisation",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/organisation/getuserorginfo",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/authorize/organisation/updateorganisation",
+  "method" : "POST",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/organisation/collabrator",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/organisation/ignorecollabrator",
+  "method" : "POST",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/organisation/addcollabrator",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/organisation/getorganisation",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/organisation/checkorganisation",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/organisation/autocomplete",
+  "method" : "GET",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/organisation/deletecollabrator",
+    "method" : "GET",
+    "permission" : ["ADMIN"]
+},{
+    "rest" : "/api/secured/authorize/privateproduct/addproduct",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/privateproduct/getproductinfobyid",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/privateproduct/getproductinfo",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/privateproduct/getprivateproducts",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/products/getproducts",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/authorize/products/addproduct",
+  "method" : "POST",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/authorize/products/autocomplete",
+  "method" : "GET",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/products/updateinfo",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/authorize/products/updateproduct",
+  "method" : "POST",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/products/getSearchProductsbycategory",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/products/getproductsdata",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/products/getproductinfobyid",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/products/getproductsbystockarea",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/productstock/addproductstock",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/authorize/productstock/updatesource",
+  "method" : "POST",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/productstock/getproductstockinfo",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/productstock/getsellinfo",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/productstock/getuserstockinfo",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/sell/addsell",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/sell/getsellbyproductsinstockarea",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/sell/getsellinfo",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/sell/getsell",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/sell/getsellbystockareaId",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/stockarea/addstockarea",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/stockarea/up",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/stockarea/updatevisiblity",
+  "method" : "POST",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/stockarea/addnewemail",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/authorize/stockarea/addnewmobile",
+  "method" : "POST",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/stockarea/primaryemail",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/stockarea/primarymobile",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/stockarea/deleteemail",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/stockarea/deletemobile",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/stockarea/updatestockarea",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/stockarea/getallstockareas",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/stockarea/getstockareainfo",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/stockarea/destiny",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/stockarea/delete",
+    "method" : "POST",
+    "permission" : ["ADMIN"]
+},{
+    "rest" : "/api/secured/authorize/stockarea/autocomplete",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/stockarea/checkstockarea",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/stockarea/deleteproduct",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/stockarea/updateproducts",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/stockarea/rename",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/stockarea/getproductinfoforstockarea",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/stockarea/getstockareas",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/stockarea/getallstockareasofuser",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/stockarea/getproductsofstockarea",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/stockarea/getstockarea",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/suggest/suggestproduct",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/token/checktoken",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/token/logout",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/history/addorderhistory",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/history/conform",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/history/cancel",
+    "method" : "POST",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/history/gethistory",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/authorize/history/gethistoryview",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/unit/units",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/unit/derivedunits",
+  "method" : "GET",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/unit/addcategory",
+  "method" : "POST",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/unit/types",
+  "method" : "GET",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+  "rest" : "/api/secured/unit/stockareatypes",
+  "method" : "GET",
+  "permission" : ["ADMIN","COLLABRATOR"]
+},{
+    "rest" : "/api/secured/unit/category",
+    "method" : "GET",
+    "permission" : ["ADMIN","COLLABRATOR"]
+}
+]

@@ -1,0 +1,215 @@
+<style>
+.dropdown-submenu {
+    position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+.dropdown-submenu.pull-left {
+    float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+  .Button {
+    font-family: Calibri, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    width: 160px;
+    height: 25px;
+    background: grey;
+    color: white
+  }
+  .selected {
+    color: white;
+    background: green
+  }
+</style>
+
+<div class="loaderCSS" ng-show="sellloading"><img src="assets/img/spin.gif" style="margin-top:50px"> </div>
+<div class="modal-header" style="border:none !important;">
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+</div>
+<div style="margin-top: 10px; padding-bottom:10px;">
+  <div ng-show="!sellloading" style="position: relative;">
+    <section style="text-align: center;">
+      <!--          <h1>SELL</h1>-->
+      <style>
+        .Button {
+          font-family: Calibri, sans-serif;
+          font-size: 13px;
+          font-weight: bold;
+          width: 160px;
+          height: 25px;
+          background: grey;
+          color: white
+        }
+        .selected {
+          color: white;
+          background: green
+        }
+      </style>
+    </section>
+
+    <div id="page-content">
+      <div class="container">
+        <!--end page-title-->
+
+        <section style="width:100%">
+
+          <div class="row">
+
+            <div class="col-sm-8 col-md-offset-1">
+
+              <form class="form inputs-underline" enctype="multipart/form-data">
+
+                <section style="width:100%">
+
+                  <div class="row">
+
+
+                    <div class="col-md-8 col-sm-3">
+                      <table style="margin-left:-30px;" class="pure-table pure-table-bordered">
+                        <thead>
+                          <tr>
+                            <th>Instock</th>
+                            <th>Package</th>
+                            <th colspan="2">Minimum quantity</th>
+                            </th>
+                            <th colspan="2">Quantity avaliable</th>
+                            <th colspan="2">Price per package</th>
+                          </tr>
+                        </thead>
+                        <tbody ng-repeat="x in packages" ng-init="getAvailError(x)" ng-class="x.status ? 'activeSellPackage' : 'inactiveSellPackage'">
+                          <tr ng-show="x.name=='custom'">
+                            <td style="border-bottom:none;"><input type="checkbox" name="selectedProducts[]" value="{{x.packageId}}" ng-checked="selection.indexOf(x.packageId) > -1" ng-click="toggleSelection(x.packageId)"></td>
+                            <td style="border-bottom:none;">{{x.name}}</td>
+                            <td style="border-bottom:none;"><input min=1 ng-keyup="onChangeMinmiunQuantity(x,$event)" ng-click="onChangeMinmiunQuantity(x,$event)" style="width:100px;" autocomplete="off" pattern="^[1-9]\d*$" ng-disabled="!x.status" tooltip-class="tooltipcal" uib-tooltip-html="htmlTextToolTip"
+                                tooltip-trigger="focus" tooltip-placement="top" type="number" ng-model="x.MinimumOrder"></td>
+                            <td style="border:none;">       <div class="dropdown" id="unit" style="width:100%;">
+                                <a id="dLabel" role="button" class="btn btn-primary" data-toggle="dropdown" style="
+                        color: black;
+                        background: white;
+                        padding:2px;
+                        width:50px;
+                        border-radius: 0px;
+                        border-color: #cccccc;
+                      ">
+                                    <font style="float:left">{{x.unit}}</font> <span style="float:right;margin-top:7px;" class="caret"></span>
+                                </a>
+                            <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                                  <li class="dropdown-submenu"  ng-repeat="z in units">
+                                    <a tabindex="-1">{{z.fullName}}</a>
+                                    <ul class="dropdown-menu">
+                                      <li style="cursor:pointer" ng-repeat="y in derivedunits" ng-if="y.baseunit.name==z.name"><a style="cursor:pointer" ng-click="setproductunit(y._id,y.unit)">{{y.name}}</a></li>
+                                    </ul>
+                                  </li>
+                                </ul>
+                            </div>
+
+    </td>
+                            <td style="border-bottom:none;" ng-class="x.AvaliabityError ? 'tdError' : 'tdNoError'">
+                              <input type="number" restrict-to="[0-9]" min=1 autocomplete="off" style="width:100px;" ng-keyup="onChangeQuantityAvaliabity(x,$event)" ng-click="onChangeQuantityAvaliabity(x,$event)" pattern="^[1-9]\d*$" tooltip-class="tooltipcal" uib-tooltip-html="htmlTextToolTip"
+                                tooltip-trigger="focus" tooltip-placement="top" ng-disabled="!x.status" ng-model="x.packagesAvailable"></td>
+                            <td style="border:none;">{{x.unit}}</td>
+                            <td style="border-bottom:none;"><input min=1 type="number" restrict-to="[0-9]" autocomplete="off" style="width:100px;" ng-keyup="onChangePricePerPackage(x,$event)" ng-click="onChangePricePerPackage(x,$event)" pattern="^[1-9]\d*$" tooltip-class="tooltipcal"
+                                uib-tooltip-html="htmlTextToolTip" tooltip-trigger="focus" tooltip-placement="top" ng-disabled="!x.status" ng-model="x.priceperpack"></td>
+                            <td style="border:none;">INR</td>
+                          </tr>
+                          <tr ng-show="x.name!='custom'">
+                            <td><input type="checkbox" name="selectedProducts[]" value="{{x.packageId}}" ng-checked="selection.indexOf(x.packageId) > -1" ng-click="toggleSelection(x.packageId)"></td>
+                            <td>{{x.name}}</td>
+                            <td><input min=1 ng-keyup="onChangeMinmiunQuantity(x,$event)" ng-click="onChangeMinmiunQuantity(x,$event)" pattern="^[1-9]\d*$" style="width:100px;" autocomplete="off" ng-disabled="!x.status" tooltip-class="tooltipcal" uib-tooltip-html="htmlTextToolTip"
+                                tooltip-trigger="focus" tooltip-placement="top" type="number" ng-model="x.MinimumOrder"></td>
+                            <td style="border:none;">{{x.unit}}</td>
+                            <td ng-class="x.AvaliabityError ? 'tdError' : 'tdNoError'">
+                              <input type="number" restrict-to="[0-9]" min=1 autocomplete="off" style="width:100px;" pattern="^[1-9]\d*$" ng-keyup="onChangeQuantityAvaliabity(x,$event)" ng-click="onChangeQuantityAvaliabity(x,$event)" tooltip-class="tooltipcal" uib-tooltip-html="htmlTextToolTip"
+                                tooltip-trigger="focus" tooltip-placement="top" ng-disabled="!x.status" ng-model="x.packagesAvailable"></td>
+                            <td style="border:none;">{{x.unit}}</td>
+                            <td><input type="number" restrict-to="[0-9]" min=1 autocomplete="off" style="width:100px;" pattern="^[1-9]\d*$" ng-keyup="onChangePricePerPackage(x,$event)" ng-click="onChangePricePerPackage(x,$event)" tooltip-class="tooltipcal"
+                                uib-tooltip-html="htmlTextToolTip" tooltip-trigger="focus" tooltip-placement="top" ng-disabled="!x.status" ng-model="x.priceperpack"></td>
+                            <td style="border:none;">INR</td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                    </div>
+                  </div>
+            </div>
+
+            </section>
+
+
+
+
+            </form>
+
+            <script type="text/ng-template" id="tooltipcalculator.html">
+              <div>{{htmlTextToolTip}}</div>
+            </script>
+            <!--end form-->
+          </div>
+
+          <!--end col-md-6-->
+
+      </div>
+
+
+      <!--end row-->
+
+      </section>
+
+      <section style="text-align: center;margin-top: 10px;width:100%;float:none;">
+
+        <div>
+
+          <button ng-disabled="!addsellbutton" disable-double-click type="submit" ng-click="submit()" class="btn btn-primary btn-rounded">Submit</button>
+
+        </div>
+
+
+      </section>
+
+    </div>
+  </div>
+
+</div>
+<script>
+  $("#jQueryColorChange").click(function() {
+    $(this).toggleClass("selected");
+  });
+  $(document).ready(function() {
+    $("#jQueryColorChange").click(function() {
+      $("#custom").toggle();
+    });
+  });
+</script>

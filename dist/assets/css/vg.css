@@ -1,0 +1,1445 @@
+
+img-crop{width:100%;height:100%;display:block;position:relative;overflow:hidden}img-crop canvas{display:block;position:absolute;top:50%;left:50%;outline:0;-webkit-tap-highlight-color:transparent}
+.noOrderDiv{
+margin: 40px;
+color: grey;
+padding: 40px;
+border: 1px solid grey;
+}
+
+.scrollbar
+{
+	overflow-y: auto;
+}
+#style-2::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+#style-2::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+#style-2::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #c1c1c1;
+}
+.style-2::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+.style-2::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+.style-2::-webkit-scrollbar-thumb
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #c1c1c1;
+}
+#style-4::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+#style-4::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+#style-4::-webkit-scrollbar-thumb
+{
+	background-color: #c1c1c1;
+}
+.style-4::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+.style-4::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+.style-4::-webkit-scrollbar-thumb
+{
+	background-color: #c1c1c1;
+}
+
+font{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+select:focus {
+    outline: none;
+}
+div {
+    outline: none;
+}
+.ui-autocomplete {
+    z-index: 1051 !important;
+}
+.my-custom-stars .button .material-icons {
+  font-size: 50px;
+}
+
+.my-custom-stars .star-button.star-on .material-icons {
+  color: #003399;
+}
+
+.my-custom-stars .star-button.star-off .material-icons {
+  color: #99ccff;
+}
+.jk-rating-stars-container .button{cursor:pointer}.jk-rating-stars-container .button .material-icons{font-size:30px}.jk-rating-stars-container .star-button{text-shadow:.06em .04em #000}.jk-rating-stars-container .star-button.star-on .material-icons{color:#ee9a00}.jk-rating-stars-container .star-button.star-off .material-icons{color:#ddd}
+input:focus {
+    outline: none;
+}
+textarea:focus {
+    outline: none;
+}
+[contenteditable="true"]:focus {
+    outline: none;
+}
+input[type=button] {
+  outline:none;
+}
+input[type=submit] {
+  outline:none;
+}
+div.show-image {
+    position: relative;
+    float:left;
+    margin:5px;
+}
+button{
+  outline:none;
+}
+.selectedaccount{
+  border: 1px solid #ccc;
+  padding: 10px;
+  height:30px;
+  width: 390px;
+  border-top:none;
+  overflow:hidden;
+  background: #4c81bf;
+    /* padding: 30px; */
+    /* border: 1px solid grey; */
+    background-color: #dcdcdc !important;
+    color: white;
+}
+.cropAreaproduct {
+  background: #E4E4E4;
+  overflow: hidden;
+  width:400px;
+  height:300px;
+}
+.cropAreaprofile {
+  background: #E4E4E4;
+  overflow: hidden;
+  width:200px;
+  height:200px;
+}
+div.show-image:hover img{
+    opacity:0.5;
+}
+div.show-image:hover input {
+    display: block;
+}
+div.show-image input {
+    position:absolute;
+    display:none;
+}
+div.show-image input.update {
+    top:100px;
+    left:50px;
+}
+show img{
+    display: block;
+    opacity:0.5;
+}
+.orderinfodivTansactionDetailsDiv{
+float: left;
+width: 550px;
+height: 530px;
+overflow-y: auto;
+overflow-x: hidden;
+}
+
+.selectedd{
+  position: relative;
+  margin: 10px;
+  padding: 5px;
+  min-width:50px;
+  border: 1px;
+  color: white ! important;
+  background-color: rgba(14, 14, 14, 0.8)  ! important;
+}
+  .pure-table {
+    /* Remove spacing between table cells (from Normalize.css) */
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+    border: 1px solid #cbcbcb;
+}
+
+.activeSellPackage{
+    background-color: #bee1ff;
+}
+.packageNameTooltip{
+  color: black !important;
+  font-size: 14px !important;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.inactiveSellPackage{
+    background-color: white;
+}
+
+.tdError{
+    background-color: #dc9e9e !important;
+}
+
+.tdNoError{
+
+}
+
+.AvailError{
+  background-color: #f9e0e0 !important;
+  color: red !important;
+}
+
+.searchAddressMap{
+  top: 8px !important;border: none;width: 430px !important;
+  height: 30px;
+}
+.inputAddStockareaPopup{
+  width: 100%;
+  border: 1px solid #ecebeb;
+  box-shadow: none;
+  color: grey;
+  outline: none !important;
+  padding: 5px;
+  -webkit-appearance: none !important;
+  margin: 0;
+}
+.tooltip.tooltipcal{
+  top: -10px;
+}
+
+.noOrders{
+    margin: 20px;
+    padding: 40px;
+    color: grey;
+    border: 1px solid grey;
+}
+
+.large-modal-terms .modal-dialog{
+  height: 400px;
+  width:800px;
+  margin: auto;
+  position: absolute;
+  top:0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.ui-state-focus{
+  background: rgba(245, 245, 245, 0.73) !important;
+  color: #4c81bf !important;
+  border: none !important;
+  border: 0px solid #f5f5f5 !important;
+border-radius: 0px !important;
+margin: -2px !important;
+}
+
+.ui-autocomplete{
+  border-radius: 0px !important;
+  position: absolute;
+border: 1px solid #f5f5f5 !important;
+}
+
+.ui-menu .ui-menu-item a {
+    text-decoration: none;
+    display: block;
+    padding: 5px;
+    color: grey;
+    line-height: 1.5;
+    min-height: 0;
+    font-weight: normal;
+}
+
+
+
+        .tooltip.tooltipcal .tooltip-inner {
+          color: grey;
+          background-color: white;
+          box-shadow: 0 6px 12px rgba(0,0,0,.175);
+          width: 200px;
+          opacity: 1;
+        }
+        /* Hide arrow */
+        .tooltip.tooltipcal .tooltip-arrow {
+          display: none;
+        }
+
+.pure-table caption {
+    color: #000;
+    font: italic 85%/1 arial, sans-serif;
+    padding: 1em 0;
+    text-align: center;
+}
+
+.pure-table td,
+.pure-table th {
+    border-left: 1px solid #cbcbcb;/*  inner column border */
+    border-width: 0 0 0 1px;
+    font-size: inherit;
+    margin: 0;
+    overflow: visible; /*to make ths where the title is really long work*/
+    padding: 0.5em 1em; /* cell padding */
+}
+
+.pure-table-unbordered{
+  border: none;
+}
+
+.pure-table-unbordered td,
+.pure-table-unbordered th {
+    border-left: 1px solid white !important;/*  inner column border */
+    border-width: 0 0 0 1px;
+    font-size: inherit;
+    margin: 0;
+    overflow: visible; /*to make ths where the title is really long work*/
+    padding: 0.5em 1em; /* cell padding */
+}
+
+
+/* Consider removing this next declaration block, as it causes problems when
+there's a rowspan on the first cell. Case added to the tests. issue#432 */
+.pure-table td:first-child,
+.pure-table th:first-child {
+    border-left-width: 0;
+}
+
+.pure-table thead {
+    background-color: #e0e0e0;
+    color: #000;
+    text-align: left;
+    vertical-align: bottom;
+}
+
+
+
+.loaderCSS {
+  position: relative;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: show;
+  margin: auto;
+  top: 50%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+
+
+
+/*
+striping:
+   even - #fff (white)
+   odd  - #f2f2f2 (light gray)
+*/
+.pure-table td {
+    background-color: transparent;
+}
+.pure-table-odd td {
+    background-color: #f2f2f2;
+}
+
+/* nth-child selector for modern browsers */
+.pure-table-striped tr:nth-child(2n-1) td {
+    background-color: #f2f2f2;
+}
+
+/* BORDERED TABLES */
+.pure-table-bordered td {
+    border-bottom: 1px solid #cbcbcb;
+}
+.pure-table-bordered tbody > tr:last-child > td {
+    border-bottom-width: 0;
+}
+
+.viewprofile{
+    float: right;
+    color: grey;
+    cursor: pointer;
+}
+
+
+input{
+      letter-spacing: 1px;
+}
+
+/* HORIZONTAL BORDERED TABLES */
+
+.pure-table-horizontal td,
+.pure-table-horizontal th {
+    border-width: 0 0 1px 0;
+    border-bottom: 1px solid #cbcbcb;
+}
+.pure-table-horizontal tbody > tr:last-child > td {
+    border-bottom-width: 0;
+}
+
+
+  .headertab{
+    height: 60px;
+    min-width: 940px;
+    padding-top: 6px;
+  }
+.headerlogodiv{
+  float: left;
+    padding-top: 10px;
+}
+.headerlogoimg{
+      height: 40px;
+    padding-top: 5px;
+    padding-left: 30px;
+    float: left;
+}
+
+.dot {
+	width: 5px;
+	height: 5px;
+	border: 0px solid white;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	background-color: red;
+	z-index: 10;
+	position: absolute;
+}
+.pulse {
+	background: red;
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	border-radius: 60px;
+	height: 100px;
+	width: 100px;
+	-webkit-animation: pulse 3s ease-out;
+	-moz-animation: pulse 3s ease-out;
+	animation: pulse 3s ease-out;
+	-webkit-animation-iteration-count: infinite;
+	-moz-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+	position: absolute;
+  top: -48px;
+	left: -47px;
+	z-index: 1;
+	opacity: 0;
+}
+@-moz-keyframes pulse {
+ 0% {
+	-moz-transform: scale(0);
+	opacity: 0.0;
+ }
+ 25% {
+	-moz-transform: scale(0);
+	opacity: 0.1;
+ }
+ 50% {
+	-moz-transform: scale(0.1);
+	opacity: 0.1;
+ }
+ 75% {
+	-moz-transform: scale(0.5);
+	opacity: 0.1;
+ }
+ 100% {
+	-moz-transform: scale(1);
+	opacity: 0.0;
+ }
+}
+@-webkit-keyframes "pulse" {
+ 0% {
+	-webkit-transform: scale(0);
+	opacity: 0.0;
+ }
+ 25% {
+	-webkit-transform: scale(0);
+	opacity: 0.1;
+ }
+ 50% {
+	-webkit-transform: scale(0.1);
+	opacity: 0.1;
+ }
+ 75% {
+	-webkit-transform: scale(0.5);
+	opacity: 0.1;
+ }
+ 100% {
+	-webkit-transform: scale(1);
+	opacity: 0.0;
+ }
+}
+.cmpnamediv{
+  height: 38px;
+  top: 4px;
+  left: 10px;
+  margin-left: 10px;
+  font-size: 20px;
+  border: none;
+  padding: 5px;
+  color: #4c81bf;
+  background-color: #ffffff;
+  position: relative;
+  float: left;
+  cursor: pointer;
+}
+
+.tab:hover{
+      background-color: #558bca;
+}
+    #pac-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 300px;
+}
+
+#pac-input:focus {
+  border-color: #4d90fe;
+}
+
+#searchmap:focus {
+  border-color: #4d90fe;
+}
+
+
+#searchmap{
+    background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 300px;
+}
+
+
+    .pac-container {
+        z-index: 10000 !important;
+    }
+
+.profilepicdiv{
+  float: left;
+  width: 40px;
+  overflow: hidden;
+  height: 40px;
+  position: relative;
+  border: none;
+  border-radius: 4px;
+}
+.avatarleftdiv{
+  float: right;
+  position: relative;
+}
+.avatarimg {
+  position: relative;
+  width: 40px;
+}
+.dropdowndivleft{
+        float: left;
+}
+.dropbtn {
+  background-color: white;
+  color: #4c81bf;
+  padding-top: 11px;
+  font-size: 16px;
+  border: none;
+  white-space: nowrap;
+  cursor: pointer;
+  width: 190px;
+  margin-left: 10px;
+  text-transform: capitalize;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.caps{
+    text-transform: capitalize;
+}
+.profilepicimg{
+  width: 150px;
+  margin:10px;
+}
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: #8e8b8b;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    color: #8e8b8b !important;
+  background-color: #f1f1f1;
+text-decoration: none;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: white;
+}
+
+
+.profilemessagediv{
+
+    border-style: solid;
+    border-width: 1px;
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+.tabgroup{
+    display: inherit;
+    min-width: 1200px;
+    height: 80px;
+    background: #4c81bf;
+
+}
+.tab{
+  padding: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+  /* border: 1px solid #dddddd; */
+  float: left;
+  /* background-color: #fafafa; */
+  color: white;
+  padding: 30px;
+}
+
+.selected {
+    /* padding: 30px; */
+    /* border: 1px solid grey; */
+    float: left;
+    height: 80px;
+    background-color: white !important;
+    color: grey;
+}
+.selected1 {
+  border: 1px solid #ccc;
+  padding: 10px;
+  height:30px;
+  width: 390px;
+  border-top:none;
+  overflow:hidden;
+  background: #4c81bf;
+    /* padding: 30px; */
+    /* border: 1px solid grey; */
+    background-color: #4c81bf !important;
+    color: white;
+}
+.selected2 {
+  border: 1px solid #ccc;
+      padding: 6px;
+      cursor: pointer;
+      /* height: 30px; */
+      /* width: 390px; */
+      margin-left:-5px;
+      border-top: none;
+      overflow: hidden;
+      background: rgba(245, 245, 245, 0.89);
+      /* padding: 30px; */
+      /* border: 1px solid grey; */
+      background-color: #ccc !important;
+      color: white;
+}
+.tabcontents{
+    overflow-y: auto;
+    position: relative;
+}
+.tabcontents1{
+  overflow-y: auto;
+    position: relative;
+}
+.tabcontents2{
+    overflow-y: auto;
+    position: relative;
+}
+.orderListDiv{
+width: 450px;
+    border-right: 1px solid #eee;
+float: left;
+overflow: hidden;
+}
+.orderListDiv:hover{
+  overflow: auto;
+}
+
+.tradeinfo{
+  height: auto;
+  position: absolute;
+  width: 250px;
+  padding: 10px;
+  z-index: 10;
+  top: 10px;
+  border-radius: 4px;
+  color: grey;
+  background-color: rgba(255, 255, 255, 0.86);
+  right: 10px;
+}
+.tradeinfoheading{
+    text-align: center;
+    padding: 10px;
+}
+
+.middlesection{
+    display: table;
+}
+.maindiv{
+  width: 1024px;
+    border-right: 1px solid #dddddd;
+    float: left;
+    height: 530px;
+}
+
+.mapdiv{
+height: 530px;
+  }
+  .mainsection{
+    position: relative;
+height: 538px;
+width: 1022px;
+  }
+  .productname{
+    padding: 10px;
+font-size: 20px;
+color: grey;
+  }
+  .productadddiv{
+        float: left;
+    position: relative;
+    margin-left: 50px;
+    top: 50px;
+  }
+  .productaddbutton{
+    background-color: #0eef0e;
+    color: white;
+    border: none;
+  }
+  .productspecificationdiv{
+  }
+  .productspecificationtable{
+     border: 1px solid rgba(128, 128, 128, 0.28);
+  }
+  .productspecificationtablehead{
+border: 1px solid black;
+  }
+
+  .orderdiv:hover{
+      min-height: 120px;
+
+    background-color: #f5f5f5;
+      color: white;
+    }
+
+.orderTansactionDetailsDiv{
+  /* min-width: 570px; */
+  width: 50%;
+  height: 530px;
+  overflow-y: auto;
+  float: left;
+}
+
+  .orderdivActive{
+      min-height: 120px;
+
+    background-color: #f5f5f5;
+      color: white;
+    }
+
+    .orderdivActive a:hover{
+    }
+
+.orderdiv{
+  min-height: 120px;
+}
+
+  .orderimagediv{
+        border: 1px solid black;
+    height: 80px;
+    width: 80px;
+    position: relative;
+    float: left;
+    margin: 15px;
+  }
+  .orderinfodiv{
+    width: 315px;
+    position: relative;
+    float: left;
+    min-height: 100px;
+    margin-top: 15px;
+  }
+
+.orderUl {
+  list-style-type: none;
+  padding: 0px;
+}
+  .orderbroughtbutton{
+        background-color: green;
+    border: 1px solid green;
+    color: white;
+  }
+  .orderapprovebutton{
+    background-color: green;
+    border: 1px solid green;
+    color: white;
+    margin-left: 10px;
+  }
+
+  .orderdeclinebutton{
+    background-color: red;
+    border: 1px solid red;
+    color: white;
+    margin-left: 10px;
+  }
+ .ordersoldbutton{
+      background-color: red;
+    border: 1px solid red;
+    color: white;
+ }
+ .orderbuyingbutton{
+    background-color: #4c8e4c;
+    border: 1px solid #4c8e4c;
+    color: white;
+ }
+ .orderpendingbutton{
+    background-color: orange;
+    border: orange;
+    color: white;
+ }
+ .ordercancelledbutton{
+    background-color: grey;
+    border: 1px solid white;
+    color: white;
+ }
+
+
+
+  .searchbardiv{
+background-color: white;
+    }
+    .searchbarinput{
+      margin: 10px;
+          padding: 10px;
+    height: 34px;
+      min-width: 200px;
+      width: 100%;
+      position: relative;
+    }
+    .searchresultdiv{
+    height: 100%;
+    width: 100%;
+    }
+    .singlesearchresult{
+    height: 100px;
+    }
+
+.singlesearchresult:hover{
+  background-color: #f9f9f9;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgb(193, 193, 193);
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: rgb(193, 193, 193);
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: rgb(193, 193, 193);
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: rgb(193, 193, 193);
+}
+    .searchresultimgdiv{
+          float: left;
+    }
+    .searchresultimg{
+      height: 80px;
+    }
+    .searchresultinfo{
+    float: left;
+    margin-left: 15px;
+    }
+    .searchresultcheckbox{
+          float: right;
+          margin-top: 28px;
+    margin-right: 20px;
+    }
+
+
+    .searchresultcheckbox:hover{
+     background: #f5f5f5;
+
+    }
+.selectedmenu{
+  color:#4c81bf !important;
+}
+    .control {
+        font-family: arial;
+        display: block;
+        position: relative;
+        padding-left: 30px;
+        padding-top: 3px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+        .control input {
+            position: absolute;
+            z-index: -1;
+            opacity: 0;
+        }
+    .control_indicator {
+        position: absolute;
+        top: 2px;
+        left: 0;
+        height: 20px;
+        width: 20px;
+        background: #e6e6e6;
+        border: 1px solid #DDD0D0;
+    }
+    .control-radio .control_indicator {
+        border-radius: undefined%;
+    }
+
+    .control:hover input ~ .control_indicator,
+    .control input:focus ~ .control_indicator {
+        background: #cccccc;
+    }
+
+    .control input:checked ~ .control_indicator {
+        background: #4C81BF;
+    }
+    .control:hover input:not([disabled]):checked ~ .control_indicator,
+    .control input:checked:focus ~ .control_indicator {
+        background: #0e6647d;
+    }
+    .control input:disabled ~ .control_indicator {
+        background: #e6e6e6;
+        opacity: 0.6;
+        pointer-events: none;
+    }
+    .control_indicator:after {
+        box-sizing: unset;
+        content: '';
+        position: absolute;
+        display: none;
+    }
+    .control input:checked ~ .control_indicator:after {
+        display: block;
+    }
+    .control-checkbox .control_indicator:after {
+        left: 7px;
+        top: 3px;
+        width: 3px;
+        height: 8px;
+        border: solid #ffffff;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+    .control-checkbox input:disabled ~ .control_indicator:after {
+        border-color: #7b7b7b;
+    }
+
+.addtostockareadiv{
+     text-align: center;
+  }
+  .addtostockareabutton{
+    background-color: #4c81bf;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 20;
+    color: white;
+
+  }
+
+  .addtostockareabutton:hover{
+    background-color: #6993c3;
+    border: none;
+  }
+
+
+
+ .mainsectionsettings{
+   position: relative;
+   overflow-y: auto;
+  }
+  .stockarearenamediv{
+    margin-top: 50px;
+    margin-left: 50px;
+  }
+  .stockarearenameinput{
+        height: 35px;
+    width: 300px;
+    font-size: 20px;
+    padding-left: 10px;
+  }
+  .stockarearenamebutton{
+    margin-left: 20px;
+    text-transform: uppercase;
+    height: 35px;
+    /* width: 225px; */
+    padding: 9px;
+    position: relative;
+    background-color: #ccc;
+    border: none;
+    /* font-size: 18px; */
+    color: white;
+  }
+  .stockareadeletediv{
+    margin: 50px;
+        color: grey;
+        border: 1px solid #ddd;
+        padding: 20px;
+  }
+  .stockareadeletebutton{
+    font-size: 20px;
+    margin-left: 25px;
+    background-color: #4c81bf;
+    border: 1px solid #4c81bf;
+    color: white;
+  }
+.leftsectiondiv{
+float: left;
+}
+  .stockdetailssectiondiv{
+    width: 235px;
+    background: white;
+    position: relative;
+  }
+  .stockareaheadingdiv{
+    text-align: center;padding: 10px;
+  }
+  .padding10{
+    padding: 10px;
+  }
+
+div.scrollmenu {
+    overflow: auto;
+    white-space: nowrap;
+    border-top: 1px solid #ccc;
+}
+
+div.scrollmenu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+div.scrollmenu a:hover {
+    background-color: #777;
+}
+
+div.imageList {
+    width: 360px;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-left: 40px;
+}
+
+div.imageList a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+div.imageList a img{
+  width: 100px;
+}
+
+div.imageList a:hover {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+div.imageList1 {
+    width: 360px;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-left: 40px;
+}
+
+div.imageList1 a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+div.imageList1 a img{
+  width: 100px;
+}
+
+div.imageList1 a:hover {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+
+
+.stockaredetailsbuybutton{
+    height: 30px;
+    background-color: #4c81bf;
+    border: none;
+    color: white;
+  }
+
+.stockaredetailssellbutton{
+    height: 30px;
+    color: white;
+    border:none;
+    background-color: #4c81bf;
+  }
+
+
+  .addProductBtn{
+    background-color: white;
+  border: 1px solid #ddd;
+  margin-left: 10px;
+  outline: none;
+  color: #6b6868;
+  border-radius: 4px;
+  }
+
+  .addProductBtn:hover{
+    background-color: white;
+  border: 1px solid #ddd;
+  margin-left: 10px;
+  outline: none;
+  color: #6b6868;
+  border-radius: 4px;
+  }
+
+  .productInfoNoProduct{
+    padding: 50px;
+    margin: 50px;
+    color: grey;
+    border: 1px solid grey;
+    text-align: center;
+  }
+
+  .stockaredetailsinactivebutton{
+    height: 30px;
+    background-color: #f76060;
+    border: 1px solid #f76060;
+    color: white;
+  }
+  .productlistsectiondiv{
+    overflow: hidden;
+    height: 270px;
+    margin-top: 26px;
+    background-color: white;
+  }
+  #productinfodiv{
+    overflow: hidden;
+    overflow-y: auto;
+    background-color: white;
+  }
+
+  .productlistsearchbarinput{
+    max-width: 100%;
+    width: 200px;
+    float: left;
+  }
+  .productlistingdiv{
+    padding: 10px;
+    overflow-y: auto;
+    float: left;
+  }
+
+  .stockareafootersectiondiv{
+        clear: both;
+    position: relative;
+    z-index: 10;
+    height: 90px;
+    overflow-x: hidden;
+    margin-top: 0;
+    border-top: 1px solid #dddddd;
+    background-color: white;
+  }
+  .stockareafooterbutton{
+    top: 5px;
+    height: 55px;
+    width: 55px;
+    position: relative;
+    padding: 8px;
+    border: 1px solid grey;
+    float: left;
+    margin-left: 20px;
+    border-radius: 98px;
+  }
+  /***
+  Bootstrap Line Tabs by @keenthemes
+  A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
+  Licensed under MIT
+  ***/
+
+  /* Tabs panel */
+  .tabbable-panel {
+    border:1px solid #eee;
+    padding: 10px;
+  }
+
+  /* Default mode */
+  .tabbable-line > .nav-tabs {
+    border: none;
+    margin: 0px;
+  }
+  .tabbable-line > .nav-tabs > li {
+    margin-right: 2px;
+  }
+  .tabbable-line > .nav-tabs > li > a {
+    border: 0;
+    margin-right: 0;
+    color: #737373;
+  }
+  .tabbable-line > .nav-tabs > li > a > i {
+    color: #a6a6a6;
+  }
+  .tabbable-line > .nav-tabs > li.open, .tabbable-line > .nav-tabs > li:hover {
+    border-bottom: 4px solid #b6d2f3;
+  }
+  .tabbable-line > .nav-tabs > li.open > a, .tabbable-line > .nav-tabs > li:hover > a {
+    border: 0;
+    background: none !important;
+    color: #333333;
+  }
+  .tabbable-line > .nav-tabs > li.open > a > i, .tabbable-line > .nav-tabs > li:hover > a > i {
+    color: #b6d2f3;
+  }
+  .tabbable-line > .nav-tabs > li.open .dropdown-menu, .tabbable-line > .nav-tabs > li:hover .dropdown-menu {
+    margin-top: 0px;
+  }
+  .tabbable-line > .nav-tabs > li.active {
+    border-bottom: 2px solid #4c81bf;
+    position: relative;
+  }
+  .tabbable-line > .nav-tabs > li.active > a {
+    border: 0;
+    color: #333333;
+  }
+  .tabbable-line > .nav-tabs > li.active > a > i {
+    color: #404040;
+  }
+  .tabbable-line > .tab-content {
+    margin-top: -3px;
+    background-color: #fff;
+    border: 0;
+    border-top: 1px solid #eee;
+    padding: 15px 0;
+  }
+  .portlet .tabbable-line > .tab-content {
+    padding-bottom: 0;
+  }
+
+  /* Below tabs mode */
+
+  .tabbable-line.tabs-below > .nav-tabs > li {
+    border-top: 4px solid transparent;
+  }
+  .tabbable-line.tabs-below > .nav-tabs > li > a {
+    margin-top: 0;
+  }
+  .tabbable-line.tabs-below > .nav-tabs > li:hover {
+    border-bottom: 0;
+    border-top: 4px solid #b6d2f3;
+  }
+  .tabbable-line.tabs-below > .nav-tabs > li.active {
+    margin-bottom: -2px;
+    border-bottom: 0;
+    border-top: 4px solid #b6d2f3;
+  }
+  .tabbable-line.tabs-below > .tab-content {
+    margin-top: -10px;
+    border-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+  }
+  .productinfopage{
+        background: white;
+    min-height: 520px;
+    height: 100%;
+    width: 900PX;
+    overflow-x: hidden;
+    top: 0px;
+    word-wrap: break-word;
+  }
+  .stockareafooterbuttontext{
+    position: relative;
+    margin: 10px;
+    height: 50px;
+    border-radius: 4px;
+    border: 1px;
+    color: white;
+    background-color: #337ab7;
+  }
+
+  label{
+    font-weight: 100 !important;
+  }
+
+  .loginBox{
+      margin: auto !important;
+      width: 350px;
+      margin-top: 100px !important;
+  }
+
+  .inputAll{
+    width: 100%;
+        padding-left: 10px;
+    border: 1px solid #ccc !important;
+  height: 40px !important;
+  border-radius: 0px !important;
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  }
+  .inputAddress{
+    width: 100%;
+    padding-left: 10px;
+    border: 1px solid #ccc !important;
+    border-radius: 0px !important;
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  }
+
+  .loginButton{
+      background-color: #72bb53;
+      color: white;
+      border: 1px;
+      height: 35px;
+      width: 100%;
+      font-weight: 100;
+  }
+
+    .stockareafooterbuttontexttrue{
+    position: relative;
+    margin: 10px;
+    height: 50px;
+    border-radius: 4px;
+    border: 1px;
+    color: white;
+    background-color: #000000;
+  }
+
+.margin10{
+        margin: auto;
+    width: 350px;
+    margin-top: 10px;
+}
+.step1div{
+    width: 175px;
+    color: grey;
+    padding: 4px;
+    float: left;
+    height: 75px;
+    border: 1px solid #d0d0d0;
+
+}
+
+
+.searchAddressMap2{
+top: 8px !important;
+border: none;
+width: 325px !important;
+height: 30px;
+}
+
+
+.floatleft{
+
+  float: left;
+}
+
+.imgwidth35{
+     width: 35px;
+}
+
+.step1creatediv{
+    position: relative;
+    left: 5px;
+    top: 6px;
+}
+
+
+.step2div{
+       width: 175px;
+    float: left;
+    padding: 4px;
+    color: grey;
+    height: 75px;
+    border: 1px solid #d0d0d0;
+    border-left: 1px solid white;
+}
+
+
+.step2addstockareadiv{
+        position: relative;
+    left: 5px;
+    top: 6px;
+}
+
+.margin10{
+        margin-top: 10px;
+}
+
+.addstockareabtn{
+        background-color: #72bb53;
+    color: white;
+    font-weight: 100;
+}

@@ -1,0 +1,213 @@
+<style>
+  md-card {
+    margin: auto;
+    left: 0;
+    right: 0;
+    margin-bottom: 20px;
+  }
+  .mySlides {
+    display: none
+  }
+  /* Slideshow container */
+  .slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+  }
+  /* Next & previous buttons */
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover,
+  .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  /* Fading animation */
+  /* On smaller screens, decrease text size */
+  @media only screen and (max-width: 300px) {
+    .prev,
+    .next,
+    .text {
+      font-size: 11px
+    }
+  }
+</style>
+
+<input style="display:inline-block;margin-left:0px;width: 64%;left: 15%;border:none;background:white;top: -64px;" ng-keydown="onenterkeymyassetautocomplete($event)" type="text" autocomplete="off" placeholder="Search for Products,Brands and More" class="searchbarinput ng-pristine ng-untouched ng-valid ng-empty" ng-change="productautocomplete()" id="productautocompletesearch" ng-model="search" name="autocompletesearch">
+  <div class="searchresultdiv style-4 scrollbar" id="searchresult" ng-init="height()" style="width:85%;float:right;border-left-style:solid;margin-top:-56px;border-color:#eeeeee;height:360px;">
+    <center ng-show="!productsSearch || productsSearch==null || productsSearch.length==0">
+      <div style="border-style:solid;border-color:#eeeeee;width:70%;height:70px;margin-top:15%;">
+        <div style="margin-top:22px;">
+          <font style="color: #dcdada;">Search your assets here</font>
+        </div>
+      </div>
+    </center>
+    <center>
+      <div ng-repeat="singleproduct in productsSearch" style="margin-bottom:25px;">
+        <div style="height: auto;width: auto;max-width: 70%;margin-left: 10px;margin-top: 10px;/* border-bottom-style: solid; */border-width: 1px;" class="">
+          <div style="float:left;border-style:solid;border-width:1px;border-color:#eeeeee;width:100%;margin-bottom:20px;background:white;">
+            <div style="border-bottom-style:solid;border-width:1px;border-color:#72bb53;height:90px;" class="borderbottomred{{singleproduct.type}}">
+
+              <font style="font-weight: 400;font-size: 15px;word-wrap: break-word;color: #4c81bf;text-align: left;float: left;height:  100%;overflow-y:  hidden;width: 85%;padding: 10px;">{{singleproduct.productName}}</font>
+              <button class="btn btn-sm" ng-show="singleproduct.state!='ADDED'" style="background:#4c81bf;color:white;margin-top:15px;" ng-if="singleproduct.categoryId._id=='1001dfsf3454j5n34k5' || singleproduct.categoryId._id=='10dsfd89ejofiw9eojfw01' || singleproduct.categoryId._id=='150dsfd89ejofiw9eojfw01'" ng-click="addProductsToStockarea(singleproduct._id)">Add</button>
+              <button class="btn btn-sm" style="background:#72bb53;color:white;margin-top:15px;" ng-show="singleproduct.state=='ADDED'" ng-if="singleproduct.categoryId._id=='1001dfsf3454j5n34k5' || singleproduct.categoryId._id=='10dsfd89ejofiw9eojfw01' || singleproduct.categoryId._id=='150dsfd89ejofiw9eojfw01'" ng-click="addProductsToStockarea(singleproduct._id)">Added</button>
+              <div class="dropdown" style="float:right;margin-right:10px;margin-top:20px;">
+                <i style="color:#c1c1c1;border:none !important;background:none !important;font-size:large;" class="fa fa-ellipsis-v dropdown-toggle" id="menu1" data-toggle="dropdown" aria-hidden="true"></i>
+                <ul class="dropdown-menu" style="margin-left:-63px;min-width:80px;" role="menu" aria-labelledby="menu1">
+                  <li role="presentation"><a ng-show="singleproduct.type!=1000 && singleproduct.type!=1006 " ng-if="singleproduct.createdBy==userId" role="menuitem" ng-click="editproduct(singleproduct._id)" tabindex="-1" >edit</a></li>
+                  <li role="presentation"><a ng-show="singleproduct.type!=1001 && singleproduct.type!=1006 && stockareatype!='1005'" role="menuitem" ng-click="report(singleproduct._id,singleproduct.productName)" ng-if="singleproduct.createdBy!=userId" tabindex="-1" >report this product</a></li>
+                  <li role="presentation"><a ng-show="singleproduct.type!=1000 && singleproduct.type!=1006" ng-if="singleproduct.createdBy==userId" role="menuitem" ng-click="movetovg(singleproduct._id)" tabindex="-1" >move to virtualgodown</a></li>
+                  <li role="presentation"><a  role="menuitem" ng-if="singleproduct.type!=1000 &&  singleproduct.createdBy==userId" ng-show="singleproduct.categoryId._id=='1001dfsf3454j5n34k5' || singleproduct.categoryId._id=='10dsfd89ejofiw9eojfw01' || singleproduct.categoryId._id=='150dsfd89ejofiw9eojfw01'" ng-click="addpackage(singleproduct._id)" tabindex="-1" ng-if="singleproduct.createdBy==userId">add package</a></li>
+                  <li role="presentation"><a  role="menuitem" ng-show="singleproduct.type==1000 && singleproduct.categoryId._id!='1001dfsf3454j5n34k5' && singleproduct.categoryId._id!='10dsfd89ejofiw9eojfw01' && singleproduct.categoryId._id!='150dsfd89ejofiw9eojfw01'" ng-click="suggestpackage(singleproduct._id)" tabindex="-1">suggest package</a></li>
+                  <li role="presentation"><a  role="menuitem" class="ng-hide" ng-if="userId=='er'" ng-show="singleproduct.type!=1000 && singleproduct.createdBy!=userId" ng-click="RequestSellAccess(singleproduct._id)" tabindex="-1" >request sell access</a></li>
+                </ul>
+              </div>
+          </div>
+          <font style="color:#72bb53;margin-right:5%;float:right;margin-top:-25px;" ng-show="singleproduct.type=='1000'">[public]</font>
+          <font style="color:red;margin-right:5%;float:right;margin-top:-25px;" ng-show="singleproduct.type=='1001' || singleproduct.type=='1002'">[private]</font>
+          <font style="color:orange;margin-right:5%;float:right;margin-top:-25px;" ng-show="singleproduct.type=='1006'">[pending-moderation]</font>
+          <font style="color:black;margin-left:10px;float:left;margin-top:-25px;font-variant-caps: all-small-caps;" >{{singleproduct.categoryId.name}}</font>
+          <br>
+              <center>
+                <style>
+                .slick-prev:before{
+                  color:#c1c1c1;
+                }
+                .slick-next:before{
+                  color:#c1c1c1;
+                }
+                </style>
+                <slick slides-to-show=1
+             slides-to-scroll=1 data="singleproduct.images">
+                <div ng-if="singleproduct.images.length>0"  ng-repeat="i in singleproduct.images track by $index" style="min-height:200px;height:auto;max-height: 400px;margin-top: 60px;overflow:hidden;">
+                  <img style="height:auto;max-width:100%;width:auto;border: 1px solid rgba(221, 221, 221, 0.04);" ng-value="i.img" src={{i.img}}>
+              </div>
+            </slick>
+              <!--<div  ng-if="singleproduct.images.length==1" style="min-height:200px;height:auto;max-height: 400px;margin-top: 60px;overflow:hidden;">
+                <img style="width: 60%;height:auto;border: 1px solid rgba(221, 221, 221, 0.04);" src={{singleproduct.images[0].img}}>
+              </div>-->
+            </center>
+            <div style="margin-top:15px;margin-left:15px;">
+              <div>
+                <font style="color:#4c81bf;float:left;">{{singleproduct.brandId.brandName}}</font>
+                <br>
+                <font style="color:#4c81bf;float:left;">{{singleproduct.brandId.brandOwner}}</font>
+              </div>
+              <div class="ng-binding">
+                <!--      <font style="float:right">{{singleproduct.likes.length}}</font>
+                      <div ng-hide="viewlikes(singleproduct._id)" style="float:right">
+                        <i class="fa fa-thumbs-up fa-tag custom-fa" aria-hidden="true" ng-click="addproductlike(singleproduct._id)" style="-webkit-text-stroke-color:#4c81bf;font-size:large;"></i>
+                      </div>
+                      <div ng-show="viewlikes(singleproduct._id)" style="float:right">
+                        <i class="fa fa-thumbs-up" aria-hidden="true" ng-click="removeproductlike(singleproduct._id)" style="color: #4c81bf;font-size:large;"></i>
+                      </div>-->
+                <ul class="list-inline" style="
+    width:500px;
+    border:none;
+    float:left;
+    margin-top: 10px;
+    height: 16px;
+    ">
+    <li style="float:left;">
+      <a style="text-decoration: none;cursor: pointer;" title="Description" onmouseenter="$(this).tooltip('show')" ng-click="product.productsubtab=1" >
+        <i class="fa fa-list"  style="color:#c1c1c1" aria-hidden="true"></i>
+    </a>
+    <a style="text-decoration: none;cursor: pointer;margin-left:50px;" ng-show="singleproduct.categoryId._id=='1001dfsf3454j5n34k5' || singleproduct.categoryId._id=='10dsfd89ejofiw9eojfw01' || singleproduct.categoryId._id=='150dsfd89ejofiw9eojfw01'" title="package" onmouseenter="$(this).tooltip('show')" ng-click="product.productsubtab=3" >
+        <i class="fa fa-dropbox"  style="color:#c1c1c1" aria-hidden="true"></i>
+    </a></li>
+                  <!--    <li style="float:left;"><a style="text-decoration: none;cursor: pointer;" ng-click="product.productsubtab=2" ng-class="{selected2: product.productsubtab==2}">Reviews</a></li>
+                  <li style="float:left;"><a style="text-decoration: none;cursor: pointer;" ng-click="product.productsubtab=3" ng-class="{selected2: product.productsubtab==3}">Brandinfo</a></li>-->
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div ng-show="product.productsubtab==1">
+            <div style="width:auto;max-width: 100%;margin-top:1px;">
+              <div class="productspecificationdiv">
+                <center style="margin-top:10px;">
+                  <div style="margin-top: 15px;background:#f4f5f7;">
+                    <table class="pure-table pure-table-unbordered" style="
+                margin-bottom: 15px;
+                border-bottom-style:solid;
+                border-width:1px;
+                border-color:#eeeeee;
+                width:100%;
+                ">
+                      <tbody>
+                        <!-- ngRepeat: e in productInfo.brandId.description -->
+                        <tr ng-repeat="e in singleproduct.specifications"  class="ng-scope">
+                          <td style="width:100%">
+                            <div style="word-wrap: break-word;display:inline-block;color:#4c81bf;font-weight:600" class="ng-binding">{{e.key}} </div>
+                            :
+                            <div style="word-wrap: break-word;display:inline-block" class="ng-binding"> {{e.value}} </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </center>
+              </div>
+            </div>
+          </div>
+          <div ng-show="product.productsubtab==3">
+            <div style="width:auto;max-width: 100%;margin-top:1px;">
+              <div class="productspecificationdiv">
+                  <div style="margin-top: 15px;background:#f4f5f7;">
+              <table style="background: #f4f5f7;margin-bottom:60px;float:left;width: 100%;" class="pure-table pure-table-unbordered">
+                <thead>
+                </thead>
+                <tbody ng-repeat="x in singleproduct.package" ng-hide="x.name=='custom'">
+                  <tr>
+                    <td>
+                      <font style="word-wrap:break-word;color:#4c81bf"><b>{{x.name}}</b></font>
+                    </td>
+                    <td>
+                      <i ng-if="singleproduct.type!=1000 && singleproduct.type!=1006" class="fa fa-trash-o"title="delete" style="
+          color: #a9acaf;margin-right:10px;
+          " ng-mouseover="hoverActive=true" ng-mouseleave="hoverActive=false" ng-click="deletepackage(singleproduct._id,x._id)" ng-style="hoverActive ? {'color':'red'} : {}" aria-hidden="true"></i>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td style="border-top-style:solid;border-top-width: 1px;color:#6e7373"></td>
+                    <td style="border-top-style:solid;border-top-width: 1px;color:#6e7373"></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <font style="word-wrap:break-word;color:#4c81bf"><b>packageSize</b></font>
+                    </td>
+                    <td>
+                      <font style="word-wrap:break-word;">{{x.size}}</font>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <font style="word-wrap:break-word;color:#4c81bf"><b>packageShape</b></font>
+                    </td>
+                    <td>
+                      <font style="word-wrap:break-word;">{{x.shape}}</font>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <font style="word-wrap:break-word;color:#4c81bf"><b>packageType</b></font>
+                    </td>
+                    <td>
+                      <font style="word-wrap:break-word;">{{x.type}}</font>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+          </div>          <br>
+          <br>
+        </div>
+    </center>
+    </div>
+  </div>
+</div>

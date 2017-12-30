@@ -1,0 +1,1071 @@
+<!-- Including header -->
+<style>
+  .container1 {
+    position: relative;
+    margin-top: 50px;
+    width: 500px;
+    height: 300px;
+  }
+
+  .overlay1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15vw !important;
+    height: 15vw !important;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.5s ease;
+  }
+
+  .container1:hover .overlay1 {
+    display: block;
+    background: rgba(0, 0, 0, .3);
+  }
+
+
+
+  .title1 {
+    position: absolute;
+    width: 500px;
+    left: 0;
+    top: 120px;
+    font-weight: 700;
+    font-size: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    z-index: 1;
+    transition: top .5s ease;
+  }
+
+  .container1:hover .title1 {
+    top: 90px;
+  }
+
+  .button1 {
+    position: absolute;
+    left: 35px;
+    top: 100px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity .35s ease;
+  }
+
+  .button1 a {
+    text-decoration: none;
+    cursor: pointer;
+    width: 200px;
+    padding: 12px 48px;
+    text-align: center;
+    color: white;
+    border: solid 2px white;
+    z-index: 1;
+  }
+
+  .container1:hover .button1 {
+    opacity: 1;
+  }
+
+  #block_container {
+    text-align: center;
+  }
+
+  #bloc1,
+  #bloc2 {
+    display: inline;
+  }
+
+   ::-webkit-datetime-edit-year-field:not([aria-valuenow]),
+   ::-webkit-datetime-edit-month-field:not([aria-valuenow]),
+   ::-webkit-datetime-edit-day-field:not([aria-valuenow]) {
+    color: transparent;
+  }
+</style>
+<div class="header" ng-controller="dashboardHeaderController" ng-model-options="{ debounce: 200 }" ng-init="loadHome()">
+  <div ng-show="access" class="headertab ng-scope" style="
+      border-bottom: #eee;
+      border-bottom-width: thin;
+      border-bottom-style: inset;">
+    <div ng-show="!loading" style="position: relative;">
+      <div class="loginheaderlogodiv"><div style="display:inline-block;float:left" ng-click="gohome()"><img src="{{domainURL}}assets/img/unnamed.png" class="headerlogoimg"><sup><font style="
+    font-size: 0.7vw;
+    margin-left: 5px;
+    color:#72bb53;">BETA</font></sup>
+  </div>
+        <div ng-show="page" class="cmpnamediv" style="    background-color: white !important;left:-10px !important;"><span data-placement="bottom" title="Stockarea" style="font-size:medium;" onmouseenter="$(this).tooltip('show')">{{StockareaName}}</span><span data-placement="bottom" title="Product Name" onmouseenter="$(this).tooltip('show')" style="font-size:medium;"
+            ng-show="productName">{{" - "+ productName}}</span></div>
+      </div>
+      <div class="avatarleftdiv">
+        <div style="float:left;/* margin-top: -7px; */">
+          <div class="dropdown" style="bottom:7px;width:33px;">
+            <div data-toggle="dropdown" class="dropdown-toggle">
+              <i style="font-size: 26px;color:grey" class="fa fa-question" aria-hidden="true"></i>
+            </div>
+            <div class="dropdown-menu" style="
+      z-index: 22;
+      margin-left:-100px;
+      margin-top:10px;
+      position: absolute;
+background-color: #f9f9f9;
+min-width: 300px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  ">
+              <a style="padding:10px;cursor: pointer;color:#4c81bf;text-decoration:none;font-size:20px;">help</a><br><br>
+              <a style="padding:10px;cursor: pointer;color:#8e8b8b;text-decoration:none;">Sometimes you just need a little help.</a><br><br>
+              <a style="padding:10px;cursor: pointer;color:#8e8b8b;text-decoration:none;"ng-click="messagetohelp()">message us at help@virtualgodown</a><br><br>
+              <a style="padding:10px;cursor: pointer;color:#4c81bf;text-decoration:none;"></a><br><br>
+            </div>
+          </div>
+          <div class="dropdown" style="bottom:7px;width:55px;">
+          <div data-toggle="dropdown" class="animated notification show-count dropdown-toggle" data-count="{{value}}" aria-expanded="true" value="value" style="
+              width: 40px;
+              height: 36px;
+              margin-top: 10px;
+"></div>
+<div class="dropdown-menu" ng-show="notification.length>0" id="notification" style="
+z-index: 22;
+width:634%
+">
+
+  <div ng-show="notification.length>0" ng-repeat=" x in notification" style="padding:10px;cursor:pointer"  ng-click="updatenotification(x._id,x.receiptentOrganisationId.stockareaId,x.receiptentOrganisationId.productId,x.type)">
+    <div style="width:10%;height:30px;display:inline-block;">
+      <div ng-if="x.img" style="height:100%;width:100%"></div>
+      <i class="fa fa-sitemap" ng-if="!x.img" aria-hidden="true" style="height:100%;width:100%"></i>
+    </div>
+    <div style="width:80%;height:30px;word-wrap: break-word;display:inline-block">
+      {{x.message}}
+    </div>
+</div>
+<div ng-show="notification.length == 0"style="padding:10px;cursor:pointer">
+
+  <center style="width:80%;height:30px;word-wrap: break-word;display:inline-block;padding:20px;">
+<font> No notifications to show</font>
+  </center>
+</div>
+</div>
+</div>
+          <div class="dropdown" style="bottom:7px;width:50px;">
+            <div data-toggle="dropdown" class="dropdown-toggle" style="width:50px">
+              <i style="font-size: 26px;color:grey" class="fa fa-cog" aria-hidden="true"></i>
+            </div>
+            <div class="dropdown-menu" style="
+      z-index: 22;
+      margin-left:-100px;
+      position: absolute;
+background-color: #f9f9f9;
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  ">
+              <div style="cursor: pointer;width:100%;height:40px;color:#8e8b8b;text-decoration:none;" class="optionhover" ng-click="settings()"><font style="margin-left: 10px;vertical-align: -webkit-baseline-middle;">Settings</font></div>
+              <div style="cursor: pointer;width:100%;height:40px;color:#8e8b8b;text-decoration:none;" class="optionhover" ng-click="faq()"><font style="margin-left: 10px;vertical-align: -webkit-baseline-middle;">FAQ</font></div>
+              <div style="cursor: pointer;width:100%;height:40px;color:#8e8b8b;text-decoration:none;" class="optionhover" ng-click="logout()"><font style="margin-left: 10px;vertical-align: -webkit-baseline-middle;">Logout</font></div>
+            </div>
+          </div>
+        </div>
+        <div style="
+  float:right;height: -webkit-fill-available;">
+          <div class="profilepicdiv" class="floatleft"><img src={{profilePic}} class="avatarimg"></div>
+          <div class="dropdowndivleft">
+            <div class="dropdown">
+              <div class="dropbtn" style="margin-top:-10px;" ng-class="{namemarginclass :orgstatus==201}">
+                <font>{{fullName}}
+                </font><br>
+                    <font size="2" ng-hide="orgstatus==201">{{orgname}}</font>
+                    <i ng-show="org.length>1" style="color:#4c81bf" class="fa fa-chevron-down" aria-hidden="true"></i>
+                    <i ng-show="org.length<1" style="color:#eeeeee" class="fa fa-chevron-down" aria-hidden="true"></i>
+              </div>
+              <div class="dropdown-content" ng-show="org.length>1" style="width:200px;margin-right:10px;height:250px;overflow-y:hidden;overflow-x:hidden;">
+                <input type="text" ng-model="test1" class="productlistsearchbarinput" style="width:190px !important;margin-left:5px;margin-top:5px;border:none;" placeholder="Search organisations" autocomplete="off">
+                <div class="scrollbar" id="style-4" style="height:230px;width:200px;overflow-x:hidden;">
+
+                  <a ng-repeat="x in org | filter : test1" style="cursor: pointer;" ng-hide="orgname==x.organisationId.organisationId" ng-click="changeorg(x.organisationId._id)">{{x.organisationId.organisationId}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="background:#4c81bf;
+      border-bottom: #eee;
+      border-bottom-width: thin;
+      border-bottom-style: inset;" ng-hide="access" class="headertab ng-scope">
+    <div ng-show="!loading" style="position: relative;">
+      <div class="loginheaderlogodiv"><a ui-sref="home"><img src="{{domainUrl}}assets/img/white.png" class="headerlogoimg"><font class="headerlogoimg" style="
+      color: white;
+  " size="5">VIRTUALGODOWN</font></a>
+
+        <div ng-show="page" class="cmpnamediv" style="    background-color: white !important;
+      left: 10px;"><span data-placement="bottom" title="Stockarea" onmouseenter="$(this).tooltip('show')" style="font-size:medium;">{{StockareaName}}</span><span data-placement="bottom" title="Product Name" onmouseenter="$(this).tooltip('show')" ng-show="productName"
+            style="font-size:medium;">{{" - "+ productName}}</span></div>
+      </div>
+      <div style="margin-top8px;" class="avatarleftdiv">
+        <button ng-sref="login" ng-click="login()" href="{{domainUrl}}login" style="
+    position: relative;
+    margin: 10px;
+    /* height: 50px; */
+    /* min-width: 100px; */
+    padding: 5px;
+    /* border-radius: 4px; */
+  width:70px;
+    border: 1px;
+    color: #4c81bf;
+    background-color:white ;
+  ">Login</button> or
+        <button ng-click="signup()" href="{{domainUrl}}signUp" ng-sref="signUp" style="
+  position: relative;
+  margin: 10px;
+  /* height: 70px; */
+  /* min-width: 100px; */
+  padding: 5px;
+  /* border-radius: 4px; */
+  width:70px;
+  border: 1px;
+  color: white;
+  background-color: #42b72a;
+  ">Signup</button>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+<div class="loaderCSS" ng-show="loading"><img src="assets/img/spin.gif" style="margin-top:150px"> </div>
+<div ng-show="!loading" id="mainsection" style="position: relative;height: 522px;">
+
+  <div id="main" ng-init="init()">
+    <div id="left" style="float:left; width: 20%">
+      <div style="display: table-cell;min-width: 100px !important;position: relative;" class="tabgroup" ng-init="tab=1">
+        <div class="tab" style="float: none;cursor: default;color: grey;background-color: gainsboro;">Settings</div>
+        <div class="tab" style="float: none;" ng-class="{selected: tab==1}" ng-click="tab = 1">Profile</div>
+        <div class="tab" style="float: none;" ng-class="{selected: tab==2}" ng-click="tab = 2">Account</div>
+        <div class="tab" style="float: none;" ng-class="{selected: tab==4}" ng-click="tab = 4">Experience</div>
+        <div class="tab" style="float: none;" ng-class="{selected: tab==5}" ng-click="tab5()">Stockarea</div>
+      </div>
+    </div>
+    <div style="float:left; width:50%;">
+      <div class="overviewleftdiv ng-scope">
+        <div class="tabcontents ng-hide" ng-show="tab == 1" style="top: 1px;">
+          <form role="form" name="myForm" angular-validator-submit="updateprofile()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-angular-validator " novalidate="" angular-validator="">
+            <!--form-horizontal-->
+
+            <div class="form-group" style="=margin:;padding: 10px;font-weight: 600;">Name</div>
+            <div class="form-group" style="=margin:;padding: 10px;"><input type="text" autocomplete="off" ng-model="fullname" name="fullname" class="inputAll" validate-on="dirty" class="form-control input-sm loginInput inputMaxWidth ng-pristine ng-invalid ng-invalid-required ng-touched" required-message="'This field is required..'"
+                required=""></div>
+            <div class="form-group" style="=margin:;padding: 10px;font-weight: 600;">Date of Birth</div>
+            <div class="input-group form-group" style="=margin:;padding: 10px;width: 189px;">
+              <input type="text" class="form-control" id=datepicker autocomplete="off" ng-model="dob" name="dob">
+              <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+            </div>
+            <div class="form-group" style="=margin:;padding: 10px;font-weight: 600;">Location</div>
+            <div class="form-group" style="=margin:;padding: 10px;"><input text="text" autocomplete="off" ng-model="address" name="address"> </div>
+            <input class="addtostockareabutton" style="
+    margin-left: 6px;
+    padding: 6px;
+" type="submit" value="save" class="btn btn-block singinButton inputMaxWidth">
+          </form>
+        </div>
+
+        <div class="tabcontents ng-hide" ng-show="tab == 2" style="top: 1px;overflow:hidden;">
+          <div ng-show="account==1">
+            <form role="form" autocomplete="off" name="myForm" angular-validator-submit="updatepassword()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-angular-validator " novalidate="" angular-validator="">
+              <!--form-horizontal-->
+              <div style="=margin:;padding: 10px;font-weight: 600;">Old Password</div>
+              <div style="=margin:;padding: 10px;">
+                <input type="text" style="-webkit-text-security: disc;
+-moz-text-security: disc;
+text-security: disc;" ng-model="oldpassword" required class="inputAll auto-complete-off" validate-on="dirty" class=" auto-complete-off form-control input-sm loginInput inputMaxWidth ng-pristine ng-invalid ng-invalid-required ng-touched" required-message="'This field is required..'"
+                  required="">
+              </div>
+              <div style="=margin:;padding: 10px;font-weight: 600;">New Passoword</div>
+              <div style="=margin:;padding: 10px;">
+                <input type="text" style="-webkit-text-security: disc;
+-moz-text-security: disc;
+text-security: disc;" value="" class="inputAll" validate-on="dirty" class="form-control input-sm loginInput inputMaxWidth ng-pristine ng-invalid ng-invalid-required ng-touched auto-complete-off" required-message="'This field is required..'" required=""></div>
+              <div style="=margin:;padding: 10px;font-weight: 600;">Confirm New Password</div>
+              <div style="=margin:;padding: 10px;"><input type="text" style="-webkit-text-security: disc;
+-moz-text-security: disc;
+text-security: disc;" ng-model="newpassword" required class="inputAll auto-complete-off" validate-on="dirty" class="auto-complete-off form-control input-sm loginInput inputMaxWidth ng-pristine ng-invalid ng-invalid-required ng-touched" required-message="'This field is required..'"
+                  required=""> </div>
+              <div style="=margin:;padding: 10px;">
+                <input class="addtostockareabutton" style="
+    padding: 6px;
+" type="submit" value="save" class="btn btn-block singinButton inputMaxWidth">
+              </div>
+            </form>
+          </div>
+          <div ng-show="account==2">
+            <div id="mainsection" class="mainsectionsettings">
+              <div class="stockareadeletediv">
+                <div>Deleting the User will remove the all the added stockareas.After delete login will retrieve all datas back.</div>
+                <div style="text-align: center;"><button style="margin: 10px;" ng-click="userd()" class="addtostockareabutton">Delete Your Account</button></div>
+              </div>
+            </div>
+            <div ng-show="ud" style="padding:20px;padding-bottom:40px;width:617px;" class="row">
+
+              <center>
+                <font style="font-size:16px">Enter password to delete</font>&nbsp;&nbsp;<input type="password" style="height:30px margin-top:10px" ng-model="password" placeholder="password">
+                <input class="addtostockareabutton" style="
+      padding: 4px;
+      margin-left: 10px;
+      padding-left: 5px;
+      padding-right: 5px;
+  " type="submit" value="confirm" disable-double-click ng-click="deleteuser()" autocomplete="off" class="btn btn-block singinButton inputMaxWidth"></center>
+            </div>
+          </div>
+
+          <div ng-show="account == 3">
+            <div ng-show="mobiles.length!=0" style="=margin:;padding: 10px;    width: 500px;
+          ">Mobile Number</div>
+            <div ng-repeat="x in mobiles" style="=margin:;padding: 10px;    width: 500px;
+          /* font-weight: 600; */">
+              <div style="
+              border: 1px solid #ccc;
+              padding: 10px;    width: 500px;
+          ">{{x.code}}{{x.mobile}}
+                <button ng-show="x.mobile==mobile" style=" background-color:#72bb53; border:0"><font color="white">primary</font></button>
+                <i class="fa fa-check" ng-show="x.status=='verified'" title="verified" style="
+              color: #72bb53; float:right;
+          " aria-hidden="true" style="margin-right: 10px;
+          "></i>
+                <i class="fa fa-check" ng-show="x.status=='unverified'" disable-double-click ng-click="verifymobile(x.mobile)" title="verify" style="
+              color: #a9acaf;float:right;
+          " aria-hidden="true"></i>&nbsp;
+                <i class="fa fa-trash-o" ng-show="x.mobile!==mobile" title="delete" disable-double-click ng-click="deletemobile(x.mobile)" style="
+              color: #a9acaf;float:right;margin-right:10px;
+          " ng-mouseover="hoverActive=true" ng-mouseleave="hoverActive=false" ng-style="hoverActive ? {'color':'red'} : {}" aria-hidden="true"></i>
+              </div>
+
+            </div>
+            <div ng-show="otp" style="float: right;margin-right: 201px;margin-top: -80px;border-style: solid;padding: 41px;border-width: thin;border-color: #cccccc;" class="">
+              Enter Otp:
+              <div style="display:inline-block;/* margin-top: -62px; *//* height: 21px; */"><input type="number" ng-model="motp" name="91198" style="/* border-radius: 5px; *//* border-color: #cccccc; */height: 30px;width: 80px;" class="ng-pristine ng-untouched ng-valid ng-empty"></div>
+              <div style="display:inline-block;margin-left: 5px;margin-top: -2px;">
+                <button class="addtostockareabutton" style="cursor: pointer;padding: 7px;/* float: left; */width: 50px;height: 30px;letter-spacing:0px;position: relative;padding-bottom: 7px;padding-top: 7px;" disable-double-click ng-click="submitotp()">
+          done</button></div>
+              <div class="ng-binding" style="
+              margin-top: -39px;
+              /* margin-right: 30px; */
+              float: right;
+              color: #72bb53;
+          ">{{minutes}}</div>
+            </div>
+            <form role="form" name="myForm" angular-validator-submit="addnewmobile()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-angular-validator " novalidate="" angular-validator="">
+              <!--form-horizontal-->
+
+              <div class="row" style="=margin:;padding: 10px;    width: 500px;
+          /* font-weight: 600; */">
+                <div style="
+              /* border: 1px solid #ccc; */
+              padding: 10px;
+              margin-left:10px;
+          ">Add Mobile Number</div>
+                <div class="input-group" style="padding: 10px;    width: 800px;  margin-left:10px;
+          ">
+
+                  <table>
+                    <tr>
+                      <td>
+                        <select id="bloc1" ng-change="codec()" class="form-control selectpicker" style="width:150px; display:inline-block;" ng-model="code" ng-options="option.dial_code as option.name for option in codes" name="unit" id="unit"></label>
+                </select>
+                        <input type="text" ng-model="code" style="   border: 1px solid darkgrey;      margin-left: 4px;
+                display:inline-block;width:95px;height:34px !important;" class="inputAll" readonly>
+                        <input type="number" autocomplete="off" size="72" ng-model="mobilenew" style="padding: 5px; letter-spacing:0px;width: 250px;height: 35px !important;" name="email">
+                      </td>
+                      <td>
+                        <input type="submit" class="addtostockareabutton" style="cursor: pointer;float: left; letter-spacing:0px; margin-left: 10px;position: relative;padding-bottom: 7px;padding-top: 7px;" value="save">
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </form>
+            <div style="=margin:;padding: 10px;    width: 495px;
+          /* font-weight: 600; */">
+              <div style="
+              /* border: 1px solid #ccc; */
+              padding: 10px;
+          ">Primary Mobile Number</div>
+              <div style="
+              padding: 10px;
+          ">This Mobile Number will be always public which will be used for sending notification</div>
+
+              <div class="input-group" style="
+              padding: 8px;
+
+          ">
+                <table>
+                  <tr>
+                    <td>
+                      <select id="bloc1" style="width: 500px; height:35px; margin-top:10px" class="form-control dropdown-header dropdown-menu selectpicker" ng-model="mobilep" ng-options="option.mobile as option.code + ' ' + option.mobile for option in mobiles" name="unit"
+                        id="unit"></label>
+          </select>
+                    </td>
+                    <td>
+                      <div id="bloc2" class="addtostockareabutton" style="cursor: pointer;float: left;margin-left: 10px;margin-top: 10px;position: relative;padding-bottom: 7px;padding-top: 7px;" disable-double-click ng-click="addprimarymobile()">save</div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div ng-show="account == 4" style="top: 1px;">
+            <div style="=margin:;padding: 10px;    width: 500px;
+  ">Email</div>
+            <div ng-repeat="x in emails" style="=margin:;padding: 10px;    width: 500px;
+  /* font-weight: 600; */">
+              <div style="
+      border: 1px solid #ccc;
+      padding: 10px;    width: 500px;
+  ">{{x.email}}
+                <button ng-show="x.email==email" style=" background-color:#72bb53; border:0"><font color="white">primary</font></button>
+                <i class="fa fa-check" ng-show="x.status=='verified'" title="verified" style="
+      color: #72bb53; float:right;
+  " aria-hidden="true" style="margin-right: 10px;
+  "></i>
+                <i class="fa fa-check" ng-show="x.status=='unverified'" ng-click="verify(x.email)" disable-double-click title="verify" style="
+      color: #a9acaf;float:right;
+  " aria-hidden="true"></i>&nbsp;
+                <i class="fa fa-trash-o" ng-show="x.email!==email" title="delete" ng-click="deleteemail(x.email)" disable-double-click style="
+      color: #a9acaf;float:right;margin-right:10px;
+  " ng-mouseover="hoverActive=true" ng-mouseleave="hoverActive=false" ng-style="hoverActive ? {'color':'red'} : {}" aria-hidden="true"></i>
+              </div>
+
+            </div>
+            <form role="form" name="myForm" angular-validator-submit="addnewmail()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-angular-validator " novalidate="" angular-validator="">
+              <!--form-horizontal-->
+
+              <div class="row" style="=margin:;padding: 10px;    width: 500px;
+  /* font-weight: 600; */">
+                <div style="
+      /* border: 1px solid #ccc; */
+      padding: 10px;
+      margin-left:10px;
+  ">Add Email address</div>
+                <div class="input-group" style="padding: 10px;    width: 500px;
+  ">
+
+                  <table>
+                    <tr>
+                      <td>
+                        <input type="text" autocomplete="off" size="72" ng-model="emailnew" style="padding: 5px; letter-spacing:0px; margin-left: 10px;width: 500px;height: 35px !important;">
+                      </td>
+                      <td>
+                        <input type="submit" class="addtostockareabutton" style="cursor: pointer;float: left; letter-spacing:0px; margin-left: 10px;position: relative;padding-bottom: 7px;padding-top: 7px;" value="save">
+
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </form>
+            <div style="=margin:;padding: 10px;    width: 500px;
+  /* font-weight: 600; */">
+              <div style="
+      /* border: 1px solid #ccc; */
+      padding: 10px;
+  ">Primary Email Address</div>
+              <div style="
+      padding: 10px;
+  ">This email address will be always public which will be used for sending notification</div>
+
+              <div class="input-group" style="
+      padding: 8px;
+
+  ">
+                <table>
+                  <tr>
+                    <td>
+                      <select id="bloc1" style="width: 500px; height:35px; margin-top:10px" class="form-control dropdown-header dropdown-menu selectpicker" ng-model="emailp" ng-options="option.email as option.email for option in emails" id="unit"></label>
+  </select>
+                    </td>
+                    <td>
+                      <div id="bloc2" class="addtostockareabutton" style="cursor: pointer;float: left;margin-left: 10px;margin-top: 10px;position: relative;padding-bottom: 7px;padding-top: 7px;" disable-double-click ng-click="addprimary()">save</div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="tabcontents" ng-show="tab == 4" style="top: 1px;">
+          <div style="
+    border: 1px solid #ccc;
+    padding: 10px;
+" ng-repeat="x in organisation">{{x.as}} @ {{x.name}}
+            <i align="right" class="fa fa-pencil-square-o" title="edit" style="
+    color: #a9acaf;float:right;margin-right:10px;
+" ng-mouseover="hoverActive1=true" ng-mouseleave="hoverActive1=false" ng-style="hoverActive1 ? {'color':'blue'} : {}" ng-click="selectorg(x._id)" aria-hidden="true"></i>
+
+            <i class="fa fa-trash-o" title="delete" ng-click="deleteorganisation(x._id)" style="
+    color: #a9acaf;float:right;margin-right:10px;
+" ng-mouseover="hoverActive=true" ng-mouseleave="hoverActive=false" ng-style="hoverActive ? {'color':'red'} : {}" aria-hidden="true"></i>
+            <div align="left">{{x.from}} - {{x.to}}</div>
+          </div>
+          <div style="border: 1px solid #ccc;
+    padding: 10px;
+    height:60px" ng-click="addnew()">
+            <center>
+              <font color="#ccc">-------ADD WORK-------</font>
+            </center>
+          </div>
+          <div ng-show="id1">
+            <form role="form" angular-validator-submit="updateorganisation()" name="myForm" class="ng-pristine ng-invalid ng-invalid-required ng-valid-angular-validator " novalidate="" angular-validator="">
+              <!--form-horizontal-->
+              <div style="=margin:;padding: 10px;text-align: center;font-weight: 600;">Add Organisation</div>
+              <div style="=margin:;padding: 10px;font-weight: 600;">Organisation Name</div>
+              <div style="=margin:;padding: 10px;"><input type="text" autocomplete="off" class="inputAll" validate-on="dirty" class="form-control input-sm loginInput inputMaxWidth ng-pristine ng-invalid ng-invalid-required ng-touched" required-message="'This field is required..'" required=""
+                  name="orgname" ng-model="orgname" ng-required=true style="
+    width: 100%;
+"></div>
+              <div style="=margin:;padding: 10px;font-weight: 600;">Role in Organisation</div>
+              <div style="=margin:;padding: 10px;width:400px;"><input text="text" autocomplete="off" ng-model="orgas" ng-required=true class="inputAll" validate-on="dirty" class="form-control input-sm loginInput inputMaxWidth ng-pristine ng-invalid ng-invalid-required ng-touched" required-message="'This field is required..'"
+                  required="" name="orgas"> </div>
+              <div style="=margin:;padding: 10px;font-weight: 600;">Working From</div>
+
+              <div class="input-group" style="=margin:;padding: 10px;width:400px;">
+                <input class="form-control" autocomplete="off" type="text" id=date-picker ng-model="orgfrom" class="inputAll" class="form-control input-sm loginInput inputMaxWidth ng-pristine" name="from">
+                <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+              </div>
+              <div style="=margin:;padding: 10px;font-weight: 600;">Upto</div>
+              <div class="input-group" style="=margin:;padding: 10px;width:400px;">
+                <input class="form-control" autocomplete="off" type="text" id=date-picker1 ng-model="orgto" class="inputAll" class="form-control input-sm loginInput inputMaxWidth ng-pristine" name="to">
+                <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+              </div>
+              <div style="margin-left:10px
+">
+                <a ng-click="orgto='till-now'">still working</a>
+              </div>
+              <font style="font-size:12px;color:#c1c1c1">* In this page all feilds are manditory</font>
+              <div align="center">
+                <input class="addtostockareabutton" type="submit" value="save" align="center" style="border:none;padding: 6px;margin-left: 10px;margin-top: 35px;/* align-content: center; */color: #fafafb;background-color: #4c81bf;" class="btn btn-block singinButton inputMaxWidth">
+                <input type="button" class="btn" align="center" style="border:none;padding: 6px;margin-left: 10px;/* align-content: center; */color: #fafafb;background-color: #4c81bf;" ng-show="id1" value="Ignore" ng-click="resetorg()" style="
+    margin-left: 10px;
+">
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="tabcontents ng-hide" ng-show="tab == 5" style="top: 1px;overflow-y: inherit;">
+          <ul class="list-inline" style="
+    border-style: solid;
+    border-width:1px;
+    border-top:none;
+    border-left:none;
+    border-right:none;
+    margin-left: 10px;
+    height: 31px;
+    width:80%;
+    /* background: rgb(241, 241, 241); */
+    border-color: rgb(241, 241, 241);
+">
+            <li style="margin-top:3.5px;"><a style="text-decoration: none;cursor: pointer;" ng-click="subtab=1" ng-class="{selected2: subtab==1}">Overview</a></li>
+            <li style="margin-top:3.5px;"><a style="text-decoration: none;cursor: pointer;" ng-click="subtab=2" ng-class="{selected2: subtab==2}">Email</a></li>
+            <li style="margin-top:3.5px;"><a style="text-decoration: none;cursor: pointer;" ng-click="subtab=3" ng-class="{selected2: subtab==3}">Mobile</a></li>
+          </ul>
+          <div class="tabcontents1" style="overflow:hidden;" ng-show="subtab == 1">
+            <div class="row" style="
+    margin: auto;
+    width: 500px;
+    margin-left:-10px;
+    margin-top: 10px;
+  ">
+              <div style="margin: 20px;">
+                <div class="form-group">change your stockarea on Map</div>
+
+                <div height="40px">
+                  <div style="height:30px;">
+                    <input id="searchmap" ng-hide="view" style="
+    border-style: solid;
+    border-width: 1px;
+    margin-left: 0px;
+    width: 460px!important;
+    border-color: #cccfd2 !important;
+" class="controls searchAddressMap" type="text" placeholder="Search Box">
+                  </div>
+                  <div id="map2" style="margin-bottom: 20px;width: 100%;height: 250px;"> </div>
+
+                </div>
+                <div style="height:50px">
+                  <div class="form-group">
+                    <input type="text" ng-change="latc()" ng-keyup="latc()" style="      float: left;width: 50%;  pointer-events: none; box-shadow: none;" id="latitude" ng-model="latitude" name="latitude" class="form-control input-sm loginInput inputMaxWidth ng-pristine ng-untouched ng-invalid ng-invalid-required"
+                      placeholder="latitude" required-message="'Yo! This field is required..'">
+                  </div>
+                  <div class="form-group">
+                    <input ng-change="lonc()" ng-keyup="lonc()" style="      float: left;width: 50%;  pointer-events: none; box-shadow: none;" type="text" id="longitude" ng-model="longitude" name="longitude" class="form-control input-sm loginInput inputMaxWidth ng-pristine ng-untouched ng-invalid ng-invalid-required"
+                      placeholder="longitude" required-message="'Yo! This field is required..'">
+                  </div>
+                </div>
+                </div>
+                <div ng-hide="view">
+                  <button class="addtostockareabutton" ng-click="fnAddStockarea()" style="cursor: pointer;float: left; letter-spacing:0px; margin-left: 10px;position: relative;padding-bottom: 7px;padding-top: 7px;" value="save">Save</button>
+                  <button class="addtostockareabutton" ng-click="viewstockarea(stockareaId)" style="cursor: pointer;float: left; letter-spacing:0px; margin-left: 10px;position: relative;padding-bottom: 7px;padding-top: 7px;" value="save">Cancel</button>
+                </div>
+                <input ng-show="view" class="loginButton" type="submit" value="Edit" ng-click="editStockarea(stockareaId)" class="btn btn-block singinButton inputMaxWidth" style="width:35vw">
+
+
+              </div>
+            </div>
+          </div>
+
+          <div class="tabcontents1" style="overflow:hidden;" ng-show="subtab == 2">
+            <div ng-show="!newsa">
+              <div style="=margin:;padding: 10px;    width: 85%;
+    ">Email</div>
+              <div ng-repeat="y in stockareaemails" style="=margin:;padding: 10px;     width:73%;
+    /* font-weight: 600; */">
+                <div style="
+        border: 1px solid #ccc;
+        padding: 10px;    width: 85%;
+    ">{{y.email}}
+                  <button ng-show="y.email==stockareaemail" style=" background-color:#72bb53; border:0"><font color="white">primary</font></button>
+                  <i class="fa fa-check" ng-show="y.status=='verified'" title="verified" style="
+        color: #72bb53; float:right;
+    " aria-hidden="true" style="margin-right: 10px;
+    "></i>
+                  <i class="fa fa-check" ng-show="y.status=='unverified'" ng-click="verify(y.email)" title="verify" style="
+        color: #a9acaf;float:right;
+    " aria-hidden="true"></i>&nbsp;
+                  <i class="fa fa-trash-o" ng-show="y.email!==email" title="delete" ng-click="deleteemailstockarea(y.email)" style="
+        color: #a9acaf;float:right;margin-right:10px;
+    " ng-mouseover="hoverActive=true" ng-mouseleave="hoverActive=false" ng-style="hoverActive ? {'color':'red'} : {}" aria-hidden="true"></i>
+                </div>
+
+              </div>
+              <form role="form" name="myForm" angular-validator-submit="addnewmailstockarea()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-angular-validator " novalidate="" angular-validator="">
+                <!--form-horizontal-->
+
+                <div class="row" style="=margin:;padding: 10px;     width: 85%;
+    /* font-weight: 600; */">
+                  <div style="
+        /* border: 1px solid #ccc; */
+        padding: 10px;
+        margin-left:10px;
+    ">Add Email address</div>
+                  <div class="input-group" style="padding: 10px;     width: 85%;
+    ">
+                    <table>
+                      <tr>
+                        <td>
+                          <input type="text" autocomplete="off" size="72" ng-model="stockareaemailnew" style="padding: 5px; letter-spacing:0px; margin-left: 10px;width: 400px;height: 35px !important;" name="email">
+                        </td>
+                        <td>
+                          <input type="submit" class="addtostockareabutton" style="cursor: pointer;float: left; letter-spacing:0px; margin-left: 10px;position: relative;padding-bottom: 7px;padding-top: 7px;" value="save">
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+
+                </div>
+              </form>
+              <div ng-show="stockareaemails!==null" style="=margin:;padding: 10px;    width:  width: 85%;
+    /* font-weight: 600; */">
+                <div style="
+        /* border: 1px solid #ccc; */
+        padding: 10px;
+    ">Primary Email Address</div>
+                <div style="
+        padding: 10px;
+    ">This email address will be always public which will be used for sending notification</div>
+
+                <div class="input-group" style="
+        padding: 8px;
+
+    ">
+                  <table>
+                    <tr>
+                      <td>
+                        <select id="bloc1" style="width: 400px; height:35px; margin-top:10px" class="form-control dropdown-header dropdown-menu selectpicker" ng-model="stockareaemailp" ng-options="option.email as option.email for option in stockareaemails" name="unit" id="unit"></label>
+    </select>
+                      </td>
+                      <td>
+                        <div id="bloc2" class="addtostockareabutton" style="cursor: pointer;float: left;margin-left: 10px;margin-top: 10px;position: relative;padding-bottom: 7px;padding-top: 7px;" ng-click="addprimarystockarea()">save</div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div ng-show="newsa" style="
+    width: 515px;
+    margin-left: 10px;
+    padding: 50px;
+    border-style: groove;
+    border-color: rgba(186, 190, 193, 0.12);
+">
+              <center>please select a stockarea</center>
+            </div>
+          </div>
+
+          <div class="tabcontents1" style="overflow:hidden;" ng-show="subtab == 3">
+            <div ng-show="!newsa">
+              <div style="=margin:;padding: 10px;    width: 400px;
+    ">Mobile Number</div>
+              <div ng-repeat="x in stockareamobiles" style="=margin:;padding: 10px;    width: 85%;
+    /* font-weight: 600; */">
+                <div style="
+        border: 1px solid #ccc;
+        padding: 10px;    width: 412px;
+    ">{{x.code}}{{x.mobile}}
+                  <button ng-show="x.mobile==stockareamobile" style=" background-color:#72bb53; border:0"><font color="white">primary</font></button>
+                  <i class="fa fa-check" ng-show="x.status=='verified'" title="verified" style="
+        color: #72bb53; float:right;
+    " aria-hidden="true" style="margin-right: 10px;
+    "></i>
+                  <i class="fa fa-check" ng-show="x.status=='unverified'" ng-click="verifymobile1(x.mobile)" title="verify" style="
+        color: #a9acaf;float:right;
+    " aria-hidden="true"></i>&nbsp;
+                  <i class="fa fa-trash-o" ng-show="x.mobile!==stockareamobile" title="delete" ng-click="deletemobilestockarea(x.mobile)" style="
+        color: #a9acaf;float:right;margin-right:10px;
+    " ng-mouseover="hoverActive=true" ng-mouseleave="hoverActive=false" ng-style="hoverActive ? {'color':'red'} : {}" aria-hidden="true"></i>
+                </div>
+
+              </div>
+              <div ng-show="otp1" style="/* float: right; */margin-right: 14px;margin-left: 9px;margin-top: -3px;border-style: solid;padding: 10px;border-width: thin;border-color: #cccccc;" class="">
+                Enter Otp:
+                <div style="display:inline-block;/* margin-top: -62px; *//* height: 21px; */"><input type="number" ng-model="motp" name="91198" style="/* border-radius: 5px; *//* border-color: #cccccc; */height: 30px;width: 80px;" class="ng-pristine ng-untouched ng-valid ng-empty"></div>
+                <div style="display:inline-block;margin-left: 5px;margin-top: 10px;">
+                  <button class="addtostockareabutton" style="cursor: pointer;padding: 7px;/* float: left; */width: 50px;height: 30px;letter-spacing:0px;position: relative;padding-bottom: 7px;padding-top: 7px;" ng-click="submitotp1(stockareaId)">
+        done</button></div>
+                <div class="ng-binding" style="
+            margin-top: -13px;
+            margin-left: 10px;
+            float: right;
+            color: #72bb53;
+        ">{{minutes1}}</div>
+              </div>
+              <form role="form" name="myForm" angular-validator-submit="addnewmobilestockarea()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-angular-validator " novalidate="" angular-validator="">
+                <!--form-horizontal-->
+
+                <div class="row" style="=margin:;padding: 10px;     width: 90%;
+    /* font-weight: 600; */">
+                  <div style="
+        /* border: 1px solid #ccc; */
+        padding: 10px;
+        margin-left:10px;
+    ">Add Mobile Number</div>
+                  <div class="input-group" style="padding: 10px;     width: 85%;  margin-left:10px;
+    ">
+
+                    <table>
+                      <tr>
+                        <td>
+                          <select id="bloc1" ng-change="codec()" class="form-control selectpicker" style="width:100px; display:inline-block;" ng-model="code" ng-options="option.dial_code as option.name for option in codes" name="unit" id="unit"></label>
+          </select>
+                          <input type="text" ng-model="code" style="   border: 1px solid darkgrey; margin-left: 4px;
+          display:inline-block;width:95px;height:34px !important;" class="inputAll" readonly>
+                          <input type="number" autocomplete="off" size="72" ng-model="stockareamobilenew" style="padding: 5px; letter-spacing:0px;width: 200px;height: 35px !important;" name="email">
+                        </td>
+                        <td>
+                          <input type="submit" class="addtostockareabutton" style="cursor: pointer;float: left; letter-spacing:0px; margin-left: 10px;position: relative;padding-bottom: 7px;padding-top: 7px;" value="save">
+                        </td>
+                      </tr>
+                    </table>
+
+                  </div>
+
+                </div>
+              </form>
+              <div ng-show="stockareamobiles!==null" style="=margin:;padding: 10px;     width: 85%;
+    /* font-weight: 600; */">
+                <div style="
+        /* border: 1px solid #ccc; */
+        padding: 10px;
+    ">Primary Mobile Number</div>
+                <div style="
+        padding: 10px;
+    ">This Mobile Number will be always public which will be used for sending notification</div>
+
+                <div class="input-group" style="
+        padding: 8px;
+
+    ">
+                  <table>
+                    <tr>
+                      <td>
+                        <select id="bloc1" style="width: 400px; height:35px; margin-top:10px" class="form-control dropdown-header dropdown-menu selectpicker" ng-model="stockareamobilep" ng-options="option.mobile as option.code + ' ' + option.mobile for option in stockareamobiles"
+                          name="unit" id="unit"></label>
+    </select>
+                      </td>
+                      <td>
+                        <div id="bloc2" class="addtostockareabutton" style="cursor: pointer;float: left;margin-left: 10px;margin-top: 10px;position: relative;padding-bottom: 7px;padding-top: 7px;" ng-click="addprimarymobilestockarea()">save</div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div ng-show="newsa" style="
+    width: 515px;
+    margin-left: 10px;
+    padding: 50px;
+    border-style: groove;
+    border-color: rgba(186, 190, 193, 0.12);
+  ">
+              <center>please select a stockarea</center>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ng-hide" style="float:right;width:271px;" ng-show="tab == 1">
+
+      <div class="container1" ng-show="!newup" ng-hide="!progress" style="width:200px;height:200px;">
+        <input style="display:none;" type="file" id="fileInput" onchange="angular.element(this).scope().uploadFile(this.files[0])" />
+
+        <img src={{url}} style="width:15vw;height:14.7vw;">
+        <div class="overlay1" style="
+    border-style: solid;
+    border-width:1px;
+    border-color: #d0d4d8;
+"></div>
+        <div class="button1" onclick="document.getElementById('fileInput').click();"><a> Upload</a></div>
+      </div>
+      <div class="container1" ng-hide="progress" style="width:200px;height:200px;">
+        <img src="{{domainUrl}}assets/img/giphy.gif" style="width:200px;height:200px;">
+      </div>
+      <div ng-hide="!progress" ng-show="newup" style="margin-top:50px;" class="cropAreaprofile">
+        <img-crop image="myImage" result-image="myCroppedImage" area-type="square" result-image-format="image/jpeg" area-min-size="200" result-image-size="200" result-image-quality="1.0" change-on-fly="true"></img-crop>
+      </div>
+
+      <button ng-show="newup" ng-click="uploadimg()" class="btn" style="border:none;color: #fafafb;background-color: #4c81bf;margin-left:50px;margin-top:10px;" align="right">upload me</button>
+
+    </div>
+    <div class="ng-hide" style="float: right;height: 500px;width:18.5vw;margin-right: 45px;margin-top: 10px;" ng-show="tab == 5">
+      <div style="
+      border: 1px solid #ccc;
+      padding: 10px;
+      height:70px;
+      width: auto;
+      background-color: gainsboro;
+      ">
+        <label>Your Stockareas</label>
+        <center><input type="text" ng-model="test" class="productlistsearchbarinput" style="width:100%; margin-top:3px" placeholder="Search stockareas" autocomplete="off"></center>
+
+      </div>
+      <div id="style-2" class="scrollbar" style="height: 500px;border-style: solid;border-width: 0.5px;border-color: #c1c1c1;">
+        <div ng-repeat="z in stockareas | filter:test" ng-class="{selected1: z._id === stockareaId}" style="
+        border: 1px solid #ccc;
+        padding: 10px;
+        height:30px;
+        width: 250px;
+        border-top:none;
+        overflow:hidden;
+        background: rgba(221, 221, 221, 0.15);
+        " ng-click="viewstockarea(z._id)">
+          <font color="black">{{z.stockareaName}}</font><i class="fa fa-bars" style="float:right;" aria-hidden="true"></i>
+
+        </div>
+      </div>
+    </div>
+    <div class="ng-hide" style="float: right;height: 500px;margin-right: 45px;margin-top: 10px;" ng-show="tab ==2">
+      <div style="height: 500px;overflow-y: auto;border-style: solid;border-width: 0.5px;border-color: #c1c1c1;">
+        <div ng-class="{selectedaccount: account == 1}" style="
+        border: 1px solid #ccc;
+        padding: 10px;
+        height:30px;
+        width: 250px;
+        border-top:none;
+        overflow:hidden;
+        background: rgba(221, 221, 221, 0.15);
+        " ng-click="account=1">
+          <i class="fa fa-angle-left" aria-hidden="true"></i>
+          <font color="black" style="margin-left:10px;">Change password</font>
+        </div>
+        <div ng-class="{selectedaccount: account == 2}" style="
+          border: 1px solid #ccc;
+          padding: 10px;
+          height:30px;
+          width: 250px;
+          border-top:none;
+          overflow:hidden;
+          background: rgba(221, 221, 221, 0.15);
+          " ng-click="account=2">
+          <i class="fa fa-angle-left" aria-hidden="true"></i>
+          <font color="black" style="margin-left:10px;">Delete account</font>
+        </div>
+        <div ng-class="{selectedaccount: account == 3}" style="
+          border: 1px solid #ccc;
+          padding: 10px;
+          height:30px;
+          width: 250px;
+          border-top:none;
+          overflow:hidden;
+          background: rgba(221, 221, 221, 0.15);
+          " ng-click="account=3">
+          <i class="fa fa-angle-left" aria-hidden="true"></i>
+          <font color="black" style="margin-left:10px;">Mobile</font>
+        </div>
+        <div ng-class="{selectedaccount: account == 4}" style="
+          border: 1px solid #ccc;
+          padding: 10px;
+          height:30px;
+          width: 250px;
+          border-top:none;
+          overflow:hidden;
+          background: rgba(221, 221, 221, 0.15);
+          " ng-click="account=4">
+          <i class="fa fa-angle-left" aria-hidden="true"></i>
+          <font color="black" style="margin-left:10px;">Email</font>
+        </div>
+      </div>
+    </div>
+
+    <div class="tabcontents ng-hide" ng-show="tab == 6" style="top: 1px;">
+      <div ng-show="mobiles.length!=0" style="=margin:;padding: 10px;    width: 500px;
+">Mobile Number</div>
+      <div ng-repeat="x in mobiles" style="=margin:;padding: 10px;    width: 500px;
+/* font-weight: 600; */">
+        <div style="
+    border: 1px solid #ccc;
+    padding: 10px;    width: 500px;
+">{{x.code}}{{x.mobile}}
+          <button ng-show="x.mobile==mobile" style=" background-color:#72bb53; border:0"><font color="white">primary</font></button>
+          <i class="fa fa-check" ng-show="x.status=='verified'" title="verified" style="
+    color: #72bb53; float:right;
+" aria-hidden="true" style="margin-right: 10px;
+"></i>
+          <i class="fa fa-check" ng-show="x.status=='unverified'" ng-click="verifymobile(x.mobile)" title="verify" style="
+    color: #a9acaf;float:right;
+" aria-hidden="true"></i>&nbsp;
+          <i class="fa fa-trash-o" ng-show="x.mobile!==mobile" title="delete" ng-click="deletemobile(x.mobile)" style="
+    color: #a9acaf;float:right;margin-right:10px;
+" ng-mouseover="hoverActive=true" ng-mouseleave="hoverActive=false" ng-style="hoverActive ? {'color':'red'} : {}" aria-hidden="true"></i>
+        </div>
+
+      </div>
+      <div ng-show="otp" style="float: right;margin-right: 201px;margin-top: -80px;border-style: solid;padding: 41px;border-width: thin;border-color: #cccccc;" class="">
+        Enter Otp:
+        <div style="display:inline-block;/* margin-top: -62px; *//* height: 21px; */"><input type="number" ng-model="motp" name="91198" style="/* border-radius: 5px; *//* border-color: #cccccc; */height: 30px;width: 80px;" class="ng-pristine ng-untouched ng-valid ng-empty"></div>
+        <div style="display:inline-block;margin-left: 5px;margin-top: -2px;">
+          <button class="addtostockareabutton" style="cursor: pointer;padding: 7px;/* float: left; */width: 50px;height: 30px;letter-spacing:0px;position: relative;padding-bottom: 7px;padding-top: 7px;" ng-click="submitotp()">
+done</button></div>
+        <div class="ng-binding" style="
+    margin-top: -39px;
+    /* margin-right: 30px; */
+    float: right;
+    color: #72bb53;
+">{{minutes}}</div>
+      </div>
+      <form role="form" name="myForm" angular-validator-submit="addnewmobile()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-angular-validator " novalidate="" angular-validator="">
+        <!--form-horizontal-->
+
+        <div class="row" style="=margin:;padding: 10px;    width: 500px;
+/* font-weight: 600; */">
+          <div style="
+    /* border: 1px solid #ccc; */
+    padding: 10px;
+    margin-left:10px;
+">Add Mobile Number</div>
+          <div class="input-group" style="padding: 10px;    width: 800px;  margin-left:10px;
+">
+
+            <table>
+              <tr>
+                <td>
+                  <select id="bloc1" ng-change="codec()" class="form-control selectpicker" style="width:150px; display:inline-block;" ng-model="code" ng-options="option.dial_code as option.name for option in codes" name="unit" id="unit"></label>
+      </select>
+                  <input type="text" ng-model="code" style="   border: 1px solid darkgrey;      margin-left: 4px;
+      display:inline-block;width:95px;height:34px !important;" class="inputAll" readonly>
+                  <input type="number" autocomplete="off" size="72" ng-model="mobilenew" style="padding: 5px; letter-spacing:0px;width: 250px;height: 35px !important;" name="email">
+                </td>
+                <td>
+                  <input type="submit" class="addtostockareabutton" style="cursor: pointer;float: left; letter-spacing:0px; margin-left: 10px;position: relative;padding-bottom: 7px;padding-top: 7px;" value="save">
+                </td>
+              </tr>
+            </table>
+          </div>
+
+        </div>
+      </form>
+      <div style="=margin:;padding: 10px;    width: 495px;
+/* font-weight: 600; */">
+        <div style="
+    /* border: 1px solid #ccc; */
+    padding: 10px;
+">Primary Mobile Number</div>
+        <div style="
+    padding: 10px;
+">This Mobile Number will be always public which will be used for sending notification</div>
+
+        <div class="input-group" style="
+    padding: 8px;
+
+">
+          <table>
+            <tr>
+              <td>
+                <select id="bloc1" style="width: 500px; height:35px; margin-top:10px" class="form-control dropdown-header dropdown-menu selectpicker" ng-model="mobilep" ng-options="option.mobile as option.code + ' ' + option.mobile for option in mobiles" name="unit"
+                  id="unit"></label>
+</select>
+              </td>
+              <td>
+                <div id="bloc2" class="addtostockareabutton" style="cursor: pointer;float: left;margin-left: 10px;margin-top: 10px;position: relative;padding-bottom: 7px;padding-top: 7px;" ng-click="addprimarymobile()">save</div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function() {
+    $("#delete").hover(function() {
+      $(this).css("color", "red");
+    }, function() {
+      $(this).css("color", "#a9acaf");
+    });
+  });
+</script>
+<script>
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        $('#blah')
+          .attr('src', e.target.result)
+          .width(200)
+          .height(200);
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $('#date-picker').datepicker({
+    changeMonth: true,
+    changeYear: true,
+    maxDate: '0',
+    dateFormat: 'MM yy',
+    yearRange: "-100:+0",
+    onClose: function(dateText, inst) {
+      $('#date-picker').datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
+    }
+  });
+  $('#datepicker').datepicker({
+    changeMonth: true,
+    changeYear: true,
+    maxDate: '0',
+    yearRange: "-100:+0",
+    onClose: function(dateText, inst) {
+      $('#datepicker').datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, inst.selectedDate));
+    }
+  });
+  $('#date-picker1').datepicker({
+    changeMonth: true,
+    changeYear: true,
+    maxDate: '0',
+    dateFormat: 'MM yy',
+    yearRange: "-100:+0",
+    onClose: function(dateText, inst) {
+      $('#date-picker1').datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
+    }
+  });
+</script>

@@ -1,0 +1,70 @@
+<div ng-init="height()">
+    <div style="border-bottom-style:solid;border-left-style:solid;border-width:1px;border-color:#eeeeee;width:85%;height:53px;float:right;">
+      <button type="button"
+      ng-if="newvariant=='category'" style="
+      width:100px;
+      height:30px;
+      border:none;
+      margin-right:10px;
+      float:right;
+      margin-top:10px;
+      background: #4c81bf;
+      " ng-click="addcategory()" value="ADD"><font style="color:white">save</font></button>
+      <button type="button" ng-if="newvariant=='brand'" style="
+      width:100px;
+      height:30px;
+      border:none;
+      margin-right:10px;
+      float:right;
+      margin-top:10px;
+      background: #4c81bf;
+      " ng-click="addbrand()" value="ADD"><font style="color:white">save</font></button>
+      <button type="button" style="
+        width:100px;
+        float:right;
+        margin-right:10px;
+        height:30px;
+        border:none;
+        margin-top:10px;
+        background: #4c81bf;
+        " ng-click="cancel()" value="ADD"><font style="color:white">cancel</font></button>
+    </div>
+    <div class="tabbable-line scrollbar style-4" id="addproduct" style="border-left-style:solid;border-color:#eeeeee;border-width:1px;display: block;width:85%;float:right;overflow: auto;" class="productinfopage">
+      <div>
+        <div style="
+            width: 100%;
+            " class="row">
+          <div class="radio" style="background:#eeeeee;width:101.6%;overflow:hidden;height:45px;margin-top:auto">
+            <div style="margin-left:80px;margin-top:10px;display:inline-block;"><input type="radio" ng-change="createtab()" name="material" ng-model="newvariant" value="false" id="material">
+              <font style="margin-left:5px;font-weight:500;">Create a new product</font>
+            </div>
+            <div style="margin-left:40px;margin-top:10px;display:inline-block;"><input type="radio" ng-change="createtab()" ng-model="newvariant" value="true" name="material" id="material">
+              <font style="margin-left:5px;font-weight:500;">Add vaiant to existing product</font>
+            </div>
+            <div style="margin-left:40px;margin-top:10px;display:inline-block;"><input type="radio" ng-change="createtab()" ng-model="newvariant" value="brand" name="material" id="material">
+              <font style="margin-left:5px;font-weight:500;">Create a new brand</font>
+            </div>
+            <div style="margin-left:40px;margin-top:10px;display:inline-block;"><input type="radio" ng-change="createtab()" ng-model="newvariant" value="category" name="material" id="material">
+              <font style="margin-left:5px;font-weight:500;">Create a new category</font>
+            </div>
+            <hr>
+          </div>
+<div style="margin-left:30px;">
+  <div style="width:100%;">
+    <div style="=margin:;padding: 10px;font-weight: 600;">Category Name</div>
+    <div style="=margin:;padding: 10px;">
+      <input type="text" style="width:52%;border-color:#a9a9a9" autocomplete="off" ng-model="categoryname" required class="inputAll auto-complete-off" validate-on="dirty" class=" auto-complete-off form-control input-sm loginInput inputMaxWidth ng-pristine ng-invalid ng-invalid-required ng-touched"
+        required-message="'This field is required..'" required="">
+    </div>
+  </div>
+     <div style="width:600px;">
+          <div style="=margin:;padding: 10px;font-weight: 600;">Category Description</div>
+          <div style="=margin:;padding: 10px;">
+            <textarea autocomplete="off" autogrow ng-model="categorydescription" required class="auto-complete-off"></textarea>
+          </div>
+        </div>
+  </div>
+</div>
+</div>
+</div>
+</div>

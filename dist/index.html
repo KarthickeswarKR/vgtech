@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html ng-app="vgApp">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--  <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Virtualgodown</title>
+  <link rel="icon" type="image/x-icon" href="/assets/img/favicon.jpg" />
+  <link rel="shortcut icon" href="/assets/img/favicon.jpg" type="image/x-icon">
+
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.5/angular-material.min.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--<link rel="stylesheet" href="/css/main.css">-->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:400,700">
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.css">
+<style>
+.scrollable-menu{
+	position:fixed !important;
+	right:0% !important;
+	top:auto !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+	bottom:52px !important;
+	left:70% !important;
+	width:17% !important;
+	float:right !important;
+}
+</style>
+
+      <body ng-cloak>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB29svahdqMp3ip8IdD9LPQV16YGJ2wVMk&libraries=places,drawing"></script>
+        <div ng-hide="indexloader=='false'"><div class="loaderrCSS"></div>
+        <img class="loaderimg" src="assets/img/unnamed.png"></div>
+        <div ng-show="indexloader=='false'" ui-view>
+
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script data-require="angular.js@*" data-semver="1.5.0" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.5/angular-material.min.js"></script>
+    <script type="text/javascript" src="/js/scripts.js"></script>
+    <script type="text/javascript" src="/js/scripts2.js"></script>
+    <!--<script src="/js/scripts2.js"></script>
+<script  type="text/javascript" src="/js/scripts.js"></script>-->
+    <script>
+      (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+      ga('create', 'UA-104453931-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script>
+      $(window).unload(function() {
+        localStorage.removeItem('selectedStockareaId');
+        localStorage.removeItem('selectedStockareaName');
+      });
+      $(window).onbeforeunload = function($window) {
+        $window.history.back();
+      }
+      $(function(){
+    $("#addClass").click(function (e) {
+      e.preventDefault();
+      $('#qnimate').addClass('popup-box-on');
+    });
+    $("#removeClass").click(function () {
+      $('#qnimate').removeClass('popup-box-on');
+    });
+    });
+    </script>
+  </body>
+
+</html>

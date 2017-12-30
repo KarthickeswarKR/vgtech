@@ -1,0 +1,33 @@
+<section>
+
+  <div class="modal-header" style="border:none" ng-init="initMap()">
+    <button ng-hide="userstatus=='pending'" type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+
+  </div>
+  <div class="row" style="
+    margin: auto;
+    width: 550px;
+margin-bottom:5px;
+    margin-top: 10px;
+    margin-left:25px;
+">
+    <div style="
+margin: auto;
+width: 500px;
+margin-top: 10px;
+margin-left:25px;
+">
+      <div>
+        <input style="margin-left:0px;width:70%;border:none;background:#f4f5f7;" ng-keydown="onenterkeyautocomplete($event)" type="text" autocomplete="off" placeholder="Search for stockarea" class="searchbarinput ng-pristine ng-untouched ng-valid ng-empty" ng-change="stockareaautocomplete()"
+          id="stockareaautocompletesearch" ng-model="search" name="autocomplete">
+          <button style=" margin: 10px;width:22%" ng-disabled="autoc" ng-click="add()" class="btn btn-sm addtostockareabutton">Add collaborator</button>
+
+      </div>
+      <div ng-if="listsareas.length==0" style="color:#989494;width:100%">stockarea you are trying to connect might not be visible due to following reasons
+        <li>1.stockare might be only-me</li>
+        <li>2.stockarea might not deling with productname</li>
+        <li>3.stockarea might not be avaliable to virtualgodown</li></div>
+      <center>
+      </center>
+    </div>
+  </div>

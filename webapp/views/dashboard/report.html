@@ -1,0 +1,28 @@
+<section style="
+    padding-bottom: 20px;
+">
+      <div class="modal-header" style="border:none">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+
+</div>
+<div   class="row" style="
+    width: 80%;
+    margin-left: 50px;
+    padding: 25px;
+    padding:0px;
+    height: fit-content;
+">
+<h3 style="color:#4c81bf;font-size:15px;">{{name}}</h3>
+<textarea ng-model="report" style="width:100%;min-height:100px!important;" autogrow></textarea>
+<br>
+<center>
+  <input class="addtostockareabutton"style="
+    padding: 4px;
+    margin-left: 10px;
+    padding-left: 5px;
+    margin-top:10px;
+    padding-right: 5px;
+" type="submit" value="report this product" ng-click="reportproduct()" autocomplete="off" class="btn btn-block singinButton inputMaxWidth"></center>
+</center>
+        </div>
+</section>

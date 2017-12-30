@@ -1,0 +1,1120 @@
+
+<style>
+  .container1 {
+    position: relative;
+    margin-top: 50px;
+    width: 500px;
+    height: 300px;
+  }
+
+  .overlay1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.5s ease;
+  }
+
+  .container1:hover .overlay1 {
+    display: block;
+    background: rgba(0, 0, 0, .3);
+  }
+
+
+
+  .title1 {
+    position: absolute;
+    width: 500px;
+    left: 0;
+    top: 120px;
+    font-weight: 700;
+    font-size: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    z-index: 1;
+    transition: top .5s ease;
+  }
+
+  .container1:hover .title1 {
+    top: 90px;
+  }
+
+  .button1 {
+    position: absolute;
+    left: 35px;
+    top: 100px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity .35s ease;
+  }
+
+  .button1 a {
+    text-decoration: none;
+    cursor: pointer;
+    width: 200px;
+    padding: 12px 48px;
+    text-align: center;
+    color: white;
+    border: solid 2px white;
+    z-index: 1;
+  }
+
+  .container1:hover .button1 {
+    opacity: 1;
+  }
+
+  #block_container {
+    text-align: center;
+  }
+
+  #bloc1,
+  #bloc2 {
+    display: inline;
+  }
+
+   ::-webkit-datetime-edit-year-field:not([aria-valuenow]),
+   ::-webkit-datetime-edit-month-field:not([aria-valuenow]),
+   ::-webkit-datetime-edit-day-field:not([aria-valuenow]) {
+    color: transparent;
+  }
+
+  #slides_control>div {
+    height: 200px;
+  }
+
+  #img {
+    margin: auto;
+    width: 200px;
+  }
+
+  #slides_control {
+    position: absolute;
+    width: 400px;
+    left: 50%;
+    top: 20px;
+    margin-left: -200px;
+  }
+
+  textarea {
+    width: 300px;
+    height: 30px;
+    resize: none;
+    overflow: initial;
+  }
+
+  .fa.fa-tag {
+    color: transparent;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: red;
+  }
+
+  .fa.custom-fa {
+    font-size: 12em;
+    -webkit-text-stroke-color: blue;
+    color: transparent;
+  }
+
+  .my-custom-stars .button .material-icons {
+    font-size: 50px;
+  }
+
+  .my-custom-stars .star-button.star-on .material-icons {
+    color: #003399;
+  }
+
+  .my-custom-stars .star-button.star-off .material-icons {
+    color: #99ccff;
+  }
+
+  .material-icons {
+    font-family: 'Material Icons';
+    ...
+  }
+</style>
+<!-- Including header -->
+<div ng-controller="dashboardHeaderController" ng-include="'http://localhost//views/common/user-header.html'" ng-init="loadHome()"></div>
+
+<div ng-init="init()">
+  <div class="loaderCSS" ng-show="loading"><img src="http://localhost//assets/img/spin.gif" style="margin-top:150px"> </div>
+  <div ng-show="!loading" style="position: relative;">
+    <div class="tabgroup" ng-init="tab=1">
+      <div class="tab" ng-class="{selected: tab==1}" ng-click="tab = 1;resetMapInfo()">Map</div>
+      <!--  <div class="tab" ng-class="{selected: tab==2}" ng-click="tab = 2" >Product Info</div>
+      <div class="tab" ng-class="{selected: tab==3}" ng-click="tab = 3" >Stockarea Info</div> -->
+      <!--  <div class="tab" ng-class="{selected: tab==4}" ng-click="tab = 4"  >Order History</div> -->
+      <div class="tab" ng-class="{selected: tab==5}" ng-click="tab = 5">products</div>
+      <div class="tab" ng-class="{selected: tab==6}" ng-click="tab = 6">Settings</div>
+      <div style="float: right;margin-right: 45px;margin-top: 24px;" style="float:right;"> <input class="loginButton" type="submit" value="Create organisation" ng-click="createorg()" class="btn btn-block singinButton inputMaxWidth">
+      </div>
+
+    </div>
+    <div class="middlesection" id="middlesection">
+
+      <div id="maindiv" class="maindiv">
+        <div class="loaderCSS" ng-show="loading"><img src="http://localhost//assets/img/spin.gif"> </div>
+        <div ng-show="!loading" id="mainsection" style="position: relative;height: 522px;">
+          <div class="tabcontents" ng-show="tab == 1">
+            <div ng-show="trade" id="tradeinfo" class="tradeinfo behind">
+              <div class="tradeinfoheading"><b><div id="tradeinfoStockareaName"></div>
+</b></div>
+              <!--<div id="tradeinfoCost">Cost 15$ per KG</div>-->
+              <div id="tradeinfoDistance"></div>
+              <div id="tradeinfoPhoneNo"></div>
+              <div id="tradeinfoViewProfile"></div>
+              <!--<div id="tradeinfoTime">Time 125Mins</div>-->
+
+            </div>
+            <div>
+
+
+              <div id="map" class="mapdiv"></div>
+            </div>
+          </div>
+
+          <div class="tabcontents" style="height:430px
+" ng-show="tab == 2">
+            <ul class="nav nav-tabs" style="
+    margin-top: 10px;
+">
+              <li class={{selectedtab1}}><a style="text-decoration: none;cursor: pointer;width:150px" ng-click="  subtab=1;
+      selectedtab1='active';
+      selectedtab2='inactive';
+      selectedtab3='inactive';">Overview</a></li>
+              <li class={{selectedtab2}}><a style="text-decoration: none;cursor: pointer;width:150px" ng-click="subtab2()">Brand Info</a></li>
+              <li class={{selectedtab3}}><a style="text-decoration: none;cursor: pointer;width:150px" ng-click="subtab3()">Package Info</a></li>
+            </ul>
+            <div class="tabcontents1" ng-show="subtab == 1">
+              <div ng-show="productInfo.productName" style="height: 450px;">
+                <div style="position: relative;display:inline-block;width:50%;">
+                  <div style="/* padding: 30px; */margin-top: 30px;border-color: rgba(158, 158, 158, 0.18);margin-left: 30px;margin-bottom: 30px;margin-left:100px;border-style: solid;    border-width:1px;
+height: 200px;width: 200px;" ng-show="imgSrc"><img src={{imgSrc.img}} style="width: 200px;border: 1px solid rgba(221, 221, 221, 0.04);"></div>
+                  <div id="imageList" style="margin-top: -10px;" class="imageList">
+                    <button id="imgScrollLeftBnt" ng-click="imgScrollLeftBntFn()" style="font-size: 35px;position: absolute;margin-top: 45px;margin-left: -30px;border: none;padding: 10px;background: #f5f5f5;color: #b3b2b2;">&lt;</button>
+                    <button id="imgScrollRightBnt" ng-click="imgScrollRightBntFn()" style="font-size: 35px; position: absolute;margin-top: 45px;margin-left: 360px;border: none;padding: 10px;background: #f5f5f5;color: #b3b2b2;">&gt;</button>
+                    <a ng-hide="productInfo.images.length==1" ng-repeat="imageSrc in productInfo.images" my-post-repeat-directive ng-click="setImgSrc(imageSrc.img)"><img src={{imageSrc}} style="height: 150px;width: 100px;"></a>
+                  </div>
+                </div>
+                <div style="width:10%;position: absolute;display:inline-block;margin-top:10px;margin-left:-20px;">
+                  <div class="productspecificationdiv">
+                    <div style="display:inline-block">
+                      <table class="pure-table pure-table-bordered">
+                        <thead>
+                          <tr>
+                            <td style="width:200px"><b>Specification</b></td>
+                            <td style="width:200px"><b>Value</b></td>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr ng-repeat="(key, value) in productInfo.specifications">
+                            <td>
+                              <div style="width:200px;word-wrap: break-word;">{{key}} </div>
+                            </td>
+                            <td>
+                              <div style="width:250px;word-wrap: break-word;"> {{ value }} </div>
+                            </td>
+                          </tr>
+                          <tr ng-hide="!productInfo.variantId.description[0].name" ng-repeat="d in productInfo.variantId.description">
+                            <td>
+                              <div style="width:200px;word-wrap: break-word;">{{d.name}} </div>
+                            </td>
+                            <td>
+                              <div style="width:250px;word-wrap: break-word;"> {{ d.value}} </div>
+                            </td>
+                          </tr>
+                          <tr ng-hide="!productInfo.description[0].name" ng-repeat="i in productInfo.description">
+                            <td>
+                              <div style="width:200px;word-wrap: break-word;">{{i.name}} </div>
+                            </td>
+                            <td>
+                              <div style="width:250px;word-wrap: break-word;"> {{ i.value }} </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                    </div>
+                  </div>
+
+
+                </div>
+                <div class="productadddiv"></div>
+
+              </div>
+
+            </div>
+            <div class="tabcontents1" ng-show="subtab == 2">
+
+              <div ng-repeat="brand in materialinfo.brandmaterial">
+                <div style="height: 128px;border-style: solid;width: auto;max-width: 70%;margin-left: 10px;border-color: #dddddd;margin-top: 10px;/* border-bottom-style: solid; */border-width: 1px;" class="">
+                  <div style="float:left;position: absolute;border-top-style:solid:border-bottom-style:solid;">
+                    <div style="display:inline-block;/* padding: 30px; */border-color: rgba(158, 158, 158, 0.18);margin-left: 30px;margin-bottom: 30px;/* margin-left:100px; */border-style: solid;height: 100px;border-width:1px;width: 100px;overflow:hidden;margin-top:10px;"
+                      ng-show="imgSrc" class="">
+                      <img style="width: 100px;border: 1px solid rgba(221, 221, 221, 0.04);" src={{brand.brandId.logo}}>
+                    </div>
+                    <div style="float: right;/* display:inline-block; */margin-top:15px;margin-left:50px;">
+                      <div class="ng-binding">
+                        {{brand.brandId.brandName}}
+                        <h5 class="ng-binding">{{brand.brandId.brandOwner}}</h5>
+                        <div ng-hide="viewlikes(brand._id)">
+                          <i class="fa fa-thumbs-up fa-tag custom-fa" aria-hidden="true" ng-click="addlike(materialinfo.materialId,brand.brandId._id)" style="font-size:large;"></i>Like {{brand.likes.length}}
+                        </div>
+                        <div ng-show="viewlikes(brand._id)">
+                          <i class="fa fa-thumbs-up" aria-hidden="true" ng-click="removelike(materialinfo.materialId,brand.brandId._id)" style="color: #4c81bf;font-size:large;"></i>Liked {{brand.likes.length}}
+                        </div>
+                        <ul class="list-inline" style="
+      border-style: solid;
+      border-width:1px;
+      border-top:none;
+      border-left:none;
+      border-right:none;
+      margin-top: 10px;
+      height: 31px;
+      /* background: rgb(241, 241, 241); */
+      border-color: rgb(241, 241, 241);
+  ">
+                          <li><a style="text-decoration: none;cursor: pointer;" ng-click="brand.brandsubtab=1" ng-class="{selected2: brand.brandsubtab==1}" class="">Details</a></li>
+                          <li><a style="text-decoration: none;cursor: pointer;" ng-click="brand.brandsubtab=2" ng-class="{selected2: brand.brandsubtab==2}">Reviews</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div ng-show="brand.brandsubtab==1" class="ng-hide">
+                  <div style="border-style:solid;border-color: #dddddd;border-width: 1px;width:auto;max-width: 70%;margin-top:1px;margin-left:10px;">
+                    <div class="productspecificationdiv">
+                      <center>
+                        <table class="pure-table pure-table-bordered" style="
+    margin-top: 15px;
+    margin-bottom: 15px;
+">
+                          <thead>
+                            <tr>
+                              <td style="width:200px"><b>Specification</b></td>
+                              <td style="width:200px"><b>Value</b></td>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <!-- ngRepeat: e in productInfo.brandId.description -->
+                            <tr ng-repeat="e in brand.brandId.description" class="ng-scope">
+                              <td>
+                                <div style="width:200px;word-wrap: break-word;" class="ng-binding">{{e.name}} </div>
+                              </td>
+                              <td>
+                                <div style="width:250px;word-wrap: break-word;" class="ng-binding"> {{e.value}} </div>
+                              </td>
+                            </tr>
+                            <!-- end ngRepeat: e in productInfo.brandId.description -->
+                            <tr ng-repeat="e in productInfo.brandId.description" class="ng-scope">
+                          </tbody>
+                        </table>
+                      </center>
+                    </div>
+                  </div>
+                </div>
+                <div ng-show="brand.brandsubtab==2" ng-init="sameuserreview(brand._id)" class="ng-hide">
+                  <div style="border-style:solid;border-color: #dddddd;border-width: 1px;width:auto;max-width: 70%;margin-top:1px;margin-left:10px;">
+                    <div style="border-style:solid;margin-top: 10px;margin-right: 10px;border-color: #dddddd;border-width: 1px;margin-bottom:10px;width:auto;max-width: 764px;margin-left:10px;">
+                      <div style="display:inline-block;float:left;margin-top:15px;/* padding: 30px; */border-color: rgba(158, 158, 158, 0.18);margin-left: 30px;/* margin-left:100px; */border-style: solid;height: 50px;border-width:1px;width: 50px;overflow:hidden;" ng-show="imgSrc"
+                        class="">
+                        <img style="width: 50px;border: 1px solid rgba(221, 221, 221, 0.04);" src={{profilePic}}>
+                      </div>
+                      <div style="/* float: left; */display:inline-block;margin-top:15px;margin-left:50px;">
+                        <div class="ng-binding" style="float:right;margin-top:10px;margin-right:10px">
+                          {{fullName}}
+                          <br>
+                          <textarea ng-model="message" id="InputTextArea" ng-keydown="$event.keyCode == 13 ? addreview(materialinfo.materialId,brand.brandId._id,message,firstRate) : null" onchange="resizeTextarea('InputTextArea')"></textarea>
+                        </div>
+                      </div>
+                      <div layout="column" style="float:right;margin-top:20px;">
+                        <jk-rating-stars rating="firstRate"></jk-rating-stars>
+                      </div>
+                    </div>
+                    <div ng-repeat="x in brand.reviews" ng-hide="x.userId._id==userId" style="border-style:solid;margin-top: 10px;margin-right: 10px;border-color: #dddddd;border-width: 1px;margin-bottom:10px;width:auto;max-width: 764px;margin-left:10px;">
+                      <div style="float:left;margin-top:15px;display:inline-block;/* padding: 30px; */border-color: rgba(158, 158, 158, 0.18);margin-left: 30px;/* margin-left:100px; */border-style: solid;height: 50px;border-width:1px;width: 50px;overflow:hidden;" ng-show="imgSrc"
+                        class="">
+                        <img style="width: 50px;border: 1px solid rgba(221, 221, 221, 0.04);" src={{x.userId.profilePic}}>
+                      </div>
+                      <div style="/* float: left; */display:inline-block;margin-left:50px;">
+                        <div class="ng-binding" style="float:right;margin-top:10px;margin-right:10px">
+                          {{x.userId.fullName}}
+                          <div style="height:30px;">
+                            <h5 class="ng-binding" style="width:350px;word-wrap: break-word;">{{x.message}}</h5>
+                          </div>
+                        </div>
+                      </div>
+                      <div layout="column" style="float:right;margin-top:20px;">
+                        <jk-rating-stars rating="x.rating" read-only=true></jk-rating-stars>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tabcontents1" ng-show="subtab == 3">
+              <center>
+                <div style="
+    /* margin-left: 75px; */
+    margin-top: 20px;
+    /* border-width: 1px; */
+    /* border-style: solid; */
+    /* border-color: silver; */
+    width: 887px;
+" ng-repeat="x in productInfo.package" class="row" ng-hide="x.name=='custom'">
+                  <div style="display:inline-block;overflow:hidden;height: 176px;border-width: 1px;width: 170px;border-style: solid;border-color: silver;float:left;/* margin-left: 20px; */">
+                    <img src={{x.img}}>
+                  </div>
+                  <div style="display:inline-block;">
+                    <table style="border:none;" class="pure-table pure-table-bordered">
+                      <tbody>
+                        <tr>
+                          <td>
+                            <font style="word-wrap:break-word;"><b>{{x.name}}</b></font>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="border-top-style:solid;border-top-width: 1px;border-bottom:none;"></td>
+                          <td style="border-top-style:solid;border-top-width: 1px;border-bottom:none;border-top-color: #cbcbcb;border-left: none;"></td>
+                        </tr>
+                        <tr>
+                          <td style="border:none;">PackageSize</td>
+                          <td style="border:none;">{{x.size}}</td>
+                        </tr>
+                        <tr>
+                          <td style="border:none;">PackageShape</td>
+                          <td style="border:none;">{{x.shape}}</td>
+                        </tr>
+                        <tr>
+                          <td style="border:none;">PackageType</td>
+                          <td style="border:none;">{{x.type}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                  </div>
+                </div>
+              </center>
+            </div>
+            <div class="productInfoNoProduct" ng-show="!productInfo.productName"><span> There is no product added to {{stockareaName}} <button ng-click="tab = 5" class="addProductBtn">+ ADD ONE HERE</button></span></div>
+
+          </div>
+          <div class="tabcontents" ng-show="tab == 4">
+            <div class="orderListDiv" id="orderListDiv">
+              <div class="noOrderDiv" ng-show="!orderInfo.length">No Orders in history{{orderInfo.length}}</div>
+              <ul class="orderUl">
+                <li class="orderdiv" ng-repeat="order in orderInfo" ng-class="order.active ? 'orderdivActive' : 'orderdiv'">
+                  <a style="cursor: pointer;" ng-click="viewInvoice(order)">
+                    <div class="orderimagediv"></div>
+                    <div class="orderinfodiv">
+                      <div>{{order.statusCode.substring(3,4)==1}}<button ng-class="{'0E01':'orderpendingbutton', '1E00':'orderpendingbutton','0AE0':'orderbroughtbutton','1AE0':'orderbroughtbutton', '0AB1':'orderbroughtbutton', '1AS1':'orderbroughtbutton', '1DE0':'ordersoldbutton','003':'ordercancelledbutton', '103':'ordercancelledbutton','004':'ordercancelledbutton', '104':'ordercancelledbutton'}[order.statusCode]">{{order.status}}</button>{{(order.statusCode.substring(0,1)===1
+                        && order.statusCode.substring(3,4)===1) ? "By Seller" : "By Buyer"}}
+                      </div>
+                      <div>Value {{(order.orderId.cost*order.orderId.noOfPackages*order.orderId.package.size).toFixed(2)}}INR</div>
+                      <div>Volume {{(order.orderId.quantity).toFixed(2)+" "+order.productId.unit}}</div>
+                      <div ng-show="order.statusCode.substring(0,1)==1"> To {{order.stockareaId.stockareaName}}</div>
+                      <div ng-show="order.statusCode.substring(0,1)==0"> From {{order.destinationStockareaId.stockareaName}}</div>
+                      <div ng-show="order.statusCode == 002" style="float: right;margin-right: 10px;"><button class="orderapprovebutton" ng-click="approve(order.orderId.orderId)">Approve</button><button class="orderdeclinebutton" ng-click="decline(order.orderId.orderId)">Decline</button>
+                        <div ng-show="order.statusCode == 001"><button class="orderdeclinebutton" ng-click="approve(order.orderId.orderId)">Cancel</button></div>
+                      </div>
+                      <div ng-show="order.statusCode == 001"><button style="margin-right: 10px;float: right;" class="orderdeclinebutton" ng-click="approve(order.orderId.orderId)">Cancel</button></div>
+                    </div>
+                  </a>
+                  {{order.statusCode }}
+                </li>
+              </ul>
+              <!--
+  <div class="orderdiv">
+    <div class="orderimagediv"></div>
+    <div class="orderinfodiv">
+    <div><button class="orderbroughtbutton">Brought</button> Potassium Chloride
+</div>
+    <div>Value 250K,Volume 250MT</div>
+      <div> From Coimbatore</div>
+      <div></div>
+    </div>
+
+  </div>
+<div class="orderdiv">
+    <div class="orderimagediv"></div>
+    <div class="orderinfodiv">
+    <div><button class="ordersoldbutton">Sold</button> Potassium Chloride
+</div>
+    <div>Value 250K,Volume 250MT</div>
+      <div> From Coimbatore</div>
+      <div></div>
+    </div>
+  </div><div class="orderdiv">
+    <div class="orderimagediv"></div>
+    <div class="orderinfodiv">
+    <div><button class="orderbuyingbutton">Buying</button> Potassium Chloride
+</div>
+    <div>Value 250K,Volume 250MT</div>
+      <div> From Coimbatore</div>
+      <div></div>
+    </div>
+  </div>
+<div class="orderdiv">
+    <div class="orderimagediv"></div>
+    <div class="orderinfodiv">
+    <div><button class="ordersellingbutton">Selling</button> Potassium Chloride
+</div>
+    <div>Value 250K,Volume 250MT</div>
+      <div> From Coimbatore</div>
+      <div></div>
+    </div>
+  </div><div class="orderdiv">
+    <div class="orderimagediv"></div>
+    <div class="orderinfodiv">
+    <div><button class="ordercancelledbutton">Cancelled</button> Potassium Chloride
+</div>
+    <div>Value 250K,Volume 250MT</div>
+      <div> From Coimbatore</div>
+      <div></div>
+    </div>
+  </div>
+-->
+            </div>
+            <div ng-show="transactionInfo" class="orderTansactionDetailsDiv" id="orderTansactionDetailsDiv">
+              <div style="text-align:center;">Transaction Details</div>
+              <div>
+                <table class="pure-table pure-table-bordered" style="margin:auto;">
+                  <tbody>
+                    <tr>
+                      <td>Product Name</td>
+                      <td>{{transactionInfo.productId.productName}}</td>
+                    </tr>
+                    <tr>
+                      <td>Source</td>
+                      <td>{{transactionInfo.stockareaId.stockareaName}}</td>
+                    </tr>
+                    <tr>
+                      <td>Destination</td>
+                      <td>{{transactionInfo.destinationStockareaId.stockareaName}}</td>
+                    </tr>
+                    <tr>
+                      <td>Package Size</td>
+                      <td>{{transactionInfo.orderId.package.size}}</td>
+                    </tr>
+                    <tr>
+                      <td>No Of Pack</td>
+                      <td>{{transactionInfo.orderId.noOfPackages}}</td>
+                    </tr>
+                    <tr>
+                      <td>Net Quantity</td>
+                      <td>{{(transactionInfo.orderId.noOfPackages*transactionInfo.orderId.package.size).toFixed(2) +" "+transactionInfo.productId.unit }}</td>
+                    </tr>
+                    <tr>
+                      <td>Net Cost</td>
+                      <td>{{(transactionInfo.orderId.cost*transactionInfo.orderId.noOfPackages*transactionInfo.orderId.package.size).toFixed(2)}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div ng-show="transactionInfo.history.length">
+                  <div style="text-align:center;">Log Details</div>
+                  <table class="pure-table pure-table-bordered" style="margin:auto;">
+                    <thead>
+                      <tr>
+                        <td>Date</td>
+                        <td>Status Discription</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="historyRecord in transactionInfo.history">
+                        <td>{{historyRecord.date}}</td>
+                        <td>{{historyRecord.statusDescription}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tabcontents" style="
+border-top-style: solid;
+border-top-width: thin;
+overflow:initial;
+border-top-color: #eeeeee;
+" ng-show="tab == 5">
+            <div class="searchbardiv" style="width:85%;float:right;border-left-style:solid;border-right-style:solid;border-bottom-style:solid;border-right-width:1px;border-color:#eeeeee">
+              <div style="
+      margin-left: auto;
+      /* width: 900px; */
+      padding-left: 10px;
+      padding-right: 10px;
+      /* margin-right: 0px; */
+  ">
+                <div style="
+      /* text-align: center; */
+  "><input style="margin-left:0px;border:none;background:#f4f5f7;" ng-keydown="onenterkeyautocomplete($event)" type="text" placeholder="Search for Products,Brands and More" class="searchbarinput ng-pristine ng-untouched ng-valid ng-empty"
+                    ng-change="autocomplete()" id="autocompletesearch" ng-model="search" name="autocompletesearch"></div>
+                <div>
+                  <span ng-repeat="s in category" style="
+      margin: 10px;
+      /* top: 10px; */
+      /* position: relative; */
+  "><a style="
+    cursor: pointer;
+" ng-click="clickproduct(s._id)">{{s.name}}</a></span>
+                </div>
+              </div>
+            </div>
+            <div class="searchresultdiv" style="height: 358px;overflow: initial;width:10%;margin-left:25px;margin-top:80px;float:left;">
+
+              <button type="button" style="
+      width:130px;
+      height:30px;
+      border:none;
+      background: #4c81bf;
+" ng-click="subtab113()" value="ADD"><font style="color:white">create</font></button>
+              <div style="margin-top:20px" ng-init="leftab=1">
+                <div ng-click="leftab1()">
+                  <font ng-class="{selectedmenu: leftab==1}" style="
+    font-size: 14px;font-weight:600;    color: #c1c1c1;
+
+">virtualgodown</font>
+                </div>
+                <div style="
+    margin-top: 5px;
+" ng-click="leftab2()">
+                  <font ng-class="{selectedmenu: leftab==2}" style="
+    font-size: 14px;font-weight:600;color: #c1c1c1;
+">owned by me</font>
+                </div>
+                <div style="
+    margin-top: 5px;
+" ng-click="leftab3()">
+                  <font ng-class="{selectedmenu: leftab==3}" style="
+    font-size: 14px;font-weight:600;color: #c1c1c1;
+">stockarea</font>
+                </div>
+              </div>
+
+            </div>
+            <div ng-hide="leftab==2" class="searchresultdiv" id="searchresult" style="height: 358px;overflow: auto;width:85%;float:right;border-left-style:solid;border-color:#eeeeee;border-width:1px;">
+              <div ng-repeat="singleProduct in productsSearch" class="singlesearchresult">
+                <div style="" ng-click="productinfopageopen(singleProduct.productId,singleProduct.productName,singleProduct.images,singleProduct.specifications,singleProduct.state)" class="searchresultimgdiv">
+                  <a ng-click="productinfopageopen(singleProduct.productId,singleProduct.productName,singleProduct.images,singleProduct.specifications,singleProduct.state)">
+                    <div style="border-style:solid;border-width:1px;border-color:#dcdcdc;"><img src={{singleProduct.primaryImage}} style="height:60px;width:70px" class="searchresultimg"></div>
+                </div>
+                <div class="searchresultinfo">
+                  <div><b>{{singleProduct.productName}}</b></div>
+                </div><br>
+                <div style="
+    height: 40px;
+    overflow: hidden;
+    width: 80%;
+    margin-left:85px;
+">
+                  <a style="text-decoration: none;" ng-repeat="(key,value) in singleProduct.specifications">
+      {{key}}-{{value}}
+    </a> <a>..view more</a>
+                </div>
+                </a>
+                <input type="button" ng-show="singleProduct.state=='ADDED'" style="/* padding-bottom: 3px; */float:right;margin-right: 10px;padding: 4px;margin-top:-32px" class="addtostockareabutton" value="ADDED">
+                <input type="button" ng-show="!singleProduct.state" ng-click="addProductsToStockarea(singleProduct._id)" style="/* padding-bottom: 3px; */float:right;margin-right: 10px;margin-top:-35px;padding: 4px;" class="addtostockareabutton" value="ADD">
+              </div>
+            </div>
+            <div ng-show="leftab==2" class="searchresultdiv" id="searchresult" style="height: 358px;overflow: auto;width:85%;float:right;border-left-style:solid;border-color:#eeeeee;border-width:1px;">
+              <div ng-repeat="singleProduct in productsSearch" class="singlesearchresult">
+                <div style="" ng-click="subtab13(singleProduct.productId)" class="searchresultimgdiv">
+                  <a ng-click="subtab13(singleProduct.productId)">
+                    <div style="border-style:solid;border-width:1px;border-color:#dcdcdc;"><img src={{singleProduct.primaryImage}} style="height:60px;width:70px" class="searchresultimg"></div>
+                </div>
+                <div class="searchresultinfo">
+                  <div><b>{{singleProduct.productName}}</b></div>
+                </div><br>
+                <div style="
+    height: 40px;
+    overflow: hidden;
+    width: 80%;
+    margin-left:85px;
+">
+                  <a style="text-decoration: none;" ng-repeat="x in singleProduct.specifications">
+      {{x.key}}-{{x.value}}
+    </a> <a>..view more</a>
+                </div>
+                </a>
+                <input type="button" ng-show="singleProduct.state=='ADDED'" style="/* padding-bottom: 3px; */float:right;margin-right: 10px;padding: 4px;margin-top:-32px" class="addtostockareabutton" value="ADDED">
+                <input type="button" ng-show="!singleProduct.state" ng-click="addProductsToStockarea(singleProduct._id)" style="/* padding-bottom: 3px; */float:right;margin-right: 10px;margin-top:-35px;padding: 4px;" class="addtostockareabutton" value="ADD">
+              </div>
+            </div>
+            <div class="tabbable-line" id="productinfopage" style="border-left-style:solid;border-color:#eeeeee;display: none;width:85%;float:right;overflow: initial;" class="productinfopage">
+              <ul class="nav nav-tabs" style="
+    margin-top: 10px;
+    height: 43px;
+">
+                <li class={{selectedtab11}}><a style="text-decoration: none;cursor: pointer;width:100px" ng-click="subtab11()" ng-hide="subtab1 == 3">Overview</a></li>
+                <li class={{selectedtab12}}><a style="text-decoration: none;cursor: pointer;width:100px" ng-click="subtab12()" ng-hide="subtab1 == 3">Brand Info</a></li>
+                <!--    <li class={{selectedtab13}} ><a style="text-decoration: none;cursor: pointer;width:150px" ng-click="subtab13()">Package Info</a></li>-->
+              </ul>
+              <button type="button" ng-hide="subtab1 == 3" ng-show="getSearchProduct.state=='ADDED'" style="
+      margin-right: 10px;
+      float: right;
+      width:75px;
+      margin-top: -36px;
+      height:30px;
+      float:right;
+      border:none;
+      background: #c3c3c3;
+  " value="ADDED"><font>ADDED</font></button>
+              <button ng-hide="subtab1 == 3" type="button" ng-show="!getSearchProduct.state" style="
+      margin-right: 10px;
+      float: right;
+      width:75px;
+      margin-top: -36px;
+      height:30px;
+      float:right;
+      border:none;
+      background: #c3c3c3;
+  " ng-click="addProductsToStockarea(getSearchProduct.productid)" value="ADD"><font>ADD</font></button>
+              <button ng-hide="subtab1 !== 3" type="button" ng-show="!getSearchProduct.state" style="
+margin-right: 10px;
+float: right;
+width:75px;
+margin-top: -36px;
+height:30px;
+float:right;
+border:none;
+background: #c3c3c3;
+" ng-click="edit(getSearchProduct.productid)" value="ADD"><font>Edit</font></button>
+              <button style="
+    margin-top: -36px;
+    margin-right: 93px;
+    width:75px;
+    border:none;
+    float: right;
+    height:30px;
+    background: #c3c3c3;
+" ng-click="productinfopageclose()"><img src="http://localhost//assets/icons/backicon.ico" style="width:25px;margin-top:-6px
+"></button>
+              <div class="tabcontents1" style="height:auto;" ng-show="subtab1 == 1">
+                <div ng-show="getSearchProduct.productName" id="productinfodiv">
+                  <center>
+                    <!--  <div style="float:left;position: relative;width:50%">
+  <div style="/* padding: 30px; */margin-top: 24px;border-color: rgba(158, 158, 158, 0.18);margin-left: 30px;margin-bottom: 30px;margin-left:100px;border-style: solid;height: 206px;width: 200px;"><img src={{imgSrc1.img}} style="width: 200px;border: 1px solid rgba(221, 221, 221, 0.04);"></div>
+  <div id="imageList1" style="margin-top: -20px;"  class="imageList1">
+    <button id="imgScrollLeftBnt1" ng-click="imgScrollLeftBntFn1()" style="font-size: 35px;position: absolute;margin-top: 45px;margin-left: -30px;border: none;padding: 10px;background: #f5f5f5;color: #b3b2b2;">&lt;</button>
+    <button id="imgScrollRightBnt1" ng-click="imgScrollRightBntFn1()" style="font-size: 35px; position: absolute;margin-top: 45px;margin-left: 360px;border: none;padding: 10px;background: #f5f5f5;color: #b3b2b2;">&gt;</button>
+    <a ng-hide="getSearchProduct.images.length==1" ng-repeat="imageSrc1 in getSearchProduct.images" my-post-repeat-directiv ng-click="setImgSrc1(imageSrc1)"><img src={{imageSrc1.img}} style="height: 150px;width: 100px;"></a>
+  </div>
+
+</div>-->
+                    <div style="margin-top:20px;">
+                      <carousel interval="myInterval">
+                        <slide ng-repeat="imageSrc1 in getSearchProduct.images" active="slide.active">
+                          <img id="img" ng-src="{{imageSrc1.img}}">
+                          <div class="carousel-caption">
+                          </div>
+                        </slide>
+                      </carousel>
+                    </div>
+                    <div style="margin-top:20px;">
+                      <div>
+                        <div class="productspecificationdiv" style="
+      height: 440px;
+      width: 526px;
+  ">
+                          <table class="pure-table pure-table-bordered" style="width:500px;">
+                            <thead>
+                              <tr>
+                                <td style="width:200px"><b>Specification</b></td>
+                                <td style="width:200px"><b>value</b></td>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr ng-repeat="(key, value) in getSearchProduct.specifications">
+                                <td style="width:200px;word-wrap: break-word;"> {{key}} </td>
+                                <td style="width:200px;word-wrap: break-word;"> {{value}} </td>
+                              </tr>
+                              <tr ng-hide="!productsearchInfo.variantId.description[0].name" ng-repeat="k in productsearchInfo.variantId.description">
+                                <td>
+                                  <div style="width:200px;word-wrap: break-word;">{{k.name}} </div>
+                                </td>
+                                <td>
+                                  <div style="width:250px;word-wrap: break-word;"> {{ k.value }} </div>
+                                </td>
+                              </tr>
+                              <tr ng-hide="!productsearchInfo.description[0].name" ng-repeat="v in productsearchInfo.description">
+                                <td>
+                                  <div style="width:200px;word-wrap: break-word;">{{v.name}} </div>
+                                </td>
+                                <td>
+                                  <div style="width:250px;word-wrap: break-word;"> {{ v.value }} </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+                        </div>
+                      </div>
+
+
+                    </div>
+                  </center>
+
+                </div>
+              </div>
+              <!--end-->
+              <div id="branddiv" style="overflow:auto" class="tabcontents1" ng-show="subtab1 == 2">
+                <div>
+                  <div ng-repeat="brand in materialinfo.brandmaterial">
+                    <div style="height: 128px;border-style: solid;width: auto;max-width: 70%;margin-left: 10px;border-color: #dddddd;margin-top: 10px;/* border-bottom-style: solid; */border-width: 1px;" class="">
+                      <div style="float:left;position: absolute;border-top-style:solid:border-bottom-style:solid;">
+                        <div style="display:inline-block;/* padding: 30px; */border-color: rgba(158, 158, 158, 0.18);margin-left: 30px;margin-bottom: 30px;/* margin-left:100px; */border-style: solid;height: 100px;border-width:1px;width: 100px;overflow:hidden;margin-top:10px;"
+                          ng-show="imgSrc" class="">
+                          <img style="width: 100px;border: 1px solid rgba(221, 221, 221, 0.04);" src={{brand.brandId.logo}}>
+                        </div>
+                        <div style="float: right;/* display:inline-block; */margin-top:15px;margin-left:50px;">
+                          <div class="ng-binding">
+                            {{brand.brandId.brandName}}
+                            <h5 class="ng-binding">{{brand.brandId.brandOwner}}</h5>
+                            <div ng-hide="viewlikes(brand._id)">
+                              <i class="fa fa-thumbs-up fa-tag custom-fa" aria-hidden="true" ng-click="addlike(materialinfo.materialId,brand.brandId._id)" style="font-size:large;"></i>Like {{brand.likes.length}}
+                            </div>
+                            <div ng-show="viewlikes(brand._id)">
+                              <i class="fa fa-thumbs-up" aria-hidden="true" ng-click="removelike(materialinfo.materialId,brand.brandId._id)" style="color: #4c81bf;font-size:large;"></i>Liked {{brand.likes.length}}
+                            </div>
+                            <ul class="list-inline" style="
+      border-style: solid;
+      border-width:1px;
+      border-top:none;
+      border-left:none;
+      border-right:none;
+      margin-top: 10px;
+      height: 31px;
+      /* background: rgb(241, 241, 241); */
+      border-color: rgb(241, 241, 241);
+  ">
+                              <li><a style="text-decoration: none;cursor: pointer;" ng-click="brand.brandsubtab=1" ng-class="{selected2: brand.brandsubtab==1}" class="">Details</a></li>
+                              <li><a style="text-decoration: none;cursor: pointer;" ng-click="brand.brandsubtab=2" ng-class="{selected2: brand.brandsubtab==2}">Reviews</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div ng-show="brand.brandsubtab==1" class="ng-hide">
+                      <div style="border-style:solid;border-color: #dddddd;border-width: 1px;width:auto;max-width: 70%;margin-top:1px;margin-left:10px;">
+                        <div class="productspecificationdiv">
+                          <center>
+                            <table class="pure-table pure-table-bordered" style="
+    margin-top: 15px;
+    margin-bottom: 15px;
+">
+                              <thead>
+                                <tr>
+                                  <td style="width:200px"><b>Specification</b></td>
+                                  <td style="width:200px"><b>Value</b></td>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <!-- ngRepeat: e in productInfo.brandId.description -->
+                                <tr ng-repeat="e in brand.brandId.description" class="ng-scope">
+                                  <td>
+                                    <div style="width:200px;word-wrap: break-word;" class="ng-binding">{{e.name}} </div>
+                                  </td>
+                                  <td>
+                                    <div style="width:250px;word-wrap: break-word;" class="ng-binding"> {{e.value}} </div>
+                                  </td>
+                                </tr>
+                                <!-- end ngRepeat: e in productInfo.brandId.description -->
+                                <tr ng-repeat="e in productInfo.brandId.description" class="ng-scope">
+                              </tbody>
+                            </table>
+                          </center>
+                        </div>
+                      </div>
+                    </div>
+                    <div ng-show="brand.brandsubtab==2" ng-init="sameuserreview(brand._id)" class="ng-hide">
+                      <div style="border-style:solid;border-color: #dddddd;border-width: 1px;width:auto;max-width: 70%;margin-top:1px;margin-left:10px;">
+                        <div style="border-style:solid;margin-top: 10px;margin-right: 10px;border-color: #dddddd;border-width: 1px;margin-bottom:10px;width:auto;max-width: 764px;margin-left:10px;">
+                          <div style="display:inline-block;float:left;margin-top:15px;/* padding: 30px; */border-color: rgba(158, 158, 158, 0.18);margin-left: 30px;/* margin-left:100px; */border-style: solid;height: 50px;border-width:1px;width: 50px;overflow:hidden;" ng-show="imgSrc"
+                            class="">
+                            <img style="width: 50px;border: 1px solid rgba(221, 221, 221, 0.04);" src={{profilePic}}>
+                          </div>
+                          <div style="/* float: left; */display:inline-block;margin-top:15px;margin-left:50px;">
+                            <div class="ng-binding" style="float:right;margin-top:10px;margin-right:10px">
+                              {{fullName}}
+                              <br>
+                              <textarea ng-model="message" id="InputTextArea" ng-keydown="$event.keyCode == 13 ? addreview(materialinfo.materialId,brand.brandId._id,message,firstRate) : null" onkeyup="resizeTextarea('InputTextArea')"></textarea>
+                            </div>
+                          </div>
+                          <div layout="column" style="float:right;margin-top:20px;">
+                            <jk-rating-stars rating="firstRate"></jk-rating-stars>
+                          </div>
+                        </div>
+                        <div ng-repeat="x in brand.reviews" ng-hide="x.userId._id==userId" style="border-style:solid;margin-top: 10px;margin-right: 10px;border-color: #dddddd;border-width: 1px;margin-bottom:10px;width:auto;max-width: 764px;margin-left:10px;">
+                          <div style="float:left;margin-top:15px;display:inline-block;/* padding: 30px; */border-color: rgba(158, 158, 158, 0.18);margin-left: 30px;/* margin-left:100px; */border-style: solid;height: 50px;border-width:1px;width: 50px;overflow:hidden;" ng-show="imgSrc"
+                            class="">
+                            <img style="width: 50px;border: 1px solid rgba(221, 221, 221, 0.04);" src={{x.userId.profilePic}}>
+                          </div>
+                          <div style="/* float: left; */display:inline-block;margin-left:50px;">
+                            <div class="ng-binding" style="float:right;margin-top:10px;margin-right:10px">
+                              {{x.userId.fullName}}
+                              <div style="height:30px;">
+                                <h5 class="ng-binding" style="width:350px;word-wrap: break-word;">{{x.message}}</h5>
+                              </div>
+                            </div>
+                          </div>
+                          <div layout="column" style="float:right;margin-top:20px;">
+                            <jk-rating-stars rating="x.rating" read-only=true></jk-rating-stars>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tabcontents1" ng-show="subtab1 == 3">
+                <div style="
+    /* margin-left: 75px; */
+    margin-top: 20px;
+    /* border-width: 1px; */
+    /* border-style: solid; */
+    /* border-color: silver; */
+    width: 100%;
+" class="row" id="addproductdiv">
+                  <center>
+                    <div style="
+  margin-left: 50px;
+  margin-top: 20px;
+">
+                      <div class="container1" ng-show="!newup" style="width:400px;height:300px;">
+                        <input style="display:none;" type="file" id="fileInput" onchange="angular.element(this).scope().uploadFile(this.files[0])" />
+                        <div class="overlay1" style="
+  border-style: solid;
+  border-width:1px;
+  border-color: #d0d4d8;
+  "></div>
+                        <div class="button1" onclick="document.getElementById('fileInput').click();"><a> Upload</a></div>
+                      </div>
+                      <div ng-hide="!newup" class="cropArea">
+                        <img-crop image="myImage" result-image="myCroppedImage" area-type="square" result-image-format="image/jpeg" result-image-size="200" result-image-quality="1.0" change-on-fly="true"></img-crop>
+                      </div>
+
+                      <button class="btn" ng-show="newup" style="border:none;color: #fafafb;background-color: #4c81bf;margin-top:10px;" ng-click="uploadimg()" align="right">upload me</button>
+                    </div>
+                    <div style="
+    margin-left: 0px;
+    margin-top: 20px;
+    height: 150px;
+" id="imageList1" class="imageList1">
+                      <button id="imgScrollLeftBnt1" ng-click="imgScrollLeftBntFn1()" style="font-size: 35px;display:block !important;position: absolute;margin-top: 45px;margin-left: -30px;border: none;padding: 10px;background: white;color: #b3b2b2;">&lt;</button>
+                      <button id="imgScrollRightBnt1" ng-click="imgScrollRightBntFn1()" style="font-size: 35px; position: absolute;display:block !important;margin-top: 45px;margin-left: 360px;border: none;padding: 10px;background: white;color: #b3b2b2;">&gt;</button>
+                      <a ng-repeat="imageSrc1 in productimages" my-post-repeat-directiv>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="deleteproductimage(imagesrc1)"><span aria-hidden="true">&times;</span></button>
+                        <img src={{imageSrc1.img}} style="height: 100px;width: 100px;">
+                      </a>
+                    </div>
+                  </center>
+                  <div style="margin-left:30px;">
+                    <div>
+                      <div style="=margin:;padding: 10px;font-weight: 600;">Product Owner</div>
+                      <div style="=margin:;padding: 10px;">
+                        <input type="text" ng-model="productOwner" required class="inputAll auto-complete-off" validate-on="dirty" class=" auto-complete-off form-control input-sm loginInput inputMaxWidth ng-pristine ng-invalid ng-invalid-required ng-touched" required-message="'This field is required..'"
+                          required="">
+                      </div>
+                    </div>
+                    <div>
+                      <div style="=margin:;padding: 10px;font-weight: 600;">Product Name</div>
+                      <div style="=margin:;padding: 10px;">
+                        <input type="text" ng-model="productname" required class="inputAll auto-complete-off" validate-on="dirty" class=" auto-complete-off form-control input-sm loginInput inputMaxWidth ng-pristine ng-invalid ng-invalid-required ng-touched" required-message="'This field is required..'"
+                          required="">
+                      </div>
+                    </div>
+                    <div>
+                      <div style="=margin:;padding: 10px;font-weight: 600;">product category</div>
+                      <div style="=margin:;padding: 10px;">
+                        <select class="form-control selectpicker" ng-model="productcategory" ng-options="option._id as option.name for option in category" id="unit">
+                          </select>
+                      </div>
+                    </div>
+                    <div style="=margin:;padding: 10px;">
+                      <input type="radio" ng-model="producttype" value="public" name="type">public
+                      <input type="radio" value="private" ng-model="producttype" style="
+    margin-left: 80px;
+" name="type">private
+                    </div>
+                    <div>
+                      <div style="=margin:;padding: 10px;font-weight: 600;">Product Manufacturer</div>
+                      <div style="=margin:;padding: 10px;">
+                        <input type="text" ng-model="productmanufacturer" required class="inputAll auto-complete-off" validate-on="dirty" class=" auto-complete-off form-control input-sm loginInput inputMaxWidth ng-pristine ng-invalid ng-invalid-required ng-touched" required-message="'This field is required..'"
+                          required="">
+                      </div>
+                    </div>
+                    <!--      <tr style="margin-top:10px">
+                        <td style="
+    height: 50px;
+">Brand</td>
+                        <td>
+                          <input type="text" style="width:300px" ng-change="sourceautocomplete()" id="sourceautocompletesearch" ng-model="sourcesearch" placeholder="Brand Name">
+                        </td>
+                      </tr>-->
+                    <table>
+                      <tr>
+                        <td style="=margin:;padding: 10px;font-weight: 600;">Property</td>
+                        <td style="=margin:;padding: 10px;font-weight: 600;">Description</td>
+                      </tr>
+                      <tr ng-repeat="x in productdescription">
+                        <td><input type="text" style="width:300px;margin-left:10px;" ng-model="x.key" required class="inputAll auto-complete-off" validate-on="dirty" class=" auto-complete-off form-control input-sm loginInput inputMaxWidth ng-pristine ng-invalid ng-invalid-required ng-touched"
+                            required-message="'This field is required..'" required=""></td>
+                        <td><input type="text" style="width:300px;" ng-model="x.value" required class="inputAll auto-complete-off" validate-on="dirty" class=" auto-complete-off form-control input-sm loginInput inputMaxWidth ng-pristine ng-invalid ng-invalid-required ng-touched"
+                            required-message="'This field is required..'" required=""></td>
+                        <td>
+                          <a href="#" class="btn btn-primary btn-rounded" ng-show="$last" style="padding-top: 10px;" ng-click="addproductdescription()">+</a>
+                          <a href="#" class="btn btn-primary btn-rounded" ng-show="$last && !$first" style="padding-top: 10px;" ng-click="removeproductdescription()">-</a>
+                        </td>
+                      </tr>
+                    </table>
+                    <button type="button" style="
+            width:130px;
+            height:30px;
+            border:none;
+            margin-top:20px;
+            background: #4c81bf;
+      " ng-click="addproduct()" value="ADD"><font style="color:white">save</font></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tabcontents" ng-show="tab == 6">
+            <div id="mainsection" class="mainsectionsettings">
+              <div class="stockareadeletediv">
+                <div>
+                  <font>collaborator</font><button style="/* margin: 10px; */float:right;height: 37px;margin-top: -8px;" ng-click="addcollabrator()" class="addtostockareabutton">Add collaborator</button>
+                </div>
+                <hr>
+                <center>
+                  <div ng-repeat="x in organisationinfo.collabrators">
+                    <div>
+                      {{x.userId.userName}}<i class="fa fa-times" ng-hide "x.role == 'admin'" ng-click="deletecollabrator(x.userId._id)" style="color:red;float:right;" aria-hidden="true"></i>
+                    </div>
+                    <hr>
+                  </div>
+                </center>
+              </div>
+
+
+              <div class="stockareadeletediv">
+                <div>Editing the stock area will change the datas in it. This will also remove any pending orders in process for this product in this stock area. Once deleted this product order details cannot be retrieved</div>
+                <div style="text-align: center;"><button style="margin: 10px;" ng-disabled={{ds}} ng-click="editStockarea()" class="addtostockareabutton">Edit this stockarea</button></div>
+              </div>
+              <div class="stockareadeletediv" ng-if="productStockInfo.productId != undefined">
+                <div>Deleting the product will remove the product added to this stock area. This will also remove any pending orders in process for this product in this stock area. Once deleted this product order details cannot be retrieved</div>
+                <div style="text-align: center;"><button style="margin: 10px;" ng-click="deleteProduct(productStockInfo.productId)" class="addtostockareabutton">Remove this product</button></div>
+              </div>
+
+              <div class="stockareadeletediv">
+                <div>Deleting the stock area will remove the product added to it. This will also remove any pending orders in process for this product in this stock area. Once deleted this product order details cannot be retrieved</div>
+                <div style="text-align: center;"><button style="margin: 10px;" ng-disabled={{ds}} ng-click="deleteStockarea()" class="addtostockareabutton">Delete this stockarea</button></div>
+              </div>
+              <div></div>
+
+            </div>
+          </div>
+
+
+
+        </div>
+
+      </div>
+
+      <div class="leftsectiondiv">
+        <div class="loaderCSS" ng-show="loading1"><img src="http://localhost//assets/img/spin.gif" style="
+      margin-top: 150px;
+      margin-left: 100px;
+      height: 20px;
+  "> </div>
+        <div ng-show="!loading1" id="mainsection" style="position: relative;"></div>
+        <div ng-hide="loading1" class="stockdetailssectiondiv">
+
+          <!--  <div class="padding10"      data-placement="left"
+    title="Incoming Stock"
+    onmouseenter="$(this).tooltip('show')"><img src="assets/img/truck.png" style="width: 24px;    margin-right: 10px;" >{{productStockInfo.stockDetails.incomingStock+" "+productStockInfo.unit}} </div>
+  <div class="padding10"  data-placement="left"
+    title="Outgoing Stock"
+    onmouseenter="$(this).tooltip('show')"><img src="assets/img/truck.png" style=" width: 24px;   margin-right: 10px;
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: &quot;FlipH&quot;;
+">{{productStockInfo.stockDetails.outgoingStock+" "+productStockInfo.unit}} </div> -->
+
+          <div ng-hide="!products.length" class="padding10" data-placement="left" title="In Stock" onmouseenter="$(this).tooltip('show')"> <img src="http://localhost//assets/img/stock.png" style="width: 24px; margin-right: 10px;">{{inStock+" "+unit}}</div>
+          <div ng-hide="loading1" class="padding10">
+            <!--  <button ng-click="viewbuy(productStockInfo.productId,tradeSourceId)" style="width: 100%;" class="stockaredetailsbuybutton"><b>Buy @ {{tradeCost}} $ per Kg</b></button></div> -->
+            <div ng-hide="!products.length" class="padding10">
+              <button ng-click="viewsell(productStockInfo.productId)" style="width: 100%;" class="stockaredetailssellbutton"><b>ADD STOCK DETAILS</b></button>
+            </div>
+
+          </div>
+
+          <div ng-hide="loading1" style="width: 235px;" class="productlistsectiondiv" id="productlistsectiondiv">
+            <div ng-hide="!products.length" style="position: absolute;margin-top: -25px;">
+              <button style="     margin-left: 10px;
+    background-color: silver;height:26px;
+    border: none; margin-left: 10px; outline: none;" ng-click="tab = 5" class="floatleft">+</button><input type="text" ng-model="test" class="productlistsearchbarinput" placeholder="Search products" autocomplete="off">
+
+            </div>
+            <div ng-hide="loading1" class="productlistingdiv">
+              <div ng-show="!products.length"> You have not added any products to <span data-placement="bottom" title="Stockarea" onmouseenter="$(this).tooltip('show')">{{stockareaName}}</span>
+                <div> <button class="addProductBtn" ng-click="tab = 5">+ ADD ONE HERE</button></div>
+              </div>
+              <div ng-repeat="x in products | filter : test" style="padding: 5px;">
+                <input ng-checked="x.checked" type="radio" ng-click="selectProductFn(x.productId.productId,x.stockareaId)" name="product">
+                <a style="padding-left: 10px;text-decoration: none;" ng-click="selectProductFn(x.productId.productId,x.stockareaId)">{{x.productId.productName}}</a>
+              </div>
+            </div>
+
+
+          </div>
+
+
+
+        </div>
+
+
+      </div>
+    </div>
+    <div class="scrollmenu" id="scroll">
+      <div class="addProductBtn" style="cursor: pointer;float: left;left: -7px;margin-top: 4px;position: relative;     float: left;
+    left: -7px;
+    display: inline-block;
+    text-align: center;
+    padding: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 10px;
+    margin-left: 18px;
+    position: relative;" ng-click="addStockarea()">+ ADD STOCKAREA</div>
+      <a ng-repeat="x in stockarea" ng-click="selectStockarea(x.stockareaId,x.stockareaName)" id={{x.stockareaId}} name={{x.stockareaName}} ng-class="x.selected ? 'stockareafooterbuttontexttrue' : 'stockareafooterbuttontext'">{{x.stockareaName}}</a>
+    </div>
+  </div>
+</div>
+<script>
+  function resizeTextarea(id) {
+    var a = document.getElementById(id);
+    a.style.height = 'scroll';
+    alert(a.scrollHeight)
+    if (a.scrollHeight < 30) {
+      a.style.height = '30px';
+    } else {
+      a.style.height = a.scrollHeight + 'px';
+    }
+  }
+
+  function init() {
+    var a = document.getElementsByTagName('textarea');
+    for (var i = 0, inb = a.length; i < inb; i++) {
+      if (a[i].getAttribute('data-resizable') == 'true')
+        resizeTextarea(a[i].id);
+    }
+  }
+
+  addEventListener('DOMContentLoaded', init);
+</script>

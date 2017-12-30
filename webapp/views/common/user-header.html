@@ -1,0 +1,100 @@
+<div ng-show="access" class="headertab ng-scope" style="
+    border-bottom: #eee;
+    border-bottom-width: thin;
+    border-bottom-style: inset;">
+  <div ng-show="!loading" style="position: relative;">
+    <div class="loginheaderlogodiv"><a ui-sref="home"><img src="{{domainURL}}assets/img/unnamed.png" class="headerlogoimg">
+</a>
+      <div ng-show="page" class="cmpnamediv" style="    background-color: white !important;
+    left: 10px;"><span data-placement="bottom" title="Stockarea" style="font-size:medium;" onmouseenter="$(this).tooltip('show')">{{stockareaName}}</span><span data-placement="bottom" title="Product Name" onmouseenter="$(this).tooltip('show')" style="font-size:medium;"
+          ng-show="productName">{{" - "+ productName}}</span></div>
+    </div>
+    <div class="avatarleftdiv">
+      <div style="float:left;margin-right: -116px;/* margin-top: -7px; */">
+        <div class="dropdown">
+          <div class="dropbtn">
+            <i style="font-size: 26px;color:grey" class="fa fa-cog" aria-hidden="true"></i>
+          </div>
+          <center>
+            <div class="dropdown-content" style="
+    z-index: 22;
+    margin-left:-50px
+">
+              <a href="/settings">Settings</a>
+              <a href="/profile">Profile</a>
+              <a href="/faq">FAQ</a>
+              <a href="/suggestproduct">Suggest Product</a>
+              <a style="cursor: pointer;" ng-click="logout()">Logout</a>
+            </div>
+          </center>
+        </div>
+      </div>
+      <div style="
+float:right">
+        <div class="profilepicdiv" class="floatleft"><img src={{profilePic}} class="avatarimg"></div>
+        <div class="dropdowndivleft">
+          <div class="dropdown">
+            <div class="dropbtn">
+              <font style="margin-top:-5px;">{{fullName}}
+                <font><br>
+                  <font size="2" ng-hide="!orgname">you are opperating in {{orgname}}</font>
+                  <font ng-show="!orgname">you are opperating in default</font>
+
+            </div>
+            <div class="dropdown-content">
+              <a ng-repeat="x in org" style="cursor: pointer;" ng-hide="orgname==x.organisationId.organisationName" ng-click="changeorg(x.organisationId._id)">{{x.organisationId.organisationName}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="background:#4c81bf;
+    border-bottom: #eee;
+    border-bottom-width: thin;
+    border-bottom-style: inset;" ng-hide="access" class="headertab ng-scope">
+  <div ng-show="!loading" style="position: relative;">
+    <div class="loginheaderlogodiv"><a ui-sref="home"><img src="{{domainUrl}}assets/img/white.png" class="headerlogoimg"><font class="headerlogoimg" style="
+    color: white;
+" size="5">VIRTUALGODOWN</font></a>
+
+      <div ng-show="page" class="cmpnamediv" style="    background-color: white !important;
+    left: 10px;"><span data-placement="bottom" title="Stockarea" onmouseenter="$(this).tooltip('show')" style="font-size:medium;">{{stockareaName}}</span><span data-placement="bottom" title="Product Name" onmouseenter="$(this).tooltip('show')" ng-show="productName"
+          style="font-size:medium;">{{" - "+ productName}}</span></div>
+    </div>
+    <div style="margin-top8px;" class="avatarleftdiv">
+      <button ng-sref="login" ng-click="login()" href={{domainUrl}}+ "login" style="
+  position: relative;
+  margin: 10px;
+  /* height: 50px; */
+  /* min-width: 100px; */
+  padding: 5px;
+  /* border-radius: 4px; */
+width:70px;
+  border: 1px;
+  color: #4c81bf;
+  background-color:white ;
+">Login</button> or
+      <button ng-click="signup()" href={{domainUrl}}+ "signUp" ng-sref="signUp" style="
+position: relative;
+margin: 10px;
+/* height: 70px; */
+/* min-width: 100px; */
+padding: 5px;
+/* border-radius: 4px; */
+width:70px;
+border: 1px;
+color: white;
+background-color: #42b72a;
+">Signup</button>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+</div>
+</div>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <link  rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/virtualgodown/bootstrap.css">
+  <link  rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/virtualgodown/vg.css">
+  <title>Virtualgodown</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script data-require="angular.js@*" data-semver="1.5.0" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+
+
+</head>
+      <body>
+        <div ng-app="myApp" ng-controller="myCtrl">
+        <div style="
+            border-bottom: #eee;
+            height:50px;
+            border-bottom-width: thin;
+            border-bottom-style: inset;" class="headertab ng-scope">
+          <div class="loginheaderlogodiv"><div style="display:inline-block;float:left;" ui-serf="login"><img  src="https://s3.amazonaws.com/virtualgd/unnamed.png" class="headerlogoimg"><sup><font style="
+        font-size: 10px;
+        margin-left: 5px;
+        position:inherit;
+        color:#72bb53;">BETA</font></sup></div>
+            <div class="cmpnamediv" style="cursor: pointer;left:-10px;"><a ui-sref="login" style="text-decoration: none;color: #4c81bf;">VIRTUALGODOWN</a></div>
+          </div>
+        </div>
+        <div id="mainsection" style="position: relative;height: 522px;">
+          <div id="main" ng-init="init()">
+            <div id="left" style="float:left; width: 20%">
+              <div style="display: table-cell;min-width: 100px !important;position: relative;" class="tabgroup" ng-init="tab=1">
+                <div class="tab" style="float: none;cursor: default;color: grey;background-color: gainsboro;">Settings</div>
+                <div class="tab" style="float: none;" ng-class="{selected: tab==1}" ng-click="tab = 1">Profile</div>
+                <div class="tab" style="float: none;" ng-class="{selected: tab==2}" ng-click="tab = 2">Account</div>
+                <div class="tab" style="float: none;" ng-class="{selected: tab==3}" ng-click="tab = 3">Experience</div>
+                <div class="tab" style="float: none;" ng-class="{selected: tab==4}" ng-click="tab = 4">Stockarea</div>
+              </div>
+            </div>
+            <div style="float:left; width:50%;">
+              <div class="overviewleftdiv ng-scope">
+                <div class="tabcontents ng-hide" ng-show="tab == 1" style="top: 1px;">
+        <h1>IN profile</h1>
+
+                </div>
+
+                <div class="tabcontents" ng-show="tab == 2" style="top: 1px;overflow:hidden;">
+                  <h1>IN Account</h1>
+                </div>
+
+                <div class="tabcontents" ng-show="tab == 3" style="top: 1px;overflow:hidden;">
+                  <h1>IN Experience</h1>
+                </div>
+                <div class="tabcontents ng-hide" ng-show="tab == 4" style="top: 1px;overflow-y: inherit;">
+                  <h1>IN Stockarea</h1>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+</div>
+  </body>
+
+  <script>
+  var app = angular.module('myApp', []);
+  app.controller('myCtrl', function($scope) {
+  });
+  </script>
+
+</html>

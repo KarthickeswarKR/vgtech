@@ -1,0 +1,1124 @@
+
+<style>
+.full
+{
+font-size: 1vw;
+height:100%
+width:100%;
+background-size:100% 100%;
+background-repeat:no-repeat;
+}
+.header_bar {
+  border-radius: 0;
+}
+.header_bar .navbar-brand {
+  height: 70px;
+}
+.header_bar main {
+  margin-top: 0px;
+}
+header {
+  padding-top: 30px;
+}
+.header_bar .navbar-nav li a.active {
+  color: #ec3a3e;
+}
+/**sidbar menu**/
+.sidenav {
+  background-color: #c1c1c1;
+  height: 100%;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 100px;
+  position: fixed;
+  text-align: left;
+  top: 0;
+  transition: all 0.5s ease 0s;
+  width: 0;
+  z-index: 1;
+  color:#fff;
+}
+.sidenav a {
+  color: #fff;
+  display: block;
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  transition: all 0.3s ease 0s;
+}
+.sidenav a:hover{
+    color: #f1f1f1;
+}
+.sidenav .side_menu a {
+  font-size: 24px;
+  font-weight: 600;
+  padding-left: 8px;
+}
+.sidenav .closebtn {
+  font-size: 30px;
+  margin-left: 50px;
+  position: absolute;
+  right: 25px;
+  top: 0;
+}
+.side_menu {
+  border-right: 1px solid #ffffff;
+  padding-left: 32px;
+}
+.login_side {
+  padding-left: 50px;
+}
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+}
+/**sidbar menu close**/
+.btn-red{
+	border-color:#ec3a3e;
+	background:#ec3a3e;
+	color:#fff;
+}
+.btn-none{
+	border-color:#fff;
+	background:transparent;
+	color:#fff;
+}
+.btn.focus, .btn:focus, .btn:hover {
+  color: #fff;
+  opacity: 0.8;
+}
+.border-radius
+{
+	border-radius:0px;
+}
+.login_side .btn {
+  font-size: 16px;
+  padding-left: 30px;
+  padding-right: 30px;
+  text-transform: uppercase;
+}
+.text-red{
+	color:#ec3a3e !important;
+}
+h1, h2, h3, h4, h5, h6 {
+  color: #4d4d4d;
+  font-weight: 600;
+  margin-top: 0;
+}
+.social_ico a {
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  margin: 0 5px 0 0;
+  text-align: center;
+  width: 30px;
+  background: #c0c4c7 none repeat scroll 0 0;
+  color: #fff;
+  padding:0px;
+}
+.social_ico {
+  float: left;
+  margin-top: 15px;
+    width: 20%;
+}
+.contact_info {
+  float: left;
+  margin-top: 20px;
+  width: 20%;
+}
+.mar-25
+{
+	margin-top:25px;
+}
+.header_bar .navbar-toggle {
+  height: auto;
+  margin-top: 19px;
+  padding: 7px 12px;
+  cursor:pointer;
+}
+.social_ico a:hover {
+  background: #ec3a3e none repeat scroll 0 0;
+}
+.sidenav .side_menu a:hover, .sidenav .side_menu a.active {
+  border-left: 4px solid #ec3a3e;
+  color: #ec3a3e;
+}
+.top_section {
+  float: left;
+  margin-bottom: 25px;
+  width: 20%;
+}
+.chu-section {
+  float: left;
+  padding: 40px 0;
+  width:20%;
+}
+section {
+  float: left;
+  width: 20%;
+}
+.bg-gray{
+	background-color:#262627;
+	color:#fff;
+}
+.section-cover {
+  float: left;
+  padding: 40px;
+  width: 20%;
+}
+.bg-gray h1, .bg-gray h4 {
+  color: #fff;
+}
+.ico-cover {
+  background: rgba(255, 255, 255, 0.6) none repeat scroll 0 0;
+  border-radius: 100px;
+  clear: both;
+  height: 100px;
+  line-height: 100px;
+  margin: auto auto 20px;
+  position: relative;
+  text-align: center;
+  width: 100px;
+}
+.view-btn ,.view-btn:hover,.view-btn:focus{
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration:none;
+}
+.ico-cover::after {
+  border: 4px solid #050505;
+  border-radius: 100px;
+  content: "";
+  height: 90px;
+  left: 5px;
+  line-height: 90px;
+  position: absolute;
+  top: 5px;
+  width: 90px;
+}
+.login_side h3 {
+  color: #ffffff;
+}
+@media screen and (max-width: 767px) {
+	.side_menu {
+  border-right: none;
+}
+	}
+.highlightcollabrator{
+background: #eee;
+}
+.fa{
+  cursor: pointer !important;
+}
+
+.blackfont{
+  color:black;
+  font-color:black;
+  font-weight: 400 !important
+}
+#link{
+  margin-top:5px;
+}
+.namemarginclass{
+  margin-top:0px !important;
+}
+.area1003{
+  background: darkgreen;
+}
+.area1004{
+  background: #4c81bf;
+}
+.area1005{
+  background: red;
+}
+.area1000{
+  color: darkgreen;
+}
+.area1002{
+  color: #4c81bf;
+}
+.area1001{
+  color: red;
+}
+.bggrey{
+  background: #c1c1c1
+}
+</style>
+
+<divergent class="full">
+<div class="header" ng-controller="dashboardHeaderController" ng-model-options="{ debounce: 200 }" ng-init="loadHome()">
+  <div ng-show="access" class="headertab ng-scope" style="
+      border-bottom: #eee;
+      border-bottom-width: thin;
+      border-bottom-style: inset;width:100%">
+    <div ng-show="!loading" style="position: relative;">
+      <div class="loginheaderlogodiv"><div style="display:inline-block;float:left"><img src="{{domainURL}}assets/img/unnamed.png" class="headerlogoimg"><sup><font style="
+    font-size: 0.7vw;
+    margin-left: 5px;
+    color:#72bb53;">BETA</font></sup>
+  </div>
+        <div ng-show="page" class="cmpnamediv" style="    background-color: white !important;left:-10px !important;"><span data-placement="bottom" title="Stockarea" style="font-size:medium;" onmouseenter="$(this).tooltip('show')">{{StockareaName}}</span>
+          <span data-placement="bottom" title="Product Name" onmouseenter="$(this).tooltip('show')" class="stockname" style="font-size:1.2vw;" ng-show="productName">{{" - "+ productName}}</span></div>
+      </div>
+      <div class="avatarleftdiv">
+        <div style="float:left;/* margin-top: -7px; */">
+          <div class="dropdown" style="bottom:7px;width:33px;">
+            <div data-toggle="dropdown" class="dropdown-toggle">
+              <i style="font-size: 26px;color:grey" class="fa fa-question" aria-hidden="true"></i>
+            </div>
+            <div class="dropdown-menu" style="
+      z-index: 22;
+      margin-left:-100px;
+      margin-top:10px;
+      position: absolute;
+background-color: #f9f9f9;
+min-width: 300px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  ">
+              <a style="padding:10px;cursor: pointer;color:#4c81bf;text-decoration:none;font-size:20px;">help</a><br><br>
+              <a style="padding:10px;cursor: pointer;color:#8e8b8b;text-decoration:none;">Sometimes you just need a little help.</a><br><br>
+              <a style="padding:10px;cursor: pointer;color:#8e8b8b;text-decoration:none;"ng-click="messagetohelp()">message us at help@virtualgodown</a><br><br>
+              <a style="padding:10px;cursor: pointer;color:#4c81bf;text-decoration:none;"></a><br><br>
+            </div>
+          </div>
+          <div class="dropdown" style="bottom:7px;width:55px;">
+          <div data-toggle="dropdown" class="animated notification show-count dropdown-toggle" data-count="{{value}}" aria-expanded="true" value="value" style="
+              width: 40px;
+              height: 36px;
+              margin-top: 10px;
+"></div>
+<div ng-show="notification.length>0" class="dropdown-menu" id="notification" style="
+z-index: 22;
+width:634%
+">
+
+  <div ng-show="notification.length>0" ng-repeat=" x in notification" style="padding:10px;cursor:pointer"  ng-click="updatenotification(x._id,x.receiptentOrganisationId.stockareaId,x.receiptentOrganisationId.productId,x.type)">
+    <div style="width:10%;height:30px;display:inline-block;">
+      <div ng-if="x.img" style="height:100%;width:100%"></div>
+      <i class="fa fa-sitemap" ng-if="!x.img" aria-hidden="true" style="height:100%;width:100%"></i>
+    </div>
+    <div style="width:80%;height:30px;word-wrap: break-word;display:inline-block">
+      {{x.message}}
+    </div>
+</div>
+<div ng-show="notification.length == 0"style="padding:10px;cursor:pointer">
+
+  <center style="width:80%;height:30px;word-wrap: break-word;display:inline-block;padding:20px;">
+<font> No notifications to show</font>
+  </center>
+</div>
+</div>
+</div>
+          <div class="dropdown" style="bottom:7px;width:50px;">
+            <div data-toggle="dropdown" class="dropdown-toggle" style="width:50px">
+              <i style="font-size: 26px;color:grey" class="fa fa-cog" aria-hidden="true"></i>
+            </div>
+            <div class="dropdown-menu" style="
+      z-index: 22;
+      margin-left:-100px;
+      position: absolute;
+background-color: #f9f9f9;
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  ">
+              <div style="cursor: pointer;width:100%;height:40px;color:#8e8b8b;text-decoration:none;" class="optionhover" ng-click="settings()"><font style="margin-left: 10px;vertical-align: -webkit-baseline-middle;">Settings</font></div>
+              <div style="cursor: pointer;width:100%;height:40px;color:#8e8b8b;text-decoration:none;" class="optionhover" ng-click="faq()"><font style="margin-left: 10px;vertical-align: -webkit-baseline-middle;">FAQ</font></div>
+              <div style="cursor: pointer;width:100%;height:40px;color:#8e8b8b;text-decoration:none;" class="optionhover" ng-click="logout()"><font style="margin-left: 10px;vertical-align: -webkit-baseline-middle;">Logout</font></div>
+            </div>
+          </div>
+        </div>
+        <div style="
+  float:right;height: -webkit-fill-available;">
+          <div class="profilepicdiv" class="floatleft"><img src={{profilePic}} class="avatarimg"></div>
+          <div class="dropdowndivleft">
+            <div class="dropdown">
+              <div class="dropbtn" style="margin-top:-10px;" ng-class="{namemarginclass :orgstatus==201}">
+                <font>{{fullName}}
+                </font><br>
+                    <font size="2" ng-hide="orgstatus==201">{{orgname}}</font>
+                    <i ng-show="org.length>1" style="color:#4c81bf" class="fa fa-chevron-down" aria-hidden="true"></i>
+                    <i ng-show="org.length<1" style="color:#eeeeee" class="fa fa-chevron-down" aria-hidden="true"></i>
+              </div>
+              <div class="dropdown-content" ng-show="org.length>1" style="width:200px;margin-right:10px;height:250px;overflow-y:hidden;overflow-x:hidden;">
+                <input type="text" ng-model="test1" class="productlistsearchbarinput" style="width:190px !important;margin-left:5px;margin-top:5px;border:none;" placeholder="Search organisations" autocomplete="off">
+                <div class="scrollbar" id="style-4" style="height:230px;width:200px;overflow-x:hidden;">
+
+                  <a ng-repeat="x in org | filter : test1" style="cursor: pointer;" ng-hide="orgname==x.organisationId.organisationId" ng-click="changeorg(x.organisationId._id)">{{x.organisationId.organisationId}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="background:#4c81bf;
+      border-bottom: #eee;
+      border-bottom-width: thin;
+      border-bottom-style: inset;" ng-hide="access" class="headertab ng-scope">
+    <div ng-show="!loading" style="position: relative;">
+      <div class="loginheaderlogodiv"><a ui-sref="home"><img src="{{domainUrl}}assets/img/white.png" class="headerlogoimg"><font class="headerlogoimg" style="color: white;font-size:1vw;">VIRTUALGODOWN</font></a>
+
+        <div ng-show="page" class="cmpnamediv" style="    background-color: white !important;
+      left: 10px;"><span data-placement="bottom" title="Stockarea" onmouseenter="$(this).tooltip('show')" style="font-size:1.2vw; !important">{{StockareaName}}</span><span data-placement="bottom" title="Product Name" onmouseenter="$(this).tooltip('show')" ng-show="productName"
+            style="font-size:medium;">{{" - "+ productName}}</span></div>
+      </div>
+      <div style="margin-top8px;" class="avatarleftdiv">
+        <button ng-sref="login" ng-click="login()" href="{{domainUrl}}login" style="
+    position: relative;
+    margin: 10px;
+    /* height: 50px; */
+    /* min-width: 100px; */
+    padding: 5px;
+    /* border-radius: 4px; */
+  width:70px;
+    border: 1px;
+    color: #4c81bf;
+    background-color:white ;
+  ">Login</button> or
+        <button ng-click="signup()" href="{{domainUrl}}signUp" ng-sref="signUp" style="
+  position: relative;
+  margin: 10px;
+  /* height: 70px; */
+  /* min-width: 100px; */
+  padding: 5px;
+  /* border-radius: 4px; */
+  width:70px;
+  border: 1px;
+  color: white;
+  background-color: #42b72a;
+  ">Signup</button>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+<!-- Including header -->
+<div ng-init="init()">
+  <div ng-show="loading"><div class="loaderrCSS"></div>
+  <img class="loaderimg" src="{{domainURL}}assets/img/unnamed.png"></div>
+  <div ng-show="!loading" style="position: relative;">
+    <nav class="navbar navbar-default header_bar" style="margin-bottom:0px !important; background-color:#4c81bf;">
+
+ <div class="navbar-header">
+   <div class="tabgroup" ng-init="tab=1;selectedtabname='Map'">
+     <div class="tab" onclick="openNav()" ><li class="fa fa-bars" style="color:white"></li></div>
+     <div class="tab selected" onclick="openNav()" >{{selectedtabname}}</div>
+</div>
+</div>
+<div style="float: right;margin-right: 45px;margin-top: 24px;" style="float:right;">
+  <input style="
+font-weight: 400 !important;
+" ng-show="orgstatus==201" class="loginButton" type="submit" value="Make it as organisation" ng-click="createorg()" class="btn btn-block singinButton inputMaxWidth">
+</div>
+</nav>
+<script>
+function openNav() {
+   document.getElementById("mySidenav").style.width = "20%";
+}
+/* Close/hide the sidenav */
+function closeNav() {
+   document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+    <div class="sidenav"  id="mySidenav" ng-init="tab=1">
+      <a class="closebtn" onclick="closeNav()">×</a>
+      <!--<input type="text" class="tab" style="width: 100%;height: 30px;float:left;font-size:14px;font-family: FontAwesome, sans-serif;padding-left:10px;border-bottom-style:solid;border-bottom-width:1px;" ng-model="msearch" placeholder="&#xF002;  search topics">-->
+      <div class="tab" style="width:100%" ng-class="{selected: tab==1}" ng-click="tab = 1;selectedtabname='Map';resetMapInfo();highlightcollabrator=null;" onclick="closeNav()">Map</div><br>
+      <div class="tab" style="width:100%" ng-class="{selected: tab==5}" ng-click="tab = 5;highlightcollabrator=null;govg();selectedtabname='Assets'" onclick="closeNav()">Assets</div><br>
+      <div class="tab"  style="width:100%" ng-class="{selected: tab==7}" ng-click="tab = 7;selectedtabname='Network'" onclick="closeNav()">Network</div><br>
+      <div class="tab"  style="width:100%"ng-class="{selected: tab==6}" ng-click="tab = 6;updatenotification();selectedtabname='Settings'" onclick="closeNav()">Settings</div><br>
+
+    </div>
+
+        <div class="middlesection" id="middlesection">
+
+      <div id="maindiv" class="maindiv">
+        <div ng-show="!loading" id="mainsection" style="position: relative;height: 522px;">
+          <div class="tabcontents" ng-show="tab == 1">
+            <div ng-show="trade" id="tradeinfo" class="tradeinfo behind">
+              <div class="tradeinfoheading"><b><div id="tradeinfoStockareaName"></div>
+</b></div>
+              <!--<div id="tradeinfoCost">Cost 15$ per KG</div>-->
+              <div id="tradeinfoDistance"></div>
+              <div id="tradeinfoPhoneNo"></div>
+              <div id="tradeinfoViewProfile"></div>
+              <!--<div id="tradeinfoTime">Time 125Mins</div>-->
+
+            </div>
+            <div>
+
+
+              <div id="map" class="mapdiv">
+              </div>
+            </div>
+          </div>
+          <div class="tabcontents" ng-show="tab == 7">
+            <div style="height:53px;">
+              <div style="float:right;margin-top:15px;margin-right:10px;">
+                <button style="/* margin: 10px; */height: 37px;margin-top: -8px;" ng-disabled="!productId || stockareatype==1005"  ng-class="{bggrey : !productId || stockareatype==1005}" ng-click="addcollabrator()" class="addtostockareabutton">Add collaborator</button>
+              </div>
+            </div>
+            <div  style="
+border-top-style: solid;
+border-width: 1px;
+width:100%;
+border-color: #eeeeee;
+" >
+              <center ng-if="organisationinfo.collabrators.length==0 || !organisationinfo.collabrators || !organisationinfo.collabrators.length || !organisationinfo">
+                <div style="border-style:solid;border-color:#eeeeee;width:70%;height:70px;margin-top:15%;">
+                  <div style="margin-top:22px;">
+                    <font style="color: #dcdada;">You are not added any collabrators to your business network</font>
+                  </div>
+                </div>
+              </center>
+              <div style="">
+                <div ng-repeat="x in collabratorsinfo" ng-class="{highlightcollabrator: highlightcollabrator==x.productstockId.stockareaId._id}" style="height:70px;border-bottom-style: solid;
+                                          border-width: 1px;
+                                          border-color: #eeeeee;">
+                                        <div style="height:50px;top: 20%;
+                    bottom: 20%;
+                    width:90%; margin: 0 auto;
+                    color:#4c81bf;
+                    position: relative;
+                " >
+                <i class="fa fa-globe" ng-if="x.productstockId.stockareaId.visiblity==1003" style="color:#4c81bf" aria-hidden="true"></i>
+                <i class="fa fa-users" ng-if="x.productstockId.stockareaId.visiblity==1004" style="color:#4c81bf" aria-hidden="true"></i>
+                <i class="fa fa-user" ng-if="x.productstockId.stockareaId.visiblity==1005" style="color:#4c81bf" aria-hidden="true"></i>
+                                          {{x.productstockId.stockareaId.stockareaName}}
+                                          <font ng-show="x.status[x.status.length-1].type=='pending' && x.status[x.status.length-1].initiator.stockareaId._id==stockareaId" color="#f0c103">&nbsp[PENDING]</font>
+                                          <font ng-show="x.status[x.status.length-1].type=='declined'" color="red">&nbsp[DECLINED]</font>
+                                          <font ng-show="x.status[x.status.length-1].type=='active'" color="darkgrey">&nbsp[CONNECTED]</font>
+                                            <button ng-show="x.status[x.status.length-1].type == 'active'" ddc ng-click="deletecollabrator(x.productstockId.stockareaId._id)" style=" background-color:red;float:right;width:85px; border:0;border-radius:5px">
+                                      <font color="white">Disconnect</font>
+                                    </button>
+                                        <button ng-show="x.status[x.status.length-1].type=='pending' && x.status[x.status.length-1].initiator.stockareaId._id!==stockareaId" style=" background-color:red;float:right;width:85px;margin-right:10px; border:0;border-radius:5px" ddc ng-click="ignore(x.status[x.status.length-1].token)"><font color="white">Ignore</font></button>
+                                        <button ng-show="x.status[x.status.length-1].type=='pending' && x.status[x.status.length-1].initiator.stockareaId._id!==stockareaId" style=" background-color:#72bb53;float:right;width:85px; border:0;margin-right:6px;border-radius:5px" ddc ng-click="collabrator(x.status[x.status.length-1].token)"><font color="white">Accept</font></button>
+                </br><font color="#808080" face="cambria">  {{x.productstockId.stockareaId.organisationId.organisationName}}</font>
+</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tabcontents" style="
+border-top-style: solid;
+border-top-width: thin;
+overflow:initial;
+border-top-color: #eeeeee;
+" ng-show="tab == 5">
+
+            <div class="searchresultdiv" style="height: 358px;overflow: initial;width:10%;margin-left:25px;margin-top:80px;float:left;">
+
+              <button type="button" style="
+      width:7.5vw;
+      height:2vw;
+      border:none;
+      background: #4c81bf;
+" ng-click="createproduct()" value="ADD"><font style="color:white">create</font></button>
+              <div style="margin-top:10px;" ng-click="leftab1()">
+                <a href="" ng-class="{selectedmenu: leftab == 1}" style="
+    font-size: 1vw;font-weight:600;    color: #c1c1c1;text-decoration:none;
+
+">virtualgodown</a>
+              </div>
+              <!--      <div style="
+    margin-top: 10px;
+" ng-click="leftab2()">
+                <a href="" ng-class="{selectedmenu: leftab == 2}" style="
+    font-size: 14px;font-weight:600;color: #c1c1c1;
+">owned by me</a>
+              </div>-->
+              <div style="
+    margin-top: 10px;
+" ng-click="leftab3()">
+                <a href="" ng-class="{selectedmenu:  leftab == 3}" style="
+    font-size: 1vw;font-weight:600;color: #c1c1c1;text-decoration:none;
+">MyAssets</a>
+              </div>
+              <div style="
+    margin-top: 10px;
+  " ng-click="leftab4()">
+                <a href="" ng-class="{selectedmenu:  leftab == 4}" style="
+    font-size: 1vw;font-weight:600;color: #c1c1c1;text-decoration:none;
+  ">MyStockarea</a>
+              </div>
+            </div>
+            <div ui-view>
+            </div>
+            <!--  <div ng-controller="virtualgodownhomeController" ng-include="'{{domainUrl}}views/dashboard/user-header.html'"></div>
+            <div ng-show="leftab==2" ng-controller="stockareahomeController" ng-include="'{{domainUrl}}views/dashboard/user-header.html'"></div>
+            <div ng-show="leftab==3" ng-controller="ownedbymeController" ng-include="'{{domainUrl}}views/dashboard/user-header.html'"></div>
+-->
+          </div>
+
+          <div class="tabcontents" ng-show="tab == 6" style="overflow:initial;">
+            <div class="mainsectionsettings">
+              <div id="left" style="float:left; width: 20%;margin-top:50px;">
+                <div style="display: table-cell;min-width: 100px !important;position: relative;" ng-init="stab=1">
+                  <div style="float: left;margin-left:15px;margin-top:10px;" ng-class="{settingselected: stab==1}" ng-click="stab = 1">
+                    <font style=" font-size: 1vw;font-weight:500;color: #222;text-decoration:none; " ng-class="{settingselected: stab==1}">Notification</font>
+                  </div><br>
+                  <div style="float: left;margin-left:15px;margin-top:10px;" ng-class="{settingselected: stab==2}" ng-click="stab = 2; viewstockarea()">
+                    <font style=" font-size: 1vw;font-weight:500;color: #222;text-decoration:none; " ng-class="{settingselected: stab==2}">EditStockarea</font>
+                  </div><br>
+                  <div style="float: left;margin-left:15px;margin-top:10px;" ng-class="{settingselected: stab==3}" ng-click="stab = 3">
+                    <font style=" font-size: 1vw;font-weight:500;color: #222;text-decoration:none;" ng-class="{settingselected: stab==3}">RemoveProduct</font>
+                  </div><br>
+                  <div style="float: left;margin-left:15px;margin-top:10px;" ng-class="{settingselected: stab==4}" ng-click="stab = 4">
+                    <font style=" font-size: 1vw;font-weight:500;color: #222;text-decoration:none; " ng-class="{settingselected: stab==4}">DeleteStockarea</font>
+                  </div><br>
+                </div>
+              </div>
+
+              <div style="width:80%;border-left-style:solid;border-width:1px;border-color:#eeeeee;float:right;overflow:initial;">
+                <div style="height:53px;">
+                  <ul ng-if="stab==2" ng-init="stockareasubtab1()" class="list-inline" style="
+                height: 31px;
+                width:80%;
+                margin-left:10px;
+                /* background: rgb(241, 241, 241); */
+                border-color: rgb(241, 241, 241);
+                ">
+                <li style="margin-top:26.5px;"><a style="text-decoration: none;cursor: pointer;" ng-click="stockareasubtab1()" ng-class="{selected2: stockareasubtab==1}">Location</a></li>
+                <li style="margin-top:26.5px;"><a style="text-decoration: none;cursor: pointer;" ng-click="stockareasubtab4()" ng-class="{selected2: stockareasubtab==4}">Visibility</a></li>
+                    <li style="margin-top:26.5px;"><a style="text-decoration: none;cursor: pointer;" ng-click="stockareasubtab2()" ng-class="{selected2: stockareasubtab==2}">Email</a></li>
+                    <li style="margin-top:26.5px;"><a style="text-decoration: none;cursor: pointer;" ng-click="stockareasubtab3()" ng-class="{selected2: stockareasubtab==3}">Mobile</a></li>
+                  </ul>
+                </div>
+                <div id="settingdiv" class="scrollbar style-4">
+                  <div ng-show="stab==1" style="
+    border-top-style: solid;
+    border-width: 1px;
+    width:100%;
+    border-color: #eeeeee;
+" >
+                    <center ng-if="allnotification.length==0 || !allnotification || !allnotification.length">
+                      <div style="border-style:solid;border-color:#eeeeee;width:70%;height:70px;margin-top:15%;">
+                        <div style="margin-top:22px;">
+                          <font style="color: #dcdada;">You don't have notifications</font>
+                        </div>
+                      </div>
+                    </center>
+                    <div style="">
+                      <div ng-show="allnotification.length>0" ng-repeat=" x in allnotification" style="height:70px;border-bottom-style: solid;
+                                                border-width: 1px;
+                                                border-color: #eeeeee;">
+
+                                              <div style="height:50px;top: 20%;
+                          bottom: 20%;
+                          width:90%; margin: 0 auto;
+                          color:#4c81bf;
+                          position: relative;
+                      " >
+                      <div style="width:10%;height:30px;display:inline-block;">
+                        <div ng-if="x.img" style="height:100%;width:100%"></div>
+                        <i class="fa fa-sitemap" ng-if="!x.img" aria-hidden="true" style="height:100%;width:100%"></i>
+                      </div>
+
+
+                          <div style="width:80%;word-wrap: break-word;display:inline-block" ng-class="{blackfont:x.status==200}">
+                            {{x.message}}
+                          </div>
+      </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div ng-show="stab==2" style="
+    border-top-style: solid;
+    border-width: 1px;
+    border-color: #eeeeee;
+">
+                    <div style="top: 1px;overflow-y: inherit;">
+                      <div class="tabcontents1" style="overflow:hidden;" ng-show="stockareasubtab == 1">
+                        <div class="row" style="
+                  margin: auto;
+                  width: 500px;
+                  margin-left:-10px;
+                  margin-top: 10px;
+                  ">
+                          <div style="margin: 20px;">
+
+                            <div class="form-group">change your stockarea on Map</div>
+
+                            <div height="40px">
+                              <div style="height:30px;">
+                                <input id="searchmap" ng-hide="view" style="
+                  border-style: solid;
+                  border-width: 1px;
+                  margin-left: 0px;
+                  width: 460px!important;
+                  border-color: #cccfd2 !important;
+                  " class="controls searchAddressMap" type="text" placeholder="Search Box">
+                              </div>
+                              <div id="map2" style="margin-bottom: 20px;width: 100%;height: 250px;"> </div>
+
+                            </div>
+                            <div style="height:50px">
+                              <div class="form-group">
+                                <input type="text" ng-change="latc()" ng-keyup="latc()" style="      float: left;width: 50%;  pointer-events: none; box-shadow: none;" id="latitude" ng-model="latitude" name="latitude" class="form-control input-sm loginInput inputMaxWidth ng-pristine ng-untouched ng-invalid ng-invalid-required"
+                                  placeholder="latitude" required-message="'Yo! This field is required..'">
+                              </div>
+                              <div class="form-group">
+                                <input ng-change="lonc()" ng-keyup="lonc()" style="      float: left;width: 50%;  pointer-events: none; box-shadow: none;" type="text" id="longitude" ng-model="longitude" name="longitude" class="form-control input-sm loginInput inputMaxWidth ng-pristine ng-untouched ng-invalid ng-invalid-required"
+                                  placeholder="longitude" required-message="'Yo! This field is required..'">
+                              </div>
+                            </div>
+                            <div ng-hide="view">
+                              <button class="addtostockareabutton" ddc ng-click="updatestockarea()" style="cursor: pointer;float: left; letter-spacing:0px; margin-left: 10px;position: relative;padding-bottom: 7px;padding-top: 7px;" value="save">Save</button>
+                              <button class="addtostockareabutton" ng-click="viewstockarea(stockareaId)" style="cursor: pointer;float: left; letter-spacing:0px; margin-left: 10px;position: relative;padding-bottom: 7px;padding-top: 7px;" value="save">Cancel</button>
+                            </div>
+                            <input ng-show="view" class="loginButton" type="submit" value="Edit" ng-click="editStockarea(stockareaId)" style="font-weight: !important" class="btn btn-block singinButton inputMaxWidth">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tabcontents1" style="overflow:hidden;" ng-show="stockareasubtab == 4">
+<center style="width:80%;display:inline-block">
+  <div id="visib" class="dropdown" style="margin-top:20px">
+  <button class="btn btn-primary dropdown-toggle" style="float:left;width:200px;"  ng-model="$parent.selectedproductvisiblity" type="button" data-toggle="dropdown">{{selectedproductvisiblityvalue}}
+  <span class="caret" style="
+    float:  right;
+    margin-top: 8px;
+"></span></button><br>
+  <ul class="dropdown-menu" style="position:absolute;">
+    <li ng-repeat="x in stockareatypes" ng-hide="selectedproductvisiblity==x._id" ng-click="changeproductvisiblity(x._id,x.desc)"><a>{{x.desc}}</a></li>
+  </ul>
+</div>
+</center>
+<br>
+<br>
+<div style="margin-left:20%;margin-right:20%;" ng-show="selectedproductvisiblity==1003"><li class="fa globe"></li>
+<br>
+Your stockarea location and details are visible to any one for the products you have added in your stockarea.
+<br>
+Generally people you this in case you don't mind who the buyer is.</div>
+<div style="margin-left:20%;margin-right:20%;" ng-show="selectedproductvisiblity==1004"><li class="fa users"></li>
+<br>
+Your stockarea presence is visible to any one but stockarea's details are visible only to closed network with whom you are collaborating for the products you have added in your stockarea.
+<br>
+Generally people you this in case you sell your products only to selected people.</div>
+<div ng-show="selectedproductvisiblity==1005" style="margin-left:20%;margin-right:20%;"><li class="fa user"></li>
+<br>
+Your stockarea is not visible to any one except you.
+<br>
+Generally people you this in case you maintain your stockarea for internal purpose.</div>
+<br>
+<br>
+<center style="width:80%">
+<input ng-show="selectedproductvisiblity==1003" ng-if="selectedproductvisiblity!=stockareatype" class="loginButton" type="submit" value="Update" style="float:right;color:white;width:auto;font-weight:500!important" class="btn btn-sm" ng-click="updatestockareavisiblity()" class="btn btn-block singinButton inputMaxWidth">
+<input ng-show="selectedproductvisiblity==1004" ng-if="selectedproductvisiblity!=stockareatype" class="loginButton" type="submit" value="Update" style="float:right;background:orange;color:white;width:auto;font-weight:500!important" class="btn btn-sm" ng-click="updatestockareavisiblity()" class="btn btn-block singinButton inputMaxWidth">
+<input ng-show="selectedproductvisiblity==1005" ng-if="selectedproductvisiblity!=stockareatype" class="loginButton" type="submit" value="Update" style="float:right;background:red;color:white;width:auto;font-weight:500!important" class="btn btn-sm" ng-click="updatestockareavisiblity()" class="btn btn-block singinButton inputMaxWidth">
+</center>
+                      </div>
+                      <div class="tabcontents1" style="overflow:hidden;" ng-show="stockareasubtab == 2">
+                        <div ng-show="!newsa">
+                          <div style="=margin:;padding: 10px;    width: 85%;
+                  ">Email</div>
+                          <div ng-repeat="y in stockareaemails" style="=margin:;padding: 10px;     width:73%;
+                  /* font-weight: 600; */">
+                            <div style="
+                  border: 1px solid #ccc;
+                  padding: 10px;    width: 412px;
+                  ">{{y.email}}
+                              <button ng-show="y.email==stockareaemail" style=" background-color:#72bb53; border:0"><font color="white">primary</font></button>
+                              <i class="fa fa-check" ng-show="y.status=='verified'" title="verified" style="
+                  color: #72bb53; float:right;
+                  " aria-hidden="true" style="margin-right: 10px;
+                  "></i>
+                              <i class="fa fa-check" ng-show="y.status=='unverified'" ddc ng-click="verify(y.email)" title="verify" style="
+                  color: #a9acaf;float:right;
+                  " aria-hidden="true"></i>&nbsp;
+                              <i class="fa fa-trash-o" ng-show="y.email!==stockareaemail" title="delete" ddc ng-click="deleteemailstockarea(y.email)" style="
+                  color: #a9acaf;float:right;margin-right:10px;
+                  " ng-mouseover="hoverActive=true" ng-mouseleave="hoverActive=false" ng-style="hoverActive ? {'color':'red'} : {}" aria-hidden="true"></i>
+                            </div>
+
+                          </div>
+                          <form role="form" name="myForm" angular-validator-submit="addnewmailstockarea()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-angular-validator " novalidate="" angular-validator="">
+                            <!--form-horizontal-->
+
+                            <div class="row" style="=margin:;padding: 10px;     width: 85%;
+                  /* font-weight: 600; */">
+                              <div style="
+                  /* border: 1px solid #ccc; */
+                  padding: 10px;
+                  margin-left:10px;
+                  ">Add Email address</div>
+                              <div class="input-group" style="padding: 10px;     width: 85%;
+                  ">
+                                <table>
+                                  <tr>
+                                    <td>
+                                      <input type="text" autocomplete="off" size="72" ng-model="stockareaemailnew" style="padding: 5px; letter-spacing:0px; margin-left: 10px;width: 400px;height: 35px !important;" name="email">
+                                    </td>
+                                    <td>
+                                      <input type="submit" class="addtostockareabutton" style="cursor: pointer;float: left; letter-spacing:0px; margin-left: 10px;position: relative;padding-bottom: 7px;padding-top: 7px;" value="save">
+                                    </td>
+                                  </tr>
+                                </table>
+                              </div>
+
+                            </div>
+                          </form>
+                          <div ng-show="stockareaemails!==null" style="=margin:;padding: 10px;    width:  width: 85%;
+                  /* font-weight: 600; */">
+                            <div style="
+                  /* border: 1px solid #ccc; */
+                  padding: 10px;
+                  ">Primary Email Address</div>
+                            <div style="
+                  padding: 10px;
+                  ">This email address will be always public which will be used for sending notification</div>
+
+                            <div class="input-group" style="
+                  padding: 8px;
+
+                  ">
+                              <table>
+                                <tr>
+                                  <td>
+                                    <select id="bloc1" style="width: 400px; height:35px; margin-top:10px" class="form-control dropdown-header dropdown-menu selectpicker" ng-model="stockareaemailp" ng-options="option.email as option.email for option in stockareaemails" name="unit" id="unit"></label>
+                  </select>
+                                  </td>
+                                  <td>
+                                    <div id="bloc2" class="addtostockareabutton" style="cursor: pointer;float: left;margin-left: 10px;margin-top: 10px;position: relative;padding-bottom: 7px;padding-top: 7px;" ddc ng-click="addprimarystockarea()">save</div>
+                                  </td>
+                                </tr>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <div ng-show="newsa" style="
+                  width: 515px;
+                  margin-left: 10px;
+                  padding: 50px;
+                  border-style: groove;
+                  border-color: rgba(186, 190, 193, 0.12);
+                  ">
+                          <center>please select a stockarea</center>
+                        </div>
+                      </div>
+
+                      <div class="tabcontents1" style="overflow:hidden;" ng-show="stockareasubtab == 3">
+                        <div ng-show="!newsa">
+                          <div style="=margin:;padding: 10px;    width: 400px;
+                  ">Mobile Number</div>
+                          <div ng-repeat="x in stockareamobiles" style="=margin:;padding: 10px;    width: 85%;
+                  /* font-weight: 600; */">
+                            <div style="
+                  border: 1px solid #ccc;
+                  padding: 10px;    width: 412px;
+                  ">{{x.code}}{{x.mobile}}
+                              <button ng-show="x.mobile==stockareamobile" style=" background-color:#72bb53; border:0"><font color="white">primary</font></button>
+                              <i class="fa fa-check" ng-show="x.status=='verified'" title="verified" style="
+                  color: #72bb53; float:right;
+                  " aria-hidden="true" style="margin-right: 10px;
+                  "></i>
+                              <i class="fa fa-check" ng-show="x.status=='unverified'" ng-click="verifymobile1(x.mobile)" ddc title="verify" style="
+                  color: #a9acaf;float:right;
+                  " aria-hidden="true"></i>&nbsp;
+                              <i class="fa fa-trash-o" ng-show="x.mobile!==stockareamobile" title="delete" ddc ng-click="deletemobilestockarea(x.mobile)" style="
+                  color: #a9acaf;float:right;margin-right:10px;
+                  " ng-mouseover="hoverActive=true" ng-mouseleave="hoverActive=false" ng-style="hoverActive ? {'color':'red'} : {}" aria-hidden="true"></i>
+                            </div>
+
+                          </div>
+                          <div ng-show="otp1" style="/* float: right; */margin-right: 14px;margin-left: 9px;margin-top: -3px;border-style: solid;padding: 10px;border-width: thin;border-color: #cccccc;" class="">
+                            Enter Otp:
+                            <div style="display:inline-block;/* margin-top: -62px; *//* height: 21px; */"><input type="number" ng-model="motp" name="91198" style="/* border-radius: 5px; *//* border-color: #cccccc; */height: 30px;width: 80px;" class="ng-pristine ng-untouched ng-valid ng-empty"></div>
+                            <div style="display:inline-block;margin-left: 5px;margin-top: 10px;">
+                              <button class="addtostockareabutton" style="cursor: pointer;padding: 7px;/* float: left; */width: 50px;height: 30px;letter-spacing:0px;position: relative;padding-bottom: 7px;padding-top: 7px;" ddc ng-click="submitotp1(stockareaId)">
+                  done</button></div>
+                            <div class="ng-binding" style="
+                      margin-top: -13px;
+                      margin-left: 10px;
+                      float: right;
+                      color: #72bb53;
+                  ">{{minutes1}}</div>
+                          </div>
+                          <form role="form" name="myForm" angular-validator-submit="addnewmobilestockarea()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-angular-validator " novalidate="" angular-validator="">
+                            <!--form-horizontal-->
+
+                            <div class="row" style="=margin:;padding: 10px;     width: 90%;
+                  /* font-weight: 600; */">
+                              <div style="
+                  /* border: 1px solid #ccc; */
+                  padding: 10px;
+                  margin-left:10px;
+                  ">Add Mobile Number</div>
+                              <div class="input-group" style="padding: 10px;     width: 85%;  margin-left:10px;
+                  ">
+
+                                <table>
+                                  <tr>
+                                    <td>
+                                      <select id="bloc1" ng-change="codec()" class="form-control selectpicker" style="width:100px; display:inline-block;" ng-model="code" ng-options="option.dial_code as option.name for option in codes" name="unit" id="unit"></label>
+                    </select>
+                                      <input type="text" ng-model="code" style="   border: 1px solid darkgrey; margin-left: 4px;
+                    display:inline-block;width:95px;height:34px !important;" class="inputAll" readonly>
+                                      <input type="number" autocomplete="off" size="72" ng-model="stockareamobilenew" style="padding: 5px; letter-spacing:0px;width: 200px;height: 35px !important;" name="email">
+                                    </td>
+                                    <td>
+                                      <input type="submit" class="addtostockareabutton" style="cursor: pointer;float: left; letter-spacing:0px; margin-left: 10px;position: relative;padding-bottom: 7px;padding-top: 7px;" value="save">
+                                    </td>
+                                  </tr>
+                                </table>
+
+                              </div>
+
+                            </div>
+                          </form>
+                          <div ng-show="stockareamobiles!==null" style="=margin:;padding: 10px;     width: 85%;
+                  /* font-weight: 600; */">
+                            <div style="
+                  /* border: 1px solid #ccc; */
+                  padding: 10px;
+                  ">Primary Mobile Number</div>
+                            <div style="
+                  padding: 10px;
+                  ">This Mobile Number will be always public which will be used for sending notification</div>
+
+                            <div class="input-group" style="
+                  padding: 8px;
+
+                  ">
+                              <table>
+                                <tr>
+                                  <td>
+                                    <select id="bloc1" style="width: 400px; height:35px; margin-top:10px" class="form-control dropdown-header dropdown-menu selectpicker" ng-model="stockareamobilep" ng-options="option.mobile as option.code + ' ' + option.mobile for option in stockareamobiles"
+                                      name="unit" id="unit"></label>
+                  </select>
+                                  </td>
+                                  <td>
+                                    <div id="bloc2" class="addtostockareabutton" style="cursor: pointer;float: left;margin-left: 10px;margin-top: 10px;position: relative;padding-bottom: 7px;padding-top: 7px;" ddc ng-click="addprimarymobilestockarea()">save</div>
+                                  </td>
+                                </tr>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <div ng-show="newsa" style="
+                  width: 515px;
+                  margin-left: 10px;
+                  padding: 50px;
+                  border-style: groove;
+                  border-color: rgba(186, 190, 193, 0.12);
+                  ">
+                          <center>please select a stockarea</center>
+                        </div>
+
+                      </div>
+                    </div>
+
+                  </div>
+                  <div ng-show="stab==3" style="overflow:hidden" ng-if="isAdmin==true">
+                    <center ng-show="!productId">
+                      <div style="border-style:solid;border-color:#eeeeee;width:70%;height:70px;margin-top:15%;">
+                        <div style="margin-top:22px;">
+                          <font style="color: #dcdada;">You have not added any products to your stockarea.</font>
+                        </div>
+                      </div>
+                    </center>
+                    <div style="padding:20px" ng-show="productId" class="row">
+                      <center>
+                        <font size=3>You are about to remove {{productName}} from {{stockareaName}}. Are you sure?</font>
+                      </center>
+                      <center><input class="addtostockareabutton" style="
+                      padding: 6px;
+                      margin-top:20px;
+                  " type="submit" value="confirm" ng-click="deleteproduct(productStockInfo.productId)" ddc class="btn btn-block singinButton inputMaxWidth"></center>
+                    </div>
+                  </div>
+
+                  <div ng-show="stab==4" style="overflow:hidden" ng-if="isAdmin==true">
+                    <div style="padding:20px;padding-bottom:40px" class="row">
+
+                      <center>
+                        <font size=4>Enter stockarea name to delete</font>&nbsp;&nbsp;
+                        <input type="text" style="height:30px margin-top:10px" ng-model="name" placeholder="stockarea name">
+                        <input class="addtostockareabutton" style="
+                      padding: 4px;
+                      margin-left: 10px;
+                      padding-left: 5px;
+                      padding-right: 5px;
+                  " type="submit" value="confirm" ng-click="deletestockarea(name)" ddc autocomplete="off" class="btn btn-block singinButton inputMaxWidth"></center>
+                    </div>
+                  </div>
+                  <div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+
+      </div>
+      <div class="leftsectiondiv" id="map">
+        <div class="loaderCSS" ng-show="loading1"><img src="assets/img/spin.gif" style="
+      margin-top: 150px;
+      margin-left: 100px;
+      height: 20px;
+  "> </div>
+        <div ng-show="!loading1" id="mainsection" style="position: relative;"></div>
+        <div ng-hide="loading1" class="stockdetailssectiondiv">
+
+          <div ng-hide="!products.length" class="padding10" data-placement="left" title="In Stock" onmouseenter="$(this).tooltip('show')">
+            <img src="{{domainURL}}assets/img/stock.png" style="width: 24px; margin-right: 10px;"><font ng-if>{{stockDetails}}</font><font ng-repeat="s in stockDetails" >{{s.inStock+" "+s.unit}}<font ng-hide="$last">&nbsp; , &nbsp; </font></font></div>
+          <div ng-hide="loading1" class="padding10">
+            <!--  <button ng-click="viewbuy(productStockInfo.productId,tradeSourceId)" style="width: 100%;" class="stockaredetailsbuybutton"><b>Buy @ {{tradeCost}} $ per Kg</b></button></div> -->
+            <div ng-hide="!products.length" class="padding10">
+              <button ng-click="viewsell(productStockInfo.productId)" id="sellbutton" data-placement="bottom"  ng-if="sellbutton() == 'active'" title="sell this product"  onmouseenter="$(this).tooltip('show')"style="width: 14vw;" class="stockaredetailssellbutton"><b>ADD SELL</b></button>
+              <button id="sellbutton" data-placement="bottom"  onmouseenter="$(this).tooltip('show')" ng-if="sellbutton() == 'inactivestockarea'" title="your can't sell a product from 'only-me' stockarea" class="bggrey" style="width: 15vw;color:white;border:none;" class="stockaredetailssellbutton"><b>ADD SELL</b></button>
+              <button id="sellbutton" data-placement="bottom"  onmouseenter="$(this).tooltip('show')" ng-if="sellbutton() == 'inactiveproduct'" title="you don't have access to sell this product" class="bggrey" style="width: 100%;color:white;border:none;" class="stockaredetailssellbutton"><b>ADD SELL</b></button>
+            </div>
+
+          </div>
+
+          <div ng-hide="loading1" style="width: 235px;" class="scrollbar style-4 productlistsectiondiv" id="productlistdiv">
+            <div ng-hide="!products.length" style="position: absolute;margin-top:-10%;">
+              <button style="     margin-left: 10px;
+    background-color: silver;height:1.8vw;
+    border: none; margin-left: 10px; outline: none;" ng-click="tab = 5" class="floatleft">+</button><input type="text" ng-model="test" class="productlistsearchbarinput" placeholder="Search products" autocomplete="off">
+
+            </div>
+            <div ng-hide="loading1" class="scrollbar style-4 productlistingdiv" id="productlistsectiondiv" style="width:18vw !important;height:21vw !important">
+              <div ng-show="!products.length"> You have not added any products to <span data-placement="bottom" title="Stockarea" onmouseenter="$(this).tooltip('show')">{{stockareaName}}</span>
+                <div> <button class="addProductBtn" ng-click="tab = 5">+ ADD ONE HERE</button></div>
+              </div>
+
+              <div ng-repeat="x in products | filter : test" style="padding: 5px;">
+                <div class="list">
+                  <div style="display: inline-block;width:90%;max-height:10px;">
+                    <input ng-checked="x.checked" type="radio" ng-click="selectProductFn(x.productId.productId,x.stockareaId)" name="product">
+                    <a style="padding-left: 10px;text-decoration: none;" class="area{{x.productId.type}}" ng-click="selectProductFn(x.productId.productId,x.stockareaId)">{{x.productId.productName}}<i class="fa fa-check" style="margin-top:5px;margin-left:10px;color:#72bb53" ng-show="x.productId.type!=1000 && x.productId.createdBy==userId" style="
+                              color: #72bb53; float:right; position: relative;"></i></a>
+                  </div>
+                  <div class="listico dropdown">
+                    <i style="color:#c1c1c1;border:none !important;background:none !important;" class="fa fa-ellipsis-v dropdown-toggle" id="menu1" data-toggle="dropdown" aria-hidden="true"></i>
+                    <ul class="dropdown-menu" style="margin-left:-63px;min-width:80px;" role="menu" aria-labelledby="menu1">
+                      <li role="presentation"><a role="menuitem" tabindex="-1"  ng-click="viewProductFn(x.productId.productId,x.stockareaId)">view</a></li>
+                      <li role="presentation"><a ng-show="x.productId.type!=1000 && x.productId.ownerId==userId" ng-click="editproduct(x.productId._id)" role="menuitem" tabindex="-1" >edit</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scrollmenu" id="scroll">
+      <div class="addProductBtn" style="cursor: pointer;float: left;left: -7px;margin-top: 4px;position: relative;     float: left;
+    left: -7px;
+    display: inline-block;
+    text-align: center;
+    padding: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 10px;
+    margin-left: 18px;
+    position: relative;" ng-click="addStockarea()">+ ADD STOCKAREA</div>
+      <a ng-repeat="x in stockarea" ng-click="selectStockarea(x.stockareaId,x.stockareaName,x.visiblity)" id={{x.stockareaId}} name={{x.stockareaName}} ng-class="x.selected ? 'stockareafooterbuttontexttrue' : 'stockareafooterbuttontext'">
+        <i class="fa fa-globe" ng-if="x.visiblity==1003" style="color:white" aria-hidden="true"></i>
+        <i class="fa fa-users" ng-if="x.visiblity==1004" style="color:white" aria-hidden="true"></i>
+        <i class="fa fa-user" ng-if="x.visiblity==1005" style="color:white" aria-hidden="true"></i>
+        {{x.stockareaName}}</a>
+    </div>
+  </div>
+</div>
+
+<script>
+$('body').on("click", ".dropdown-menu", function (e) {
+    $(this).parent().is(".open") && e.stopPropagation();
+});
+</script>
+<div ng-controller="messagecontroller" ng-if="userId">
+        <div style="
+">
+            <button class="btn btn-md" style="
+position: fixed;
+bottom: 0;
+right: 10px;
+padding: 1em 3em;
+background-color: #4c81bf;
+color:white;
+border: 0;
+z-index:22;
+border-top-left-radius: .5em;
+border-top-right-radius: .5em;
+font-family: sans-serif;
+letter-spacing: 1px;
+text-transform: uppercase;
+text-align: center;
+text-decoration: none;
+cursor: pointer;
+cursor: hand;
+transition: all .3s ease" ng-click="showmessages()" id="addClass"><i style="color:white;margin-right:5px" class="fa fa-envelope" aria-hidden="true"></i>
+message<font ng-if="newmessages>1">( {{newmessages}} )</font></button>
+            </div>
+
+<div class="popup-box chat-popup" style="width:40%;right:0;height:100%;z-index:22;" id="qnimate">
+    <div class="popup-head" style="height:5%">
+      <input type="text" style="width: 87%;height: 30px;border: none;margin-top: 13px;background: white;font-size:14px;font-family: FontAwesome, sans-serif;padding-left:10px;border-bottom-style:solid;border-bottom-width:1px;" ng-model="msearch" placeholder="&#xF002;  search messages">
+        <div class="popup-head-right pull-right">
+            <button data-widget="remove" id="removeClass"style="background:white;border:none;" ng-click="close()" class="pull-right" type="button"><i class="fa fa-times"></i>
+            </button>
+        </div>
+    </div>
+    <div class="popup-messages style-4" id="messagebox" ng-init="down()" style="height:80%;">
+        <div class="direct-chat-messages">
+            <!-- Message. Default to the left -->
+            <div class="direct-chat-msg doted-border" ng-repeat="x in messages | filter : msearch" >
+              <div class="direct-chat-info clearfix" ng-if="x.initiator._id !== userId">
+                <span class="direct-chat-name pull-left" style="color:#4c81bf;"><font>from {{x.initiator.Id}}</font>  <font style="color:#c1c1c1">{{x.initiator.Id}}@{{x.initiatorOrganisation.organisationId}}</font></span>
+              </div>
+              <div class="direct-chat-info clearfix" ng-if="x.initiator._id == userId">
+                <span class="direct-chat-name pull-left" style="color:#4c81bf"><font>to {{x.receiptent[0].userId.fullName}}</font> <font style="color:#c1c1c1">{{x.receiptent[0].userId.mailId}}</font></span>
+              </div>
+              <!-- /.direct-chat-info -->
+              <img alt="message user image" ng-if="x.initiator._id !== userId" style="height:25px;width:25px;" src={{x.initiator.profilePic}} class="direct-chat-img">
+              <img alt="message user image" ng-if="x.initiator._id == userId" style="height:25px;width:25px;" src={{x.receiptent[0].userId.profilePic}} class="direct-chat-img">
+              <!-- /.direct-chat-img -->
+                <div class="direct-chat-text">
+                  <font style="color:#777">{{x.message}}</font>
+                </div>
+                <div class="direct-chat-info clearfix">
+                    <span class="direct-chat-timestamp pull-right" style="color:black">
+                      <font style="color:#777">{{parsedate(x.createdOn)}}</font></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup-messages-footer style-4" id="inputmessagebox" style="height: auto;max-height: 50%;overflow:auto;">
+      <center>
+        <input type="text" id="messageautocompletesearch" style="width:100%;padding-left:5px;position:fixed;left:60%;" ng-model="tosearch" ng-change="userautocomplete()" placeholder="To">
+<textarea autogrow  placeholder="Type message here"  ng-model="textmessage" style="min-height:150px;padding-top:25px;" class="form-control"></textarea>
+<button class="btn btn-sm" style="
+position: fixed;
+bottom: 0;
+right: 10px;
+padding: 1em 1.5em;
+background-color: #4c81bf;
+color:white;
+border-radius:50%;
+border: 0;
+z-index:22;
+text-align: center;
+text-decoration: none;
+cursor: pointer;" ng-click="addmessage()"><i style="color:white;font-size:15px;"  class="fa fa-arrow-up" aria-hidden="true"></i></button>
+</div>
+</center>
+    </div>
+</div>
+</div>
+</divergent>
+<script>
+$(window).load(function() {
+  $("#messagebox").animate({ scrollTop: $("#body").height() }, 1000);
+});
+</script>
+<script>
+function autocompletenone(){
+  $(".ui-autocomplete").css('display','none');
+}
+</script>

@@ -1,0 +1,96 @@
+<!-- Including header -->
+<div ng-include="'views/common/login-header.html'"></div>
+
+<div  ng-controller="signupController2" id="page_content" class="ng-scope">
+    <div id="page_content_inner">
+<div class="margin10">
+<div>
+<div class="form-group" style="color:grey;    color: black;">Join Virtualgodown</div>
+
+<div class="form-group">
+  <div class="step1div">
+  <div>Step 1</div>
+  <div>
+<div class="floatleft"><img src="assets/img/profilepic.jpeg" class="imgwidth35"></div><div class="step1creatediv">Create an account</div>
+</div>
+</div>
+    <div class="step2div">
+  <div>Step 2</div>
+  <div>
+<div class="floatleft"><img src="assets/img/unnamed.png" class="imgwidth35"></div><div class="step2addstockareadiv">Add Stockarea</div>
+</div>
+</div>
+</div>
+                                <form role="form" angular-validator-submit="fnsignUpComplete()" name="myForm2" class="ng-pristine ng-invalid ng-invalid-required ng-valid-angular-validator" novalidate="" angular-validator="" > <!--form-horizontal-->
+
+
+                                    <div class="form-group" style="color: black;">Give a name to stockarea</div>
+<div class="form-group">
+                                        <input type="text" class="inputAll" ng-model="stockareaName" ng-model-options="{ debounce: 1000 }" name="stockareaName" ng-change="checkname()" validate-on="dirty" class="form-control input-sm loginInput inputMaxWidth ng-pristine ng-invalid ng-invalid-required ng-touched" required-message="'This field is required..'" placeholder="Give a name to stockarea" required="" ng-pattern="/^[a-zA-Z0-9]*$/">
+                                        <i class="fa fa-check" ng-show="state=='exist'" style="
+                                            color: #72bb53;  position: relative;
+
+                                        " aria-hidden="true" style="margin-right: 10px;
+                                        "><font color="#72bb53">Stockarea is available</font></i>
+                                        <i class="fa fa-times" ng-show="state=='Not exist!'" style="
+                                            color: red;   position: relative;
+
+                                        " aria-hidden="true" style="margin-right: 10px;
+                                        "><font color="red">Stockarea is already taken</font></i>
+                                    </div>
+
+
+<div class="form-group" style="color: black;" >Mark your stockarea on Map</div>
+
+<div class="form-group">
+<style type="text/css">
+
+
+</style>
+
+  <input id="pac-input" class="searchAddressMap2 controls" type="text" placeholder="Search Box">
+  <div id="mapsignup" style="width: 100%;height: 250px;"></div>
+
+           </div>
+
+<div class="form-group">
+                                        <input class="inputAll" style="display:inline-block;width:172px;" type="text" id="latitude" ng-model="latitude" name="latitude" validate-on="dirty" class="form-control input-sm loginInput inputMaxWidth ng-pristine ng-untouched ng-invalid ng-invalid-required" required-message="'Yo! This field is required..'" placeholder="Latidude" required="">
+                                        <input class="inputAll" style="width:172px;" type="text" id="longitude" ng-model="longitude" name="longtitude" validate-on="dirty" class="form-control input-sm loginInput inputMaxWidth ng-pristine ng-untouched ng-invalid ng-invalid-required" required-message="'Yo! This field is required..'" placeholder="Longitude" required="">
+
+                                    </div>
+
+<div class="form-group">
+                                        <textarea class="inputAddress" ng-model="address" placeholder="Address" style="
+    width: 100%;
+    height: 100px;
+"></textarea>
+                                    </div><div class="form-group">
+                                      <select id="bloc1"  ng-change="codec()" class="form-control selectpicker" style="width:100px; display:inline-block;" ng-model="code" ng-options="option.dial_code as option.name for option in codes" name="unit" id="unit"></label>
+                                      </select>
+                                      <input type="text" ng-model="code" style="   border: 1px solid black;
+                                      display:inline-block;width:70px" class="inputAll" readonly>
+                                      <input type="number" style="width:172px; height:40px; display:inline-block;" ng-model="phone"   ng-change="phonechange()" validate-on="dirty" class="form-control input-sm loginInput inputMaxWidth ng-pristine ng-untouched ng-invalid ng-invalid-required" name="phone" required-message="'phone number cannot be blank'" placeholder="Phone No" required=""required>
+                                        <i class="fa fa-times" ng-show="phonestate=='Not exist!'" style="
+                                            color: red;   position: relative;
+                                        " aria-hidden="true" style="margin-right: 10px;
+                                        "><font color="red">Phone number is invalid or already taken</font></i>
+                                    </div>
+                                    <input type="submit"  value="Explore the network" class="btn btn-block singinButton inputMaxWidth" style="
+    background-color: #72bb53;
+    color: white;
+    border-radius: 0px;
+">
+
+
+
+
+                                </form></div>
+            </div>
+        </div>
+    </div>
+    <div style="
+    height: 100px;
+    margin-top: 50px;
+    background-color: #4c81bf;
+"></div>
+</div>

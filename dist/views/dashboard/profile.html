@@ -1,0 +1,390 @@
+<!-- Including header -->
+<style>
+  .container1 {
+    position: relative;
+    margin-top: 50px;
+    width: 500px;
+    height: 300px;
+  }
+
+  .overlay1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.5s ease;
+  }
+
+  .container1:hover .overlay1 {
+    display: block;
+    background: rgba(0, 0, 0, .3);
+  }
+
+
+
+  .title1 {
+    position: absolute;
+    width: 500px;
+    left: 0;
+    top: 120px;
+    font-weight: 700;
+    font-size: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    z-index: 1;
+    transition: top .5s ease;
+  }
+
+  .container1:hover .title1 {
+    top: 90px;
+  }
+
+  .button1 {
+    position: absolute;
+    left: 35px;
+    top: 100px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity .35s ease;
+  }
+
+  .button1 a {
+    text-decoration: none;
+    cursor: pointer;
+    width: 200px;
+    padding: 12px 48px;
+    text-align: center;
+    color: white;
+    border: solid 2px white;
+    z-index: 1;
+  }
+
+  .container1:hover .button1 {
+    opacity: 1;
+  }
+
+  #block_container {
+    text-align: center;
+  }
+
+  #bloc1,
+  #bloc2 {
+    display: inline;
+  }
+
+   ::-webkit-datetime-edit-year-field:not([aria-valuenow]),
+   ::-webkit-datetime-edit-month-field:not([aria-valuenow]),
+   ::-webkit-datetime-edit-day-field:not([aria-valuenow]) {
+    color: transparent;
+  }
+</style>
+<div class="header" ng-controller="dashboardHeaderController" ng-model-options="{ debounce: 200 }" ng-init="loadHome()">
+  <div ng-show="access" class="headertab ng-scope" style="
+      border-bottom: #eee;
+      border-bottom-width: thin;
+      border-bottom-style: inset;">
+    <div ng-show="!loading" style="position: relative;">
+      <div class="loginheaderlogodiv"><a ui-sref="home"><img src="{{domainURL}}assets/img/unnamed.png" class="headerlogoimg">
+  </a>
+        <div ng-show="page" class="cmpnamediv" style="    background-color: white !important;
+      left: 10px;"><span data-placement="bottom" title="Stockarea" style="font-size:medium;" onmouseenter="$(this).tooltip('show')">{{StockareaName}}</span><span data-placement="bottom" title="Product Name" onmouseenter="$(this).tooltip('show')" style="font-size:medium;"
+            ng-show="productName">{{" - "+ productName}}</span></div>
+      </div>
+      <div class="avatarleftdiv">
+        <div style="float:left;/* margin-top: -7px; */">
+          <div class="dropdown" style="bottom:7px;width:33px;">
+            <div data-toggle="dropdown" class="dropdown-toggle">
+              <i style="font-size: 26px;color:grey" class="fa fa-question" aria-hidden="true"></i>
+            </div>
+            <div class="dropdown-menu" style="
+      z-index: 22;
+      margin-left:-100px;
+      margin-top:10px;
+      position: absolute;
+background-color: #f9f9f9;
+min-width: 300px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  ">
+              <a style="padding:10px;cursor: pointer;color:#4c81bf;text-decoration:none;font-size:20px;">help</a><br><br>
+              <a style="padding:10px;cursor: pointer;color:#8e8b8b;text-decoration:none;">Sometimes you just need a little help.</a><br><br>
+              <a style="padding:10px;cursor: pointer;color:#8e8b8b;text-decoration:none;"ng-click="messagetohelp()">message us at help@virtualgodown</a><br><br>
+              <a style="padding:10px;cursor: pointer;color:#4c81bf;text-decoration:none;"></a><br><br>
+            </div>
+          </div>
+          <div class="dropdown" style="bottom:7px;width:55px;">
+          <div data-toggle="dropdown" class="animated notification show-count dropdown-toggle" data-count="{{value}}" aria-expanded="true" value="value" style="
+              width: 40px;
+              height: 36px;
+              margin-top: 10px;
+"></div>
+<div class="dropdown-menu" id="notification" style="
+z-index: 22;
+width:634%
+">
+
+  <div ng-show="notification.length>0" ng-repeat=" x in notification" style="padding:10px;cursor:pointer"  ng-click="updatenotification(x._id,x.receiptentOrganisationId.stockareaId,x.receiptentOrganisationId.productId,x.type)">
+    <div style="width:10%;height:30px;display:inline-block;">
+      <div ng-if="x.img" style="height:100%;width:100%"></div>
+      <i class="fa fa-sitemap" ng-if="!x.img" aria-hidden="true" style="height:100%;width:100%"></i>
+    </div>
+    <div style="width:80%;height:30px;word-wrap: break-word;display:inline-block">
+      {{x.message}}
+    </div>
+</div>
+<div ng-show="notification.length == 0"style="padding:10px;cursor:pointer">
+
+  <center style="width:80%;height:30px;word-wrap: break-word;display:inline-block;padding:20px;">
+<font> No notifications to show</font>
+  </center>
+</div>
+</div>
+</div>
+          <div class="dropdown" style="bottom:7px;width:50px;">
+            <div data-toggle="dropdown" class="dropdown-toggle" style="width:50px">
+              <i style="font-size: 26px;color:grey" class="fa fa-cog" aria-hidden="true"></i>
+            </div>
+            <div class="dropdown-menu" style="
+      z-index: 22;
+      margin-left:-100px;
+      position: absolute;
+background-color: #f9f9f9;
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  ">
+              <div style="cursor: pointer;width:100%;height:40px;color:#8e8b8b;text-decoration:none;" class="optionhover" ng-click="settings()"><font style="margin-left: 10px;vertical-align: -webkit-baseline-middle;">Settings</font></div>
+              <div style="cursor: pointer;width:100%;height:40px;color:#8e8b8b;text-decoration:none;" class="optionhover" ng-click="faq()"><font style="margin-left: 10px;vertical-align: -webkit-baseline-middle;">FAQ</font></div>
+              <div style="cursor: pointer;width:100%;height:40px;color:#8e8b8b;text-decoration:none;" class="optionhover" ng-click="logout()"><font style="margin-left: 10px;vertical-align: -webkit-baseline-middle;">Logout</font></div>
+            </div>
+          </div>
+        </div>
+        <div style="
+  float:right;height: -webkit-fill-available;">
+          <div class="profilepicdiv" class="floatleft"><img src={{profilePic}} class="avatarimg"></div>
+          <div class="dropdowndivleft">
+            <div class="dropdown">
+              <div class="dropbtn" style="margin-top:-10px;" ng-class="{namemarginclass :orgstatus==201}">
+                <font>{{fullName}}
+                </font><br>
+                    <font size="2" ng-hide="orgstatus==201">{{orgname}}</font>
+                    <i ng-show="org.length>1" style="color:#4c81bf" class="fa fa-chevron-down" aria-hidden="true"></i>
+                    <i ng-show="org.length<1" style="color:#eeeeee" class="fa fa-chevron-down" aria-hidden="true"></i>
+              </div>
+              <div class="dropdown-content" ng-show="org.length>1" style="width:200px;margin-right:10px;height:250px;overflow-y:hidden;overflow-x:hidden;">
+                <input type="text" ng-model="test1" class="productlistsearchbarinput" style="width:190px !important;margin-left:5px;margin-top:5px;border:none;" placeholder="Search organisations" autocomplete="off">
+                <div class="scrollbar" id="style-4" style="height:230px;width:200px;overflow-x:hidden;">
+
+                  <a ng-repeat="x in org | filter : test1" style="cursor: pointer;" ng-hide="orgname==x.organisationId.organisationId" ng-click="changeorg(x.organisationId._id)">{{x.organisationId.organisationId}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="background:#4c81bf;
+      border-bottom: #eee;
+      border-bottom-width: thin;
+      border-bottom-style: inset;" ng-hide="access" class="headertab ng-scope">
+    <div ng-show="!loading" style="position: relative;">
+      <div class="loginheaderlogodiv"><a ui-sref="home"><img src="{{domainUrl}}assets/img/white.png" class="headerlogoimg"><font class="headerlogoimg" style="
+      color: white;
+  " size="5">VIRTUALGODOWN</font></a>
+
+        <div ng-show="page" class="cmpnamediv" style="    background-color: white !important;
+      left: 10px;"><span data-placement="bottom" title="Stockarea" onmouseenter="$(this).tooltip('show')" style="font-size:medium;">{{StockareaName}}</span><span data-placement="bottom" title="Product Name" onmouseenter="$(this).tooltip('show')" ng-show="productName"
+            style="font-size:medium;">{{" - "+ productName}}</span></div>
+      </div>
+      <div style="margin-top8px;" class="avatarleftdiv">
+        <button ng-sref="login" ng-click="login()" href="{{domainUrl}}login" style="
+    position: relative;
+    margin: 10px;
+    /* height: 50px; */
+    /* min-width: 100px; */
+    padding: 5px;
+    /* border-radius: 4px; */
+  width:70px;
+    border: 1px;
+    color: #4c81bf;
+    background-color:white ;
+  ">Login</button> or
+        <button ng-click="signup()" href="{{domainUrl}}signUp" ng-sref="signUp" style="
+  position: relative;
+  margin: 10px;
+  /* height: 70px; */
+  /* min-width: 100px; */
+  padding: 5px;
+  /* border-radius: 4px; */
+  width:70px;
+  border: 1px;
+  color: white;
+  background-color: #42b72a;
+  ">Signup</button>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+  <div style="background:#4c81bf;
+      border-bottom: #eee;
+      border-bottom-width: thin;
+      border-bottom-style: inset;" ng-hide="access" class="headertab ng-scope">
+    <div ng-show="!loading" style="position: relative;">
+      <div class="loginheaderlogodiv"><a ui-sref="home"><img src="{{domainUrl}}assets/img/white.png" class="headerlogoimg"><font class="headerlogoimg" style="
+      color: white;
+  " size="5">VIRTUALGODOWN</font></a>
+
+        <div ng-show="page" class="cmpnamediv" style="    background-color: white !important;
+      left: 10px;"><span data-placement="bottom" title="Stockarea" onmouseenter="$(this).tooltip('show')" style="font-size:medium;">{{StockareaName}}</span><span data-placement="bottom" title="Product Name" onmouseenter="$(this).tooltip('show')" ng-show="productName"
+            style="font-size:medium;">{{" - "+ productName}}</span></div>
+      </div>
+      <div style="margin-top8px;" class="avatarleftdiv">
+        <button ng-sref="login" ng-click="login()" href="{{domainUrl}}login" style="
+    position: relative;
+    margin: 10px;
+    /* height: 50px; */
+    /* min-width: 100px; */
+    padding: 5px;
+    /* border-radius: 4px; */
+  width:70px;
+    border: 1px;
+    color: #4c81bf;
+    background-color:white ;
+  ">Login</button> or
+        <button ng-click="signup()" href="{{domainUrl}}signUp" ng-sref="signUp" style="
+  position: relative;
+  margin: 10px;
+  /* height: 70px; */
+  /* min-width: 100px; */
+  padding: 5px;
+  /* border-radius: 4px; */
+  width:70px;
+  border: 1px;
+  color: white;
+  background-color: #42b72a;
+  ">Signup</button>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+<div class="loaderCSS" ng-show="loading"><img src="assets/img/spin.gif" style="margin-top:150px"> </div>
+<div ng-show="!loading" id="mainsection" style="position: relative;height: 522px;">
+  <div class="ng-scope" ng-init="init()">
+    <div style="margin-left: 20px;">
+      <div style="width: 100%;">
+        <div style="float:left; width: 20%">
+          <div class="displaytabelcell" style="color: grey;">
+            <div style="float:left;width:271px;">
+
+              <div class="container1" ng-show="!newup" ng-hide="!progress" style="width:200px;height:200px;">
+                <input style="display:none;" type="file" id="fileInput" onchange="angular.element(this).scope().uploadFile(this.files[0])" />
+
+                <img src={{url}} style="width:200px;height:200px;">
+                <div class="overlay1" style="
+    border-style: solid;
+    border-width:1px;
+    border-color: #d0d4d8;
+"></div>
+                <div class="button1" onclick="document.getElementById('fileInput').click();"><a> Upload</a></div>
+              </div>
+              <div class="container1" ng-hide="progress" style="width:200px;height:200px;">
+                <img src="{{domainUrl}}assets/img/giphy.gif" style="width:200px;height:200px;">
+              </div>
+              <div ng-show="progress" ng-hide="!newup" style="margin-top:50px;" class="cropAreaprofile">
+                <img-crop image="myImage" result-image="myCroppedImage" area-type="square" result-image-format="image/jpeg" area-min-size="200" result-image-size="200" result-image-quality="1.0" change-on-fly="true"></img-crop>
+              </div>
+
+              <button class="btn" ng-show="newup" style="border:none;color: #fafafb;background-color: #4c81bf;margin-left:50px;margin-top:10px;" ng-click="uploadimg()" align="right">upload me</button>
+            </div>
+            <table class="table" style="border:none;" cellspacing="10px">
+              <thead>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="display:none"></td>
+                  <td style="border:none;">
+                    <h5 class="dropbtn ng-binding"><b >{{fullname}}</b></h5></td>
+                </tr>
+                <tr ng-hide="email==null">
+                  <td style="border:none;">
+                    <div class="dropbtn ng-binding" style="display: inline-block;padding-top: 0px;text-transform: lowercase;font-size: 14px;color: grey;margin-left: 0px;margin-top: 0px;width: 200px;height: 18px;"><i style="margin-right:5px" class="fa fa-envelope-o" aria-hidden="true"></i>{{email}}</div>
+                  </td>
+                </tr>
+                <tr ng-hide="mobile==null">
+                  <td style="border:none;">
+                    <div style="
+    display: inline-block;
+    margin-right: 5px;
+"><i class="fa fa-phone" aria-hidden="true"></i></div>{{mobile}}</td>
+                </tr>
+                <tr ng-hide="company==null">
+                  <td class="caps" style="border:none;">
+                    <div style="
+    display: inline-block;
+    margin-right: 5px;
+"><i class="fa fa-building" aria-hidden="true"></i></div>{{company}}</td>
+                </tr>
+                <tr ng-hide="address==null">
+                  <td class="caps" style="border:none;">
+                    <div style="
+    display: inline-block;
+    margin-right: 5px;
+"><i class="fa fa-location-arrow" aria-hidden="true"></i></div>{{address}}</td>
+                </tr>
+              </tbody>
+            </table>
+            <a ng-click="settings()" style="
+    margin-left: 193px;
+    margin-top: -282px;
+" align="right">Edit</a>
+          </div>
+
+        </div>
+      </div>
+      <div style="float:left;min-width: 600px;color:grey">
+        <ul class="nav nav-tabs" style="
+        margin-top: 10px;
+    ">
+          <li class=active>
+            <a style="text-decoration: none;cursor: pointer;width:150px;background: #d0d4d8;">
+              <div align="center">Overview</div>
+            </a>
+            <div style="border-style:solid;border-width:1px;width: 600px;border-color: #eeeeee;">
+              <div ng-repeat="x in history">
+                <div align="center" style="margin-top:10px;margin-bottom:10px;margin-left:40px;margin-right:40px;min-height:50px;word-wrap:break-word;">
+                  <font style="margin-left:40px;margin-right:40px;" align="center">{{x.message}}</font>
+                </div>
+                <hr style="margin-left:40px;margin-right:40px;">
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</div>
+<script>
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        $('#blah')
+          .attr('src', e.target.result).width(200);
+
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+</script>

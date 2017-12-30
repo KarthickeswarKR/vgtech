@@ -1,0 +1,53 @@
+
+<!-- Including header -->
+<div ng-controller="dashboardHeaderController" ng-include="'views/common/user-header.html'"></div>
+<div class="ng-scope" ng-init="init()">
+  <div style="margin-left: 20px;">
+    <div style="width: 100%;">
+    <div style="float:left; width: 30%">
+      <div class="displaytabelcell" style="color: grey;">
+      <h4>Suggest Variant</h4>
+
+      <div><h5 class="caps">{{fullname}}</h5>
+
+      <div>
+<table class="pure-table pure-table-bordered">
+  <thead>
+
+  </thead>
+  <tbody>
+    <tr>
+      <td>Email</td><td>{{email}}</td>
+    </tr>
+        <tr>
+      <td>Mobile</td><td>{{mobile}}</td>
+    </tr>
+        <tr>
+      <td>Company</td><td class="caps">{{company}}</td>
+    </tr>
+        <tr>
+      <td>Address</td><td class="caps">{{address}}</td>
+    </tr>
+  </tbody>
+</table>
+      </div>
+
+      </div>
+        </div>
+    </div>
+    <div style="float:left;min-width: 600px;color:grey">
+      <div >
+        <div><h3>Overview</h3>
+
+      <div class="profilemessagediv" ng-repeat="x in history">
+{{x.message}}
+      </div>
+
+      </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+</div>

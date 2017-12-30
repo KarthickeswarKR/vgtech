@@ -1,0 +1,290 @@
+<!-- Including header -->
+<div ng-controller="dashboardHeaderController" ng-model-options="{ debounce: 200 }" ng-init="loadHome()">
+  <div ng-show="access" class="headertab ng-scope" style="
+      border-bottom: #eee;
+      border-bottom-width: thin;
+      border-bottom-style: inset;">
+    <div ng-show="!loading" style="position: relative;">
+      <div class="loginheaderlogodiv"><a ui-sref="home"><img src="{{domainURL}}assets/img/unnamed.png" class="headerlogoimg">
+  </a>
+        <div ng-show="page" class="cmpnamediv" style="    background-color: white !important;
+      left: 10px;"><span data-placement="bottom" title="Stockarea" style="font-size:medium;" onmouseenter="$(this).tooltip('show')">{{stockareaName}}</span><span data-placement="bottom" title="Product Name" onmouseenter="$(this).tooltip('show')" style="font-size:medium;"
+            ng-show="productName">{{" - "+ productName}}</span></div>
+      </div>
+      <div class="avatarleftdiv">
+        <div style="float:left;margin-right: -145px;/* margin-top: -7px; */">
+          <div class="dropdown">
+            <div class="dropbtn">
+              <i style="font-size: 26px;color:grey" class="fa fa-cog" aria-hidden="true"></i>
+            </div>
+            <div class="dropdown-content" style="
+      z-index: 22;
+      margin-left:-100px;
+  ">
+              <a href="/settings">Settings</a>
+                            <a href="/faq">FAQ</a>
+              <a href="/suggestproduct">Suggest Product</a>
+              <a style="cursor: pointer;" ng-click="logout()">Logout</a>
+            </div>
+          </div>
+        </div>
+        <div style="
+  float:right;height: -webkit-fill-available;">
+          <div class="profilepicdiv" class="floatleft"><img src={{profilePic}} class="avatarimg"></div>
+          <div class="dropdowndivleft">
+            <div class="dropdown">
+              <div class="dropbtn" style="margin-top:-10px;">
+                <font>{{fullName}}
+                  <font><br>
+                    <font size="2" ng-hide="orgstatus==201">{{orgname}}</font>
+                    <font ng-hide="orgstatus==200">defaultOrganisation</font>
+                    <i ng-show="org.length>1" style="color:#4c81bf" class="fa fa-chevron-down" aria-hidden="true"></i>
+                    <i ng-show="org.length<1" style="color:#eeeeee" class="fa fa-chevron-down" aria-hidden="true"></i> </div>
+              <div class="dropdown-content" style="width:200px;margin-right:10px;height:250px;overflow-y:hidden;overflow-x:hidden;">
+                <input type="text" ng-model="test1" class="productlistsearchbarinput" style="width:190px !important;margin-left:5px;margin-top:5px;border:none;" placeholder="Search organisations" autocomplete="off">
+                <div class="scrollbar" id="style-4" style="height:230px;width:200px;overflow-x:hidden;">
+                  <a ng-repeat="x in org | filter : test1" style="cursor: pointer;" ng-hide="orgId==x.organisationId.organisationId" ng-click="changeorg(x.organisationId._id)">{{x.organisationId.organisationId}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="background:#4c81bf;
+      border-bottom: #eee;
+      border-bottom-width: thin;
+      border-bottom-style: inset;" ng-hide="access" class="headertab ng-scope">
+    <div ng-show="!loading" style="position: relative;">
+      <div class="loginheaderlogodiv"><a ui-sref="home"><img src={{domainUrl}}+"assets/img/white.png" class="headerlogoimg"><font class="headerlogoimg" style="
+      color: white;
+  " size="5">VIRTUALGODOWN</font></a>
+
+        <div ng-show="page" class="cmpnamediv" style="    background-color: white !important;
+      left: 10px;"><span data-placement="bottom" title="Stockarea" onmouseenter="$(this).tooltip('show')" style="font-size:medium;">{{stockareaName}}</span><span data-placement="bottom" title="Product Name" onmouseenter="$(this).tooltip('show')" ng-show="productName"
+            style="font-size:medium;">{{" - "+ productName}}</span></div>
+      </div>
+      <div style="margin-top8px;" class="avatarleftdiv">
+        <button ng-sref="login" ng-click="login()" href={{domainUrl}}+ "login" style="
+    position: relative;
+    margin: 10px;
+    /* height: 50px; */
+    /* min-width: 100px; */
+    padding: 5px;
+    /* border-radius: 4px; */
+  width:70px;
+    border: 1px;
+    color: #4c81bf;
+    background-color:white ;
+  ">Login</button> or
+        <button ng-click="signup()" href={{domainUrl}}+ "signUp" ng-sref="signUp" style="
+  position: relative;
+  margin: 10px;
+  /* height: 70px; */
+  /* min-width: 100px; */
+  padding: 5px;
+  /* border-radius: 4px; */
+  width:70px;
+  border: 1px;
+  color: white;
+  background-color: #42b72a;
+  ">Signup</button>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+<style type="text/css">
+
+</style>
+<div id="page_content" class="ng-scope" ng-init="init()">
+  <div id="page_content_inner">
+    <div class="container marginTopAlign">
+
+      <div style="    margin-left: 100px;
+                margin-top: 50px;
+    margin-right: 100px;" class="row">
+
+
+        <div style="/* height: 100px; *//* width: 590px; */float: left;/* background-color: antiquewhite; */">
+          <div>
+            <div style="
+    /* border-style: solid; */
+    padding: 20px;
+    /* margin-left: -95px; */
+    background: rgba(204, 204, 204, 0.25);
+">
+              <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty" ng-change="autocomplete()" id="autocompletesearch" ng-model="search" name="autocompletesearch" style="width: 820px;" placeholder="Material Name">
+              <a style="cursor:pointer;float:left;" ng-click="submit('cement')">cement</a>
+            </div>
+          </div>
+          <div style="margin-top:35px;">
+            <table style="margin-left: -28px;float:left;margin-top:-8px;" class="pure-table-unbordered">
+              <tbody>
+
+                <tr ng-repeat="(key,data) in filters">
+                  <td>
+                    <div>
+                      <div>
+                        <div style="margin-left:10px;">{{key}}
+                          <font ng-show="show[key]==false" color="red" style="margin-left:10px;cursor:pointer" ng-click="delspec(key)">X</font>:</div>
+
+                      </div>
+                      <div style="
+    width: 468px;
+    margin-left: 10px;
+    border: 1px solid grey;
+    margin-top: 4px;
+">
+                        <button ng-repeat="x in data" ng-click="varval(key,x.name)" ng-class="{selectedd: x.name==filter[key]}" style="
+    position: relative;
+    margin: 10px;
+    overflow-wrap: break-word;
+max-width: 500px;
+    /* height: 50px; */
+     min-width: 50px;
+    padding: 5px;
+    /* border-radius: 4px; */
+    border: 1px;
+    color: black;
+
+    background-color: #ccc;
+">{{x.name}}<font ng-show="x.status==false"color="red" style="margin-left:10px;cursor:pointer" ng-click="delvar(key,x.name)">X</font></button>
+                        <input id="newvar" ng-keyup="$event.keyCode == 27  ? removevar(newvar1) : null" ng-keydown="$event.keyCode == 9 || $event.keyCode == 13? MyFunc(key,newvar) : null" type="text" ng-model="newvar" ng-show="new && key==ki" tooltip-class="tooltipcal" uib-tooltip-html="htmlTextToolTip"
+                          tooltip-trigger="focus" tooltip-disable="flag" tooltip-placement="top" style="width:100px">
+                        <br><button ng-click="onaddvar(key)" style="
+    position: relative;
+    margin: 10px;
+    overflow-wrap: break-word;
+max-width: 700px;
+    /* height: 50px; */
+    /* min-width: 100px; */
+    padding: 5px;
+    /* border-radius: 4px; */
+    border: 1px;
+    color: white;
+    background-color: #4c81bf;
+">Add New {{key}}</button>
+                      </div>
+                    </div>
+                  </td>
+                  <td><i style="margin-left:-20px;" title="Reset" class="fa fa-undo" aria-hidden="true" ng-click="reset(key)"></i></td>
+                </tr>
+                <tr ng-show="newspec">
+                  <td style="padding:0px"><input id="newvar1" ng-keyup="$event.keyCode == 27 ? removespec(newvar1) : null" ng-keydown="$event.keyCode == 9 || $event.keyCode == 13 ? MyFunc1(newvar1) : null" type="text" ng-model="newvar1" tooltip-class="tooltipcal" uib-tooltip-html="htmlTextToolTip"
+                      tooltip-trigger="focus" tooltip-disable="flag" tooltip-placement="top" style="width:100px;margin-left:23px;">
+                    <br>
+                    <div style="
+    width: 468px;
+    margin-left: 23px;
+    border: 1px solid grey;
+    margin-top: 4px;
+    display: -webkit-inline-box;">
+                      <button style="
+      position: relative;
+      margin: 10px;
+      /* height: 50px; */
+      /* min-width: 100px; */
+      padding: 5px;
+      overflow-wrap: break-word;
+max-width: 500px;
+      /* border-radius: 4px; */
+      border: 1px;
+      color: white;
+      background-color: #4c81bf;
+  ">Add New {{newvar1}}</button>
+
+                    </div>
+                  </td>
+                  <td><i style="margin-left:-20px;" title="Reset" class="fa fa-undo" aria-hidden="true" ng-click="removespec(newvar1)"></i></td>
+                </tr>
+                <tr>
+                  <td><button ng-hide="!materialId" ng-click="newfilter()" style="
+    position: relative;
+    margin: 10px;
+    overflow-wrap: break-word;
+max-width: 500px;
+    /* height: 50px; */
+    /* min-width: 100px; */
+    padding: 5px;
+    /* border-radius: 4px; */
+    border: 1px;
+    color: white;
+    background-color: #4c81bf;
+">Add New Specifiaction</button></td>
+                </tr>
+              </tbody>
+            </table>
+            <table ng-hide="!materialId" style="border-style:solid;border-color:#eff0f1;" class="pure-table-unbordered">
+              <tbody>
+                <tr>
+                  <td>Material: </td>
+                  <td><input ng-readonly="true" ng-model="search" style="width: 228px;margin-left: 10px;margin-top: 4px;"></td>
+                </tr>
+                <tr ng-repeat="(ky,dt) in filters">
+                  <td>{{ky}}: </td>
+                  <td>
+                    <select style="
+width: 230px;
+height: 30px;
+margin-left: 9px;
+" class="form-control selectpicker" ng-model="filter[ky]" ng-options="option.name as option.name for option in dt" name="tags" id="tags"></select>
+                    <tr>
+                      <td></td>
+                    </tr>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><button ng-click="addsuggest()" style="
+  position: relative;
+  margin: 10px;
+  /* height: 50px; */
+  /* min-width: 100px; */
+  padding: 5px;
+  /* border-radius: 4px; */
+  border: 1px;
+  color: white;
+  background-color: #4c81bf;
+">Suggest this product</button></td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+          <div style="/*height: 100px; background-color: aliceblue; *//* width: 350px; */float: right;">
+
+          </div>
+        </div>
+
+
+      </div>
+
+
+      <div class="" style="
+    padding: 30px;
+    text-align: center;
+    background-color: #ffffff;
+    /* margin-top: 100px; */
+    ">
+        Virtualgodown © 2017
+      </div>
+    </div>
+  </div>
+
+</div>
+<script>
+  function h(e) {
+    $(e).css({
+      'height': 'auto',
+      'overflow-y': 'hidden'
+    }).height(e.scrollHeight);
+  }
+  $('textarea').each(function() {
+    h(this);
+  }).on('input', function() {
+    h(this);
+  });
+</script>

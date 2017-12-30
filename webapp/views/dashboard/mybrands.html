@@ -1,0 +1,146 @@
+<style>
+  md-card {
+    margin: auto;
+    left: 0;
+    right: 0;
+    margin-bottom: 20px;
+  }
+
+  .mySlides {
+    display: none
+  }
+  /* Slideshow container */
+
+  .slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+  }
+  /* Next & previous buttons */
+  /* Position the "next button" to the right */
+
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  /* On hover, add a black background color with a little bit see-through */
+
+  .prev:hover,
+  .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  /* Fading animation */
+  /* On smaller screens, decrease text size */
+
+  @media only screen and (max-width: 300px) {
+    .prev,
+    .next,
+    .text {
+      font-size: 11px
+    }
+  }
+</style>
+
+<div ng-init="height()">
+  <div class="searchbardiv" style="border-left-style:solid;border-right-style:solid;border-bottom-style:solid;width:85%;float:right;border-right-width:1px;border-color:#eeeeee">
+    <div style="
+margin-left: auto;
+/* width: 900px; */
+padding-left: 10px;
+padding-right: 10px;
+/* margin-right: 0px; */
+">
+
+      <div style="
+display:inline-block;
+width:100%;
+"><input style="display:inline-block;margin-left:0px;border:none;background:#f4f5f7;" ng-keydown="onenterkeyautocomplete($event)" type="text" placeholder="Search for Products,Brands and More" class="searchbarinput ng-pristine ng-untouched ng-valid ng-empty" ng-change="brandautocomplete()"
+      id="brandautocompletesearch" ng-model="search" name="autocompletesearch"></div>
+      <div>
+      <!--  <span ng-repeat="s in category" style="
+margin: 10px;
+/* top: 10px; */
+/* position: relative; */
+"><a style="
+cursor: pointer;text-decoration:none;
+" ng-click="clickproduct(s._id)">{{s.name}}</a></span>-->
+      </div>
+    </div>
+  </div>
+  <div class="searchresultdiv style-4 scrollbar" id="searchresult" style="width:85%;float:right;border-left-style:solid;border-color:#eeeeee;height:360px;">
+    <center>
+      <div ng-show="!brandSearch || brandSearch==null" style="border-style:solid;border-color:#eeeeee;width:70%;height:70px;margin-top:15%;">
+        <div style="margin-top:22px;">
+          <font style="color: #dcdada;">Search brands here</font>
+        </div>
+      </div>
+      <div ng-repeat="brand in brandSearch">
+        <div style="height: 128px;border-style: solid;width: auto;max-width: 70%;margin-left: 10px;border-color: #dddddd;margin-top: 10px;/* border-bottom-style: solid; */border-width: 1px;" class="">
+          <div class="dropdown" style="float:right;margin-right:10px;margin-top:20px;">
+            <i style="color:#c1c1c1;border:none !important;background:none !important;font-size:large;" class="fa fa-ellipsis-v dropdown-toggle" id="menu1" data-toggle="dropdown" aria-hidden="true"></i>
+            <ul class="dropdown-menu" style="margin-left:-63px;min-width:80px;" role="menu" aria-labelledby="menu1">
+              <li role="presentation"><a ng-show="brand.type==1001 || brand.type==1002" role="menuitem" ng-click="editbrand(brand._id)" tabindex="-1" href="#">edit</a></li>
+            </ul>
+          </div>
+          <div style="float:left;position: absolute;border-top-style:solid:border-bottom-style:solid;">
+            <div style="display:inline-block;/* padding: 30px; */border-color: rgba(158, 158, 158, 0.18);margin-left: 30px;margin-bottom: 30px;/* margin-left:100px; */border-style: solid;height: 100px;border-width:1px;width: 100px;overflow:hidden;margin-top:10px;"
+              ng-show="imgSrc" class="">
+              <img style="width: 100px;border: 1px solid rgba(221, 221, 221, 0.04);" src={{brand.logo}}>
+            </div>
+            <div style="float: right;/* display:inline-block; */margin-top:15px;margin-left:50px;">
+
+              <div>
+                <h5 style="float:left">{{brand.brandName}}</h5>
+                <br>
+                <h5 style="float:left;margin-bottom:25px;">{{brand.brandOwner}}</h5>
+                <ul class="list-inline" style="
+                border:none:
+      margin-top: 30px;
+      height: 31px;
+      /* background: rgb(241, 241, 241); */
+      border-color: rgb(241, 241, 241);
+      ">
+                  <li style="float:left;">
+                    <a style="text-decoration: none;cursor: pointer;" ng-click="brand.brandsubtab=1" >
+                      <i class="fa fa-list"  style="color:#c1c1c1" aria-hidden="true"></i>
+                  </a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div ng-show="brand.brandsubtab==1" class="ng-hide">
+          <div style="border-style:solid;border-color: #dddddd;border-width: 1px;width:auto;max-width: 70%;margin-top:1px;margin-left:10px;">
+            <div class="productspecificationdiv">
+              <center>
+                <table class="pure-table pure-table-bordered" style="
+      margin-top: 15px;
+      margin-bottom: 15px;
+      ">
+                  <thead>
+                    <tr>
+                      <td style="width:200px"><b>property</b></td>
+                      <td style="width:200px"><b>specification</b></td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- ngRepeat: e in productInfo.brandId.description -->
+                    <tr ng-repeat="e in brand.description" class="ng-scope">
+                      <td>
+                        <div style="width:200px;word-wrap: break-word;" class="ng-binding">{{e.name}} </div>
+                      </td>
+                      <td>
+                        <div style="width:250px;word-wrap: break-word;" class="ng-binding"> {{e.value}} </div>
+                      </td>
+                    </tr>
+                    <!-- end ngRepeat: e in productInfo.brandId.description -->
+                  </tbody>
+                </table>
+              </center>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </div>
+</div>

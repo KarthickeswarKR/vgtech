@@ -1,0 +1,408 @@
+<style>
+.public{
+border-color:darkgreen !important;
+}
+.private{
+  border-color:#4c81bf !important;
+}
+</style>
+<div class="header" ng-controller="dashboardHeaderController" ng-model-options="{ debounce: 200 }" ng-init="loadHome()">
+  <div ng-show="access" class="headertab ng-scope" style="
+      border-bottom: #eee;
+      border-bottom-width: thin;
+      border-bottom-style: inset;">
+    <div ng-show="!loading" style="position: relative;">
+      <div class="loginheaderlogodiv"><div style="display:inline-block;float:left" ng-click="gohome()"><img src="{{domainURL}}assets/img/unnamed.png" class="headerlogoimg"><sup><font style="
+    font-size: 10px;
+    margin-left: 5px;
+    color:#72bb53;">BETA</font></sup>
+  </div>
+        <div ng-show="page" class="cmpnamediv" style="    background-color: white !important;left:-10px !important;"><span data-placement="bottom" title="Stockarea" style="font-size:medium;" onmouseenter="$(this).tooltip('show')">{{StockareaName}}</span><span data-placement="bottom" title="Product Name" onmouseenter="$(this).tooltip('show')" style="font-size:medium;"
+            ng-show="productName">{{" - "+ productName}}</span></div>
+      </div>
+      <div class="avatarleftdiv">
+        <div style="float:left;/* margin-top: -7px; */">
+          <div class="dropdown" style="bottom:7px;width:33px;">
+            <div data-toggle="dropdown" class="dropdown-toggle">
+              <i style="font-size: 26px;color:grey" class="fa fa-question" aria-hidden="true"></i>
+            </div>
+            <div class="dropdown-menu" style="
+      z-index: 22;
+      margin-left:-100px;
+      margin-top:10px;
+      position: absolute;
+background-color: #f9f9f9;
+min-width: 300px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  ">
+              <a style="padding:10px;cursor: pointer;color:#4c81bf;text-decoration:none;font-size:20px;">help</a><br><br>
+              <a style="padding:10px;cursor: pointer;color:#8e8b8b;text-decoration:none;">Sometimes you just need a little help.</a><br><br>
+              <a style="padding:10px;cursor: pointer;color:#8e8b8b;text-decoration:none;"ng-click="messagetohelp()">message us at help@virtualgodown</a><br><br>
+              <a style="padding:10px;cursor: pointer;color:#4c81bf;text-decoration:none;"></a><br><br>
+            </div>
+          </div>
+          <div class="dropdown" style="bottom:7px;width:55px;">
+          <div data-toggle="dropdown" class="animated notification show-count dropdown-toggle" data-count="{{value}}" aria-expanded="true" value="value" style="
+              width: 40px;
+              height: 36px;
+              margin-top: 10px;
+"></div>
+<div class="dropdown-menu" ng-show="notification.length>0" id="notification" style="
+z-index: 22;
+width:634%
+">
+
+  <div ng-show="notification.length>0" ng-repeat=" x in notification" style="padding:10px;cursor:pointer"  ng-click="updatenotification(x._id,x.receiptentOrganisationId.stockareaId,x.receiptentOrganisationId.productId,x.type)">
+    <div style="width:10%;height:30px;display:inline-block;">
+      <div ng-if="x.img" style="height:100%;width:100%"></div>
+      <i class="fa fa-sitemap" ng-if="!x.img" aria-hidden="true" style="height:100%;width:100%"></i>
+    </div>
+    <div style="width:80%;height:30px;word-wrap: break-word;display:inline-block">
+      {{x.message}}
+    </div>
+</div>
+<div ng-show="notification.length == 0"style="padding:10px;cursor:pointer">
+
+  <center style="width:80%;height:30px;word-wrap: break-word;display:inline-block;padding:20px;">
+<font> No notifications to show</font>
+  </center>
+</div>
+</div>
+</div>
+          <div class="dropdown" style="bottom:7px;width:50px;">
+            <div data-toggle="dropdown" class="dropdown-toggle" style="width:50px">
+              <i style="font-size: 26px;color:grey" class="fa fa-cog" aria-hidden="true"></i>
+            </div>
+            <div class="dropdown-menu" style="
+      z-index: 22;
+      margin-left:-100px;
+      position: absolute;
+background-color: #f9f9f9;
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  ">
+              <div style="cursor: pointer;width:100%;height:40px;color:#8e8b8b;text-decoration:none;" class="optionhover" ng-click="settings()"><font style="margin-left: 10px;vertical-align: -webkit-baseline-middle;">Settings</font></div>
+              <div style="cursor: pointer;width:100%;height:40px;color:#8e8b8b;text-decoration:none;" class="optionhover" ng-click="faq()"><font style="margin-left: 10px;vertical-align: -webkit-baseline-middle;">FAQ</font></div>
+              <div style="cursor: pointer;width:100%;height:40px;color:#8e8b8b;text-decoration:none;" class="optionhover" ng-click="logout()"><font style="margin-left: 10px;vertical-align: -webkit-baseline-middle;">Logout</font></div>
+            </div>
+          </div>
+        </div>
+        <div style="
+  float:right;height: -webkit-fill-available;">
+          <div class="profilepicdiv" class="floatleft"><img src={{profilePic}} class="avatarimg"></div>
+          <div class="dropdowndivleft">
+            <div class="dropdown">
+              <div class="dropbtn" style="margin-top:-10px;" ng-class="{namemarginclass :orgstatus==201}">
+                <font>{{fullName}}
+                </font><br>
+                    <font size="2" ng-hide="orgstatus==201">{{orgname}}</font>
+                    <i ng-show="org.length>1" style="color:#4c81bf" class="fa fa-chevron-down" aria-hidden="true"></i>
+                    <i ng-show="org.length<1" style="color:#eeeeee" class="fa fa-chevron-down" aria-hidden="true"></i>
+              </div>
+              <div class="dropdown-content" ng-show="org.length>1" style="width:200px;margin-right:10px;height:250px;overflow-y:hidden;overflow-x:hidden;">
+                <input type="text" ng-model="test1" class="productlistsearchbarinput" style="width:190px !important;margin-left:5px;margin-top:5px;border:none;" placeholder="Search organisations" autocomplete="off">
+                <div class="scrollbar" id="style-4" style="height:230px;width:200px;overflow-x:hidden;">
+
+                  <a ng-repeat="x in org | filter : test1" style="cursor: pointer;" ng-hide="orgname==x.organisationId.organisationId" ng-click="changeorg(x.organisationId._id)">{{x.organisationId.organisationId}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="background:#4c81bf;
+      border-bottom: #eee;
+      border-bottom-width: thin;
+      border-bottom-style: inset;" ng-hide="access" class="headertab ng-scope">
+    <div ng-show="!loading" style="position: relative;">
+      <div class="loginheaderlogodiv"><a ui-sref="home"><img src="{{domainUrl}}assets/img/white.png" class="headerlogoimg"><font class="headerlogoimg" style="
+      color: white;
+  " size="5">VIRTUALGODOWN</font></a>
+
+        <div ng-show="page" class="cmpnamediv" style="    background-color: white !important;
+      left: 10px;"><span data-placement="bottom" title="Stockarea" onmouseenter="$(this).tooltip('show')" style="font-size:medium;">{{StockareaName}}</span><span data-placement="bottom" title="Product Name" onmouseenter="$(this).tooltip('show')" ng-show="productName"
+            style="font-size:medium;">{{" - "+ productName}}</span></div>
+      </div>
+      <div style="margin-top8px;" class="avatarleftdiv">
+        <button ng-sref="login" ng-click="login()" href="{{domainUrl}}login" style="
+    position: relative;
+    margin: 10px;
+    /* height: 50px; */
+    /* min-width: 100px; */
+    padding: 5px;
+    /* border-radius: 4px; */
+  width:70px;
+    border: 1px;
+    color: #4c81bf;
+    background-color:white ;
+  ">Login</button> or
+        <button ng-click="signup()" href="{{domainUrl}}signUp" ng-sref="signUp" style="
+  position: relative;
+  margin: 10px;
+  /* height: 70px; */
+  /* min-width: 100px; */
+  padding: 5px;
+  /* border-radius: 4px; */
+  width:70px;
+  border: 1px;
+  color: white;
+  background-color: #42b72a;
+  ">Signup</button>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+<div class="loaderCSS" ng-show="loading"><img src="assets/img/spin.gif"> </div>
+<div ng-show="!loading" id="mainsection" style="position: relative;height: 522px;">
+  <div class="ng-scope" ng-init="init()">
+    <center>
+      <div style="margin-top:10px;">
+
+    </center>
+    <div style="margin-left: 20px;">
+      <div style="width: 100%;">
+        <div style="margin-top: 55px;float:left;width: 30%;">
+          <div class="displaytabelcell" style="color: grey;">
+            <div>
+              <div style="
+    border-style: solid;
+    border-width: 1px;
+    border-color: #f1f1f1;
+    width: 180px;
+    height:180px;
+    display: block;
+    overflow:hidden;
+"><img class="profilepicimg" src={{result.selectedproduct.userinfo.profilePic}}>
+              </div>
+            </div>
+            <div>
+              <h5 style="margin-left: 15px;"><b>{{result.selectedproduct.userinfo.fullName}}</b></h5>
+              <h5 style="margin-left: 15px;" ng-if="result.selectedproduct.stockareaInfo.organisationId.status==200"><b>{{result.selectedproduct.stockareaInfo.organisationId.organisationId}}</b></h5>
+              <button class="btn btn-sm ng-hide" ng-if="type==1009" ng-show="" ng-hide="source.source==stockareaId" ng-click="updatesource()" style="background:#4c81bf;color:white">Request sell access</button>
+              </div>
+              <div>
+                <table class="pure-table pure-table-unbordered">
+                  <thead>
+
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="width:150px;">{{orgas}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div style="float:left;width: 600px;color:grey;margin-left:-156px">
+          <div>
+            <div>
+              <div>
+                <div ng-class="visi" style="padding: 20px;margin-top:50px;border-style:solid;border-width: thin; border-color:rgb(241, 241, 241);">
+                  <h3><center>Stockarea Info</center></h3>
+                  <table class="pure-table pure-table-unbordered" style="width: 100%; border:none;">
+                    <thead>
+
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>stockareaName
+                        </td>
+                        <td>{{profileStockareaName}}</td>
+                      </tr>
+                      <tr>
+                        <td>productName
+                        </td>
+                        <td>{{profileProductName}}</td>
+                      </tr>
+                      <tr>
+                        <td>Phone</td>
+                        <td>{{code}}{{phone}}</td>
+                      </tr>
+                      <tr>
+                        <td>Email</td>
+                        <td>{{userName}}</td>
+                      </tr>
+                      <tr>
+                        <td>Updated stockDetails on</td>
+                        <td>{{updatedstock}}</td>
+                      </tr>
+                      <tr>
+                        <td>Created on </td>
+                        <td>{{stockareacreated}}</td>
+                      </tr>
+                      <tr>
+                        <td>Dealing this product since </td>
+                        <td>{{dealingsince}}</td>
+                      </tr>
+                      <tr>
+                        <td>Location</td>
+                        <td>{{location}}</td>
+                      </tr>
+                      <tr>
+                        <td>visibility</td>
+                        <td>{{visi}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div>
+                  <div ng-init="subtab=1;selectedtab1='active'" style="padding-top: 20px;">
+                    <table class="pure-table pure-table-bordered" style="width: 100%;">
+                      <thead>
+                        <tr style="font-style=normal;">
+                          <th>Package</th>
+                          <th colspan="2">Minmiun quantity</th>
+                          </th>
+                          <th colspan="2">Price per package</th>
+                        </tr>
+                      </thead>
+                      <tbody ng-repeat="x in selldata">
+                        <tr>
+                          <td style="border-top: solid;border-width: 1px;border-color: #cbcbcb;">{{x.name}}</td>
+                          <td style="border-top: solid;border-width: 1px;border-color: #cbcbcb;">{{x.MinimumOrder}}</td>
+                          <td style="border:none;border-top: solid;border-width: 1px;border-color: #cbcbcb;">{{x.unit}}</td>
+
+                          <td style="border-top: solid;border-width: 1px;border-color: #cbcbcb;">{{x.priceperpack}}</td>
+                          <td style="border:none;border-top: solid;border-width: 1px;border-color: #cbcbcb;">INR</td>
+                        </tr>
+                        <tr ng-show="x.name!='custom'">
+                          <td style="border-top: solid;border-width: 1px;border-color: #cbcbcb;">{{x.name}}</td>
+                          <td style="border-top: solid;border-width: 1px;border-color: #cbcbcb;">{{x.MinimumOrder}}</td>
+                          <td style="border:none;border-top: solid;border-width: 1px;border-color: #cbcbcb;">{{x.unit}}</td>
+                          <td style="border-top: solid;border-width: 1px;border-color: #cbcbcb;">{{x.priceperpack}}</td>
+                          <td style="border:none;border-top: solid;border-width: 1px;border-color: #cbcbcb;">INR</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="float: right;width:308px;">
+          <div class="displaytabelcell" style="color: grey;">
+            <div>
+              <div style="
+    border-style: solid;
+    border-width: 1px;
+    border-color: #f1f1f1;
+    width: 180px;
+    height:180px;
+    display: block;
+    margin-top:60px;
+    margin-left:75px;
+    overflow:hidden;
+"><img ng-if="url" src={{url}} class="profilepicimg" style="
+    height: 150px;
+"><i ng-if="!url" class="fa fa-dropbox" style="color:#4c81bf;font-size:180px;"> </i>
+              </div>
+            </div>
+            <div>
+
+              <div>
+                <ul class="nav nav-tabs" style="
+                margin-top: 10px;
+                width:308px;">
+                  <li class={{selectedtab1}}><a style="text-decoration: none;cursor: pointer;width:100px" ng-click="subtab=1;selectedtab1='active';selectedtab3='inactive'; selectedtab2='inactive';changeimage('overview')">Overview</a></li>
+                  <!--<li class={{selectedtab2}}><a style="text-decoration: none;cursor: pointer;width:100px" ng-click="subtab=2; selectedtab3='inactive';selectedtab2='active'; selectedtab1='inactive';changeimage('brand')">BrandInfo</a></li>
+                  --><li class={{selectedtab3}}><a style="text-decoration: none;cursor: pointer;width:100px" ng-click="subtab=3; selectedtab3='active';selectedtab2='inactive'; selectedtab1='inactive';changeimage('package')">PackageInfo</a></li>
+                </ul>
+                <div ng-show="subtab==1" style="width:308px;">
+                  <table style="margin-top:20px;" class="pure-table pure-table-unbordered">
+
+                    <tbody ng-repeat="x in result.selectedproduct.productinfo.productId.specifications">
+
+                      <tr>
+                        <td>
+                          <font style="word-wrap:break-word;"><b>{{x.key}}</b></font>
+                        </td>
+                        <td>
+                          <font style="word-wrap:break-word">{{x.value}}</font>
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+                <div ng-show="subtab==2" style="width:308px;">
+                  <table style="margin-top:20px;" class="pure-table pure-table-unbordered">
+                    <tbody ng-repeat="z in result.selectedproduct.productinfo.productId.brandId.description">
+                      <tr>
+                        <td>
+                          <font style="word-wrap:break-word;"><b>{{z.name}}</b></font>
+                        </td>
+                        <td>
+                          <font style="word-wrap:break-word;">{{z.value}}</font>
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+                <div ng-show="subtab==3" style="width:308px;">
+                  <div>
+                    <table style="margin-top:20px;" class="pure-table pure-table-unbordered">
+                      <thead>
+                      </thead>
+                      <tbody ng-repeat="x in result.selectedproduct.productinfo.productId.package" ng-hide="x.name=='custom'">
+                        <tr>
+                          <td>
+                            <font style="word-wrap:break-word;"><b>{{x.name}}</b></font>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="border-top-style:solid;border-top-width: 1px;"></td>
+                          <td style="border-top-style:solid;border-top-width: 1px;"></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <font style="word-wrap:break-word;"><b>packageSize</b></font>
+                          </td>
+                          <td>
+                            <font ng-if="x.size" style="word-wrap:break-word;">{{x.size}}</font>
+                            <font ng-if="!x.size" style="word-wrap:break-word;">-</font>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <font style="word-wrap:break-word;"><b>packageShape</b></font>
+                          </td>
+                          <td>
+                            <font ng-if="x.shape" style="word-wrap:break-word;">{{x.shape}}</font>
+                            <font ng-if="!x.shape" style="word-wrap:break-word;">-</font>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <font style="word-wrap:break-word;"><b>packageType</b></font>
+                          </td>
+                          <td>
+                            <font ng-if="x.type" style="word-wrap:break-word;">{{x.type}}</font>
+                            <font ng-if="!x.type" style="word-wrap:break-word;">-</font>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

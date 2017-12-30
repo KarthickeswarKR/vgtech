@@ -1,0 +1,399 @@
+<style>
+@media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+width:  100%;
+height: 74%;
+}
+@media screen and (min-width : 321px) {
+width:  37%;
+height: 74%;
+}
+@media screen and (max-width : 320px) {
+width:  70%;
+height: 74%;
+}
+@media screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+width:  70%;
+height: 74%;
+}
+@media screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+width:  37%;
+height: 74%;
+}
+@media screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+width: 100%;
+height: 74%;
+}
+@media screen and (min-width : 1224px) {
+width:  37%;
+height: 74%;
+}
+@media screen and (min-width : 1824px) {
+width: 37%;
+height: 74%;
+}
+@media only screen and (max-width: 400px) {
+body { font-size:90%;}
+}
+</style>
+<style>
+
+.dropdown-submenu {
+    position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+  .container1 {
+    position: relative;
+    margin-top: 50px;
+    width: 500px;
+    height: 300px;
+  }
+  .overlay2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 29.5vw;
+    height: 22vw;
+    transition: background 0.5s ease;
+    display: block;
+    background: rgba(0, 0, 0, .3);
+  }
+  .tittle2 {
+    position: absolute;
+    width: 500px;
+    left: 0;
+    top: 120px;
+    font-weight: 700;
+    font-size: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    z-index: 1;
+    transition: top .5s ease;
+  }
+ .tittle2 {
+    top: 90px;
+  }
+  .button2 {
+    position: absolute;
+    left: 35px;
+    top: 100px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity .35s ease;
+  }
+  .button2 a {
+    text-decoration: none;
+    cursor: pointer;
+    width: 200px;
+    padding: 12px 48px;
+    text-align: center;
+    color: white;
+    border: solid 0.12vw white;
+    z-index: 1;
+  }
+
+  .button2 {
+    opacity: 1;
+  }
+  #block_container {
+    text-align: center;
+  }
+  #bloc1,
+  #bloc2 {
+    display: inline;
+  }
+   ::-webkit-datetime-edit-year-field:not([aria-valuenow]),
+   ::-webkit-datetime-edit-month-field:not([aria-valuenow]),
+   ::-webkit-datetime-edit-day-field:not([aria-valuenow]) {
+    color: transparent;
+  }
+  #slides_control>div {
+    height: 200px;
+  }
+  #img {
+    margin: auto;
+    width: 200px;
+  }
+  #slides_control {
+    position: absolute;
+    width: 400px;
+    left: 50%;
+    top: 20px;
+    margin-left: -200px;
+  }
+  textarea {
+    width: 300px;
+    height: 30px;
+    resize: none;
+    overflow: initial;
+  }
+  .fa.fa-tag {
+    color: transparent;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: red;
+  }
+  .fa.custom-fa {
+    font-size: 12em;
+    -webkit-text-stroke-color: blue;
+    color: transparent;
+  }
+  .my-custom-stars .button .material-icons {
+    font-size: 50px;
+  }
+  .my-custom-stars .star-button.star-on .material-icons {
+    color: #003399;
+  }
+  .my-custom-stars .star-button.star-off .material-icons {
+    color: #99ccff;
+  }
+  .material-icons {
+    font-family: 'Material Icons';
+    ...
+  }
+  .button123
+  {
+
+  }
+</style>
+
+<div ng-init="height()">
+  <form name="productForm" novalidate>
+    <div style="border-bottom-style:solid;border-left-style:solid;border-width:1px;border-color:#eeeeee;width:85%;height:53px;float:right;">
+      <button type="button" ng-if="newvariant!=='brand'" style="
+      width:100px;
+      height:30px;
+      border:none;
+      margin-right:10px;
+      float:right;
+      margin-top:10px;
+      background: #4c81bf;
+      " ng-click="addproduct()" value="ADD"><font style="color:white">save</font></button>
+      <button type="button" style="
+        width:100px;
+        float:right;
+        margin-right:10px;
+        height:30px;
+        border:none;
+        margin-top:10px;
+        background: #4c81bf;
+        " ng-click="cancel()" value="ADD"><font style="color:white">cancel</font></button>
+    </div>
+    <div class="tabbable-line scrollbar style-4" id="addproduct"  onscroll="autocompletenone()"  style="border-left-style:solid;border-color:#eeeeee;border-width:1px;display: block;width:85%;float:right;overflow: auto;" class="productinfopage">
+    <center>  <div style="=margin:;padding: 10px;width:600px;font-weight: 600;color:#4c81bf" >Create your assets here</div></center>
+
+      <div>
+        <div style="=margin:;padding: 10px;width:600px;margin-left:15px;font-weight: 600;">What are you looking to create?</div>
+        <div style="
+            width: 100%;
+            " class="row">
+            <div style="width:600px;margin-left:30px;">
+              <div style="=margin:;padding: 10px;">
+                <select ng-class="{borderred:productcategory==''}" ng-model="productcategory" ng-change="categoryautocomplete(productcategory)" id="categoryautocomplete" placeholder="what are you looking to create" required class="inputAll auto-complete-off" required-message="'This field is required..'" required="">
+                  <option ng-repeat="x in category" value={{x._id}} ng-click="categoryautocomplete(x._id,x.name)">
+                    {{x.name}}
+                  </option>
+                </select>
+              </div>
+            </div>
+          <div style="margin-left:30px;">
+            <div style="=margin:;padding: 10px;width:600px;font-weight: 600;">Give a name to your {{productcategry}}</div>
+            <div style="width:100%;">
+              <div style="=margin:;padding: 10px;">
+                <div class="form-group" ng-class="{'has-error' : productForm.name.$invalid && !productForm.name.$pristine}">
+                  <input type="text" autocomplete="off" name="name" ng-model="productname" required ng-class="{borderred:productname==''}" ng-reqired=true required class="inputAll required form-control auto-complete-off" validate-on="dirty" required-message="'This field is required..'" placeholder='Give a name to your {{productcategry}}' required>
+
+                </div>
+              </div>
+              <!--<div ng-hide="productcategry=='brand' || productcategry=='process'"   style="=margin:;padding: 10px;width:600px;font-weight: 600;">Do you wish to add unit for the above {{productcategry}} ?</div>
+              <div ng-hide="productcategry=='brand' || productcategry=='process'"   class="radio" style="width:101.6%;overflow:hidden;height:45px;margin-top:auto">
+                <div style="margin-left:80px;margin-top:10px;display:inline-block;">
+                  <input type="radio" name="unit" ng-model="unt" value="true" id="material">
+                  <font style="margin-left:5px;font-weight:500;">Yes</font>
+                </div>
+                <div style="margin-left:80px;margin-top:10px;display:inline-block;">
+                  <input type="radio" name="unit" ng-model="unt" value="false" id="material">
+                  <font style="margin-left:5px;font-weight:500;">No</font>
+                </div>
+              </div>
+              <div ng-hide="productcategry=='brand' || productcategry=='process'"   style="width:600px;" ng-if="unt=='true'">
+                <div style="=margin:;padding: 10px;width:100%;">
+
+        <div id="unit" class="dropdown" style="width:100%;">
+            <a id="dLabel" role="button" class="btn btn-primary" data-toggle="dropdown" style="
+    color: black;
+    background: white;
+    width: 28%;
+    border-radius: 0px;
+    border-color: #cccccc;
+">
+                <font style="float:left">{{punit}}</font> <span style="float:right;margin-top:7px;" class="caret"></span>
+            </a>
+    		<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+              <li class="dropdown-submenu"  ng-repeat="x in units">
+                <a tabindex="-1" >{{x.fullName}}</a>
+                <ul class="dropdown-menu">
+                  <li style="cursor:pointer" ng-repeat="y in derivedunits" ng-if="y.baseunit.name==x.name"><a style="cursor:pointer" ng-click="setproductunit(y._id,y.unit)">{{y.name}}</a></li>
+                </ul>
+              </li>
+            </ul>
+        </div>
+
+                </div>
+              </div>-->
+              <div style="=margin:;padding: 10px;width:600px;font-weight: 600;">product owner</div>
+                <div style="width:600px;">
+                <div style="=margin:;padding: 10px;">
+                  <input type="text" autocomplete="off" ng-model="productOwner" ng-readonly=true required class="inputAll auto-complete-off" validate-on="dirty" class=" auto-complete-off form-control input-sm loginInput inputMaxWidth ng-pristine ng-invalid ng-invalid-required ng-touched"
+                    required-message="'This field is required..'" required="">
+                </div>
+              </div>
+              <div style="=margin:;padding: 10px;width:600px;font-weight: 600;">Do you wish to create links for the above {{productcategry}} ?</div>
+              <div class="radio" style="width:101.6%;overflow:hidden;height:45px;margin-top:auto">
+                <div style="margin-left:80px;margin-top:10px;display:inline-block;">
+                  <input type="radio" name="material" ng-model="link" value="true" id="material">
+                  <font style="margin-left:5px;font-weight:500;">Yes</font>
+                </div>
+                <div style="margin-left:80px;margin-top:10px;display:inline-block;">
+                  <input type="radio" name="material" ng-model="link" value="false" id="material">
+                  <font style="margin-left:5px;font-weight:500;">No</font>
+                </div>
+              </div>
+              <div ng-repeat="x in referenceproducts" ng-if="link=='true'">
+    <div style="width:65%;display: inline-block;" class="form-group" ng-class="{'has-error' : productForm.name.$invalid && !productForm.name.$pristine}">
+                <input type="text" id="productautocomplete" ng-change="productautocomplete()" onscroll="autocompletenone()"  autocomplete="off" name="name" ng-model="x.product" required  class="inputAll auto-complete-off"  placeholder='Add link to your {{productcategry}}' required>
+     </div>
+     <div style="display: inline-block;" ng-show="$last"> <a  ng-click="addproductlink()">add a link</a>
+              </div>
+              <div style="margin-left:10px;display: inline-block;" ng-show="!$first && $last"> <a  ng-click="removeproductlink(x.product)">remove</a></div>
+
+            </div>
+            <div ng-if="productcategry!='brand'" ng-init="brd1()" style="=margin:;padding: 10px;width:600px;font-weight: 600;">Do you wish to add brand for the above {{productcategry}} ?</div>
+            <div ng-if="productcategry!='brand'" class="radio" ng-init="brd1()" style="width:101.6%;overflow:hidden;height:45px;margin-top:auto">
+              <div style="margin-left:80px;margin-top:10px;display:inline-block;">
+                <input type="radio" name="brand" ng-model="brd" ng-click="brdtrue()" value="true" id="material">
+                <font style="margin-left:5px;font-weight:500;">Yes</font>
+              </div>
+              <div style="margin-left:80px;margin-top:10px;display:inline-block;">
+                <input type="radio" name="brand" ng-model="brd" ng-click="brd1()" value="false" id="material">
+                <font style="margin-left:5px;font-weight:500;">No</font>
+              </div>
+            </div>
+            <div ng-if="brd=='true'">
+              <div style="width:65%;display: inline-block;" class="form-group" ng-class="{'has-error' : productForm.name.$invalid && !productForm.name.$pristine}">
+                <input type="text" autocomplete="off" onscroll="autocompletenone()" name="name" id="brandautocompletesearch" ng-class="{borderred:branderror=='true'}" ng-change="brandautocomplete()" ng-model="brnd" style="width:100%" placeholder="Choose a brand" class="inputAll" required>
+              </div>
+        </div>
+        <div ng-hide="productcategry=='brand' || productcategry=='process'" style="width:100%;" margin-left:"11px">
+  <div style="=margin:;padding: 10px;width:600px;font-weight: 600;">Reseller rights</div>
+  <div style="=margin:;padding: 10px;">
+    <div class="radio" ng-repeat="x in types" style="margin-top:10px;margin-left:8%;display:inline-block">
+      <input type="radio" ng-model="$parent.producttype" ng-value={{x._id}} name="type">
+      <font style="margin-right:20px;font-weight: 500;">{{x.desc}}</font><br>
+    </div>
+  </div>
+</div>
+              <div style="=margin:;padding: 10px;width:600px;font-weight: 600;">Description</div>
+
+              <table>
+                        <tr ng-repeat="x in productdescription">
+                  <td><input type="text" placeholder="specification" autocomplete="off" style="width:22vw;margin-left:1vw;margin-top:0.9vw;" ng-model="x.key" required class="inputAll auto-complete-off" validate-on="dirty" class=" auto-complete-off form-control input-sm loginInput inputMaxWidth ng-pristine ng-invalid ng-invalid-required ng-touched"
+                      required-message="'This field is required..'" required=""></td>
+                  <td><input type="text" placeholder="description" autocomplete="off" style="width:300px;margin-top:10px;margin-left:5px;" ng-model="x.value" tooltip-class="tooltipcal"
+                    tooltip-is-open="tootltip"  uib-tooltip-html="htmlTextToolTip" tooltip-trigger="focus" tooltip-placement="top" ng-change="changedescription(x)" ng-keyup="changedescription(x)"  ng-click="changedescription(x)" required class="inputAll auto-complete-off" validate-on="dirty" class=" auto-complete-off form-control input-sm loginInput inputMaxWidth ng-pristine ng-invalid ng-invalid-required ng-touched"
+                      required-message="'This field is required..'" required=""></td>
+                  <td>
+                    <a  class="btn btn-primary btn-rounded" ng-show="$last" style="padding-top: 10px;margin-left:5px;width:35px;margin-top:10px;" ng-click="addproductdescription()">+</a>
+                    <a  class="btn btn-primary btn-rounded" ng-show="$last && !$first" style="padding-top: 10px;width:35px;margin-top:10px;" ng-click="removeproductdescription()">-</a>
+                  </td>
+                </tr>
+              </table>
+              <center>
+                <div style="
+            margin-left: 0px;
+            margin-top: 20px;
+            ">
+                  <div class="container1" ng-show="!newup" style="width: 400px; height: 300px;" aria-hidden="false">
+                    <input style="display:none;" type="file" id="fileInput" onchange="angular.element(this).scope().uploadFile(this.files[0])">
+                    <div class="overlay2" style="
+            border-style: solid;
+            border-width:1px;
+            border-color: #d0d4d8;
+            "></div>
+                    <div style="top:10vw;left:10vw;" class="button2" onclick="document.getElementById('fileInput').click();"><a> Upload</a></div>
+                  </div>
+                  <div ng-hide="!newup" class="cropAreaproduct ng-hide" aria-hidden="true" style="">
+                    <img-crop image="myImage" result-image="myCroppedImage" area-type="square" result-image-format="image/jpeg" result-image-size="1000" result-image-quality="1.0" change-on-fly="true" class="ng-isolate-scope"><canvas width="177" height="100" style="margin-top: -50px; margin-left: -88.8889px; cursor: default;"></canvas></img-crop>
+                  </div>
+                  <button class="btn ng-hide" ng-show="newup" style="border: none; color: rgb(250, 250, 251); background-color: rgb(76, 129, 191); margin-top: 10px;" ng-click="uploadimg()" align="right" aria-hidden="true">upload</button>
+                </div>
+                <div style="width:90%">
+                  <i class="fa fa-chevron-left" aria-hidden="true" id="imgScrollLeftBnt1" ng-click="imgScrollLeftBntFn1()" style="float: left;margin-top: 45px;margin-left: 10px;background: white;color: #b3b2b2;"></i>
+                  <i class="fa fa-chevron-right" aria-hidden="true" id="imgScrollRightBnt1" ng-click="imgScrollRightBntFn1()" style="float: right;margin-top: 45px;background: white;color: #b3b2b2;"></i>
+                  <!--              <button id="imgScrollLeftBnt1" ng-click="imgScrollLeftBntFn1()" style="float: left;font-size: 35px;display:block !important;/* position: absolute; */margin-top: 45px;margin-left: 10px;border: none;/* padding: 10px; */background: white;color: #b3b2b2;">&lt;</button>
+              <button id="imgScrollRightBnt1" ng-click="imgScrollRightBntFn1()" style="font-size: 35px;float: right;/* position: absolute; */display:block !important;margin-top: 45px;/* margin-left: 360px; */border: none;/* padding: 10px; */background: white;color: #b3b2b2;">&gt;</button>
+    -->
+                  <div style="
+                      margin-left: 0px;
+                      margin-top: 20px;
+                      height: 150px;
+                      width: 80%;
+                      " id="imageList1" class="imageList1">
+                    <a ng-repeat="imageSrc1 in productimages" my-post-repeat-directiv>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="deleteproductimage(imagesrc1)"><span aria-hidden="true">&times;</span></button>
+                                <img src={{imageSrc1.img}} style="height: 100px;width: 100px;">
+                              </a>
+                  </div>
+                </div>
+              </center>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script type="text/ng-template" id="tooltipcalculator.html">
+        <div style="position:absolute"><font>{{htmlTextToolTip}}</font></div>
+      </script>
+    </div>
+  </form>
+</div>

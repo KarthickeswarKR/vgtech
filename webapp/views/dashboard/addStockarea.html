@@ -1,0 +1,117 @@
+<section>
+
+      <div class="modal-header" style="border:none" ng-init="initMap()">
+    <button ng-hide="userstatus=='pending'" type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+
+</div>
+    <div class="row" ng-init="initMap()" style="
+    margin: auto;
+    width: 780px;
+    margin-top: 10px;
+    margin-left:25px;
+">
+<div style="
+margin: auto;
+width: 500px;
+margin-top: 10px;
+margin-left:25px;
+">
+  <div style="margin: 20px;">
+
+
+                                    <div class="form-group">Give a name to stockarea</div>
+<div class="form-group">
+                                        <input type="text" minlength=3 maxlength=20 disallow-spaces class="inputAddStockareaPopup" ng-readonly="readname" ng-model-options="{ debounce: 500 }" ng-keydown="$event.keyCode == 32? space() : null" ng-change="checkname()" ng-model="stockareaName" name="stockareaName" validate-on="dirty" class="form-control input-sm loginInput inputMaxWidth ng-pristine ng-invalid ng-invalid-required ng-touched ng-untouched" ng-pattern-restrict="/[a-zA-Z0-9_+#-]+/" required-message="'Yo! This field is required..'" placeholder="Give a name to stockarea" required="" autocomplete="off" >
+
+                                        <font color="#a94442">{{form.stockareaName.$error}}{{na}}</font><i class="fa fa-check" ng-show="state=='exist'" style="
+                                            color: #72bb53; float:right; position: relative;
+                                            top: -28px;
+                                            left: 152px;
+                                        " aria-hidden="true" style="margin-right: 10px;
+                                        "><font color="#72bb53">Stockarea is available</font></i>
+                                        <i class="fa fa-times" ng-show="state=='Not exist!'" style="
+                                            color: #a94442;  float:right; position: relative;
+                                            top: -28px;
+                                            left: 182px;
+                                        " aria-hidden="true" style="margin-right: 10px;
+                                        "><font color="#a94442">Stockarea is already taken</font></i>
+                                    </div>
+<div class="form-group" >
+  <div style="margin-bottom:0px !important;" ng-init="$parent.stockareavisiblity='1003'">visibility</div>
+  <div style="margin-top:-10px;">
+    <div class="radio" ng-repeat="x in types" style="margin-left:11px;padding:10px;display:inline-block;">
+      <input type="radio" ng-model="$parent.stockareavisiblity" ng-value="x._id" name="type">
+      <font style="">{{x.desc}}</font>
+    </div>
+  </div>
+</div>
+<div class="form-group" style="margin-top:-15px;">Mark your stockarea on Map</div>
+
+<div height="40px">
+
+    <input id="searchmap" class="controls searchAddressMap" type="text" placeholder="Search Box">
+  <div id="map2" style="margin-bottom: 20px;width: 100%;height: 250px;"> </div>
+
+           </div>
+<div style="height:50px">
+<div class="form-group">
+<input type="text" ng-change="latc()" ng-keyup="latc()" style="      float: left;width: 50%;  pointer-events: none; box-shadow: none;" id="latitude" ng-model="latitude" name="latitude" class="form-control input-sm loginInput inputMaxWidth ng-pristine ng-untouched ng-invalid ng-invalid-required" placeholder="latitude" required-message="'Yo! This field is required..'" >
+                                   </div>
+<div class="form-group">
+ <input ng-change="lonc()" ng-keyup="lonc()" style="      float: left;width: 50%;  pointer-events: none; box-shadow: none;" type="text" id="longitude" ng-model="longitude" name="longitude" class="form-control input-sm loginInput inputMaxWidth ng-pristine ng-untouched ng-invalid ng-invalid-required" placeholder="longitude" required-message="'Yo! This field is required..'">
+                                </div>
+                                  </div>
+
+<div class="form-group" style="margin-top:10px">
+  <select id="bloc1"  ng-change="codec()" class="form-control selectpicker" style="width:150px; display:inline-block;" ng-model="code" ng-options="option.dial_code as option.name for option in codes" name="unit" id="unit"></label>
+  </select>
+  <input type="text" ng-model="code" style="
+  border: 1px solid #cccccc;
+  display:inline-block;
+  background: white;
+  width:72px;
+  height:34px !important;
+  " class="form-control input-sm loginInput inputMaxWidth ng-pristine ng-untouched ng-not-empty ng-valid ng-valid-required" readonly>
+
+  <input type="number" numeric-only style="width:230px; height:34px; display:inline-block;" ng-model="phone" ng-model-options="{ debounce: 500 }"  ng-change="phonechange()" ng-keyup="phonechange()" validate-on="dirty" class="form-control input-sm loginInput inputMaxWidth ng-pristine ng-untouched ng-invalid ng-invalid-required" name="phone" required-message="'phone number cannot be blank'" placeholder="Phone No" required="" autocomplete="off">
+    <font color="#a94442">{{ph}}</font><i class="fa fa-times" ng-show="phonestate=='Not exist!'" style="
+        color: #a94442;   position: relative;
+    " aria-hidden="true" style="margin-right: 10px;
+    "><font color="#a94442">Phone number is invalid or already taken</font></i>
+</div>
+<div ng-show="adrs" class="form-group" style="margin-top:10px">
+  <textarea ng-model="address" placeholder="Address" style="
+      width: 100%;
+      height: 100px;
+  "></textarea>
+</div>
+<div>
+  <input class="loginButton"  style="font-weight:500 !important" type="submit" value="create my stockarea" ng-click="fnAddStockarea()" class="btn btn-block singinButton inputMaxWidth">
+
+
+            </div>
+          </div>
+        </div>
+<div style="margin-top: -564px;position: sticky;float: right;background: #eee;">
+  <div style="width: 215px;background:white;height:100px;">
+    <div style="text-align:justify;" ng-show="stockareavisiblity==1003"><li class="fa fa-globe"></li>
+    Your stockarea location and details are visible to any one for the products you have added in your stockarea.</div>
+    <div style="text-align:justify;" ng-show="stockareavisiblity==1004"><li class="fa fa-users"></li>
+    Your stockarea loaction will be visible to everyone and details are visible only with whom you are collaborating for the products you have added in your stockarea.</div>
+    <div ng-show="stockareavisiblity==1005" style="text-align:justify;"><li class="fa fa-user"></li>
+    Your stockarea is not visible to any one except you.</div>
+  </div>
+  <div style="width:180px;height:180px;margin-left:35px">
+    <img style="
+    margin-top: 28px;
+    margin-left: 10px;
+" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMS4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ1OS40MTkgNDU5LjQxOSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDU5LjQxOSA0NTkuNDE5OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjEyOHB4IiBoZWlnaHQ9IjEyOHB4Ij4KPGc+Cgk8Zz4KCQk8cG9seWdvbiBwb2ludHM9IjgzLjExNSwxNzIuOTExIDM3Ni4zMDQsMTcyLjkxMSAzNzYuMzA0LDQ1OS40MTkgNDU4Ljc3Nyw0NTkuNDE5IDQ1OC43NzcsMTA2Ljk1NiAgICAgMjIzLjE3OCwwIDAuNjQyLDEwNi45NTYgMC42NDIsNDU5LjQxOSA4My4xMTUsNDU5LjQxOSAgICIgZmlsbD0iI0ZGRkZGRiIvPgoJCTxyZWN0IHg9IjE3MS4xNTUiIHk9IjQwMy41NDMiIHdpZHRoPSI1Mi4wMjMiIGhlaWdodD0iNDQuODc4IiBmaWxsPSIjRkZGRkZGIi8+CgkJPHJlY3QgeD0iMjM1LjAwNSIgeT0iNDAzLjU0MyIgd2lkdGg9IjUyLjAyMyIgaGVpZ2h0PSI0NC44NzgiIGZpbGw9IiNGRkZGRkYiLz4KCQk8cmVjdCB4PSIxMDcuMzEzIiB5PSI0MDMuNTQzIiB3aWR0aD0iNTIuMDIzIiBoZWlnaHQ9IjQ0Ljg3OCIgZmlsbD0iI0ZGRkZGRiIvPgoJCTxyZWN0IHg9IjE3MS4xNTUiIHk9IjM0MS45ODUiIHdpZHRoPSI1Mi4wMjMiIGhlaWdodD0iNDQuODc4IiBmaWxsPSIjRkZGRkZGIi8+CgkJPHJlY3QgeD0iMTA3LjMxMyIgeT0iMzQxLjk4NSIgd2lkdGg9IjUyLjAyMyIgaGVpZ2h0PSI0NC44NzgiIGZpbGw9IiNGRkZGRkYiLz4KCQk8cmVjdCB4PSIyMzUuMDA1IiB5PSIzNDEuOTg1IiB3aWR0aD0iNTIuMDIzIiBoZWlnaHQ9IjQ0Ljg3OCIgZmlsbD0iI0ZGRkZGRiIvPgoJCTxyZWN0IHg9IjE3MS4xNTUiIHk9IjI4MC40MzYiIHdpZHRoPSI1Mi4wMjMiIGhlaWdodD0iNDQuODc4IiBmaWxsPSIjRkZGRkZGIi8+CgkJPHJlY3QgeD0iMTA3LjMxMyIgeT0iMjgwLjQzNiIgd2lkdGg9IjUyLjAyMyIgaGVpZ2h0PSI0NC44NzgiIGZpbGw9IiNGRkZGRkYiLz4KCQk8cmVjdCB4PSIyOTguODQ3IiB5PSI0MDMuNTQzIiB3aWR0aD0iNTIuMDIzIiBoZWlnaHQ9IjQ0Ljg3OCIgZmlsbD0iI0ZGRkZGRiIvPgoJPC9nPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=">
+  </div>
+  <div style="width:150px;margin-left:35px">
+    <p style="color:#8e8b8;font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;text-align: justify;" helvetica="" neue",="" helvetica,="" arial,="" sans-serif;="" text-align:="" justify;="" "="">
+        For mapping you to Ideal source/destination tell us the location you wish to sell or buy the products and give a unique name to it. It can be your simple home or inventory or factory location.
+    </p>
+  </div>
+</div>
+</div>
+</section>

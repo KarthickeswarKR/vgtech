@@ -1,0 +1,185 @@
+<div class="modal-header" style="border:none !important;">
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+</div>
+<div style="margin-top: 10px; padding-bottom:10px;width:100%;height:500px;">
+  <div style="position: relative;width:100%">
+    <section style="text-align: center;width:100%">
+
+      <style>
+      .dropdown-submenu {
+          position: relative;
+      }
+      .dropdown-submenu>.dropdown-menu {
+          top: 0;
+          left: 100%;
+          margin-top: -6px;
+          margin-left: -1px;
+          -webkit-border-radius: 0 6px 6px 6px;
+          -moz-border-radius: 0 6px 6px;
+          border-radius: 0 6px 6px 6px;
+      }
+      .dropdown-submenu:hover>.dropdown-menu {
+          display: block;
+      }
+      .dropdown-submenu>a:after {
+          display: block;
+          content: " ";
+          float: right;
+          width: 0;
+          height: 0;
+          border-color: transparent;
+          border-style: solid;
+          border-width: 5px 0 5px 5px;
+          border-left-color: #ccc;
+          margin-top: 5px;
+          margin-right: -10px;
+      }
+      .dropdown-submenu:hover>a:after {
+          border-left-color: #fff;
+      }
+      .dropdown-submenu.pull-left {
+          float: none;
+      }
+      .dropdown-submenu.pull-left>.dropdown-menu {
+          left: -100%;
+          margin-left: 10px;
+          -webkit-border-radius: 6px 0 6px 6px;
+          -moz-border-radius: 6px 0 6px 6px;
+          border-radius: 6px 0 6px 6px;
+      }
+        .Button {
+          font-family: Calibri, sans-serif;
+          font-size: 13px;
+          font-weight: bold;
+          width: 160px;
+          height: 25px;
+          background: grey;
+          color: white
+        }
+        .selected {
+          color: white;
+          background: green
+        }
+      </style>
+    </section>
+
+    <div id="page-content" style="width:100%">
+      <div class="container" style="width:100%">
+        <!--end page-title-->
+
+        <section style="width:100%">
+
+          <div class="row" style="width:100%">
+
+            <div class="col-sm-8 col-md-offset-1" style="width:100%">
+
+              <form class="form inputs-underline" enctype="multipart/form-data">
+
+                <section style="width:100%">
+
+                  <div class="row">
+
+
+                    <div class="col-md-8 col-sm-3">
+                      <div style="width:50%;">
+                        <div style="=margin:;padding: 10px;font-weight: 600;">Package Size</div>
+                        <div style="=margin:;padding: 10px;">
+                          <div class="form-group" >
+                            <input type="number" placeholder="e.g: 100 Kg" autocomplete="off" ng-model="packagesize" required class="inputAll required form-control auto-complete-off" validate-on="dirty" required-message="'This field is required..'" required>
+                            </div>
+                        </div>
+						</div>
+            <div style="width:400px;">
+              <div style="=margin:;padding: 10px;width:100%;">
+
+      <div class="dropdown" id="unit" style="width:100%;">
+          <a id="dLabel" role="button" class="btn btn-primary" data-toggle="dropdown" style="
+  color: black;
+  background: white;
+  width: 28%;
+  border-radius: 0px;
+  border-color: #cccccc;
+">
+              <font style="float:left">{{punit}}</font> <span style="float:right;margin-top:7px;" class="caret"></span>
+          </a>
+      <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+            <li class="dropdown-submenu"  ng-repeat="x in units">
+              <a tabindex="-1" href="#">{{x.fullName}}</a>
+              <ul class="dropdown-menu">
+                <li style="cursor:pointer" ng-repeat="y in derivedunits" ng-if="y.baseunit.name==x.name"><a style="cursor:pointer" ng-click="setproductunit(y._id,y.unit)">{{y.name}}</a></li>
+              </ul>
+            </li>
+          </ul>
+      </div>
+
+              </div>
+            </div>
+
+						</br>
+                        <div style="width:70%;">
+                          <div style="=margin:;padding: 10px;font-weight: 600;">Package shape</div>
+                          <div style="=margin:;padding: 10px;">
+                            <div class="form-group" >
+                              <input type="text" placeholder="e.g:rectangle,circle,square,irregular" autocomplete="off"  ng-model="packageshape" required class="inputAll required form-control auto-complete-off" validate-on="dirty" required-message="'This field is required..'" required>
+                              </div>
+                          </div>
+						  </div>
+                          <div style="width:60%;">
+                            <div style="=margin:;padding: 10px;font-weight: 600;">Package Type</div>
+                            <div style="=margin:;padding: 10px;">
+                              <div class="form-group" >
+                                <input type="text" placeholder="e.g:sack" autocomplete="off"  ng-model="packagetype" required class="inputAll required form-control auto-complete-off" validate-on="dirty" required-message="'This field is required..'" required>
+                                </div>
+                            </div>
+</div>
+                    </div>
+                  </div>
+            </div>
+
+            </section>
+
+
+
+
+            </form>
+
+            <script type="text/ng-template" id="tooltipcalculator.html">
+              <div>{{htmlTextToolTip}}</div>
+            </script>
+            <!--end form-->
+          </div>
+
+          <!--end col-md-6-->
+
+      </div>
+
+
+      <!--end row-->
+
+      </section>
+
+      <section style="text-align: center;margin-top: 10px;float:right;">
+
+        <div>
+
+          <button type="submit" ng-click="submit()" class="btn btn-primary btn-rounded">Submit</button>
+
+        </div>
+
+
+      </section>
+
+    </div>
+  </div>
+
+</div>
+<script>
+  $("#jQueryColorChange").click(function() {
+    $(this).toggleClass("selected");
+  });
+  $(document).ready(function() {
+    $("#jQueryColorChange").click(function() {
+      $("#custom").toggle();
+    });
+  });
+</script>

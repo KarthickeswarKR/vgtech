@@ -1,0 +1,186 @@
+<div ng-init="height()">
+  <div class="searchbardiv" style="border-left-style:solid;border-right-style:solid;border-bottom-style:solid;width:85%;float:right;border-right-width:1px;border-color:#eeeeee">
+    <div style="
+margin-left: auto;
+/* width: 900px; */
+padding-left: 10px;
+padding-right: 10px;
+/* margin-right: 0px; */
+">
+      <div style="
+/* text-align: center; */
+"><input style="margin-left:0px;border:none;background:#f4f5f7;" ng-keydown="onenterkeyautocomplete($event)" type="text" placeholder="Search for Products,Brands and More" class="searchbarinput ng-pristine ng-untouched ng-valid ng-empty" ng-change="autocomplete()"
+          id="autocompletesearch" ng-model="search" name="autocompletesearch"></div>
+      <div>
+        <span ng-repeat="s in category" style="
+margin: 10px;
+/* top: 10px; */
+/* position: relative; */
+"><a style="
+cursor: pointer;
+" ng-click="clickproduct(s._id)">{{s.name}}</a></span>
+      </div>
+    </div>
+  </div>
+  <div class="searchresultdiv scrollbar style-4" id="searchresult" style="height: 358px;width:85%;float:right;border-left-style:solid;border-color:#eeeeee;border-width:1px;">
+    <div ng-repeat="singleProduct in productsSearch" class="singlesearchresult">
+      <div style="" ng-click="subtab13(singleProduct.productId)" class="searchresultimgdiv">
+        <a ng-click="subtab13(singleProduct.productId)">
+          <div style="border-style:solid;border-width:1px;border-color:#dcdcdc;"><img src={{singleProduct.primaryImage}} style="height:60px;width:70px" class="searchresultimg"></div>
+      </div>
+      <div class="searchresultinfo">
+        <div><b>{{singleProduct.productName}}</b></div>
+      </div><br>
+      <div style="
+            height: 40px;
+            overflow: hidden;
+            width: 80%;
+            margin-left:85px;
+            ">
+        <a style="text-decoration: none;" ng-repeat="x in singleProduct.specifications">
+            {{x.key}}-{{x.value}}
+            </a> <a>..view more</a>
+      </div>
+      </a>
+      <input type="button" ng-show="singleProduct.state=='ADDED'" style="/* padding-bottom: 3px; */float:right;margin-right: 10px;padding: 4px;margin-top:-32px" class="addtostockareabutton" value="ADDED">
+      <input type="button" ng-show="!singleProduct.state" ng-click="addProductsToStockarea(singleProduct._id)" style="/* padding-bottom: 3px; */float:right;margin-right: 10px;margin-top:-35px;padding: 4px;" class="addtostockareabutton" value="ADD">
+    </div>
+  </div>
+  <div class="tabbable-line" id="productinfopage" style="border-left-style:solid;border-color:#eeeeee;display: none;width:85%;float:right;overflow: initial;" class="productinfopage">
+    <ul class="nav nav-tabs" style="
+            margin-top: 10px;
+            height: 43px;
+            ">
+      <li class={{selectedtab11}}><a style="text-decoration: none;cursor: pointer;width:100px" ng-click="subtab11()" ng-hide="subtab1 == 3">Overview</a></li>
+      <li class={{selectedtab12}}><a style="text-decoration: none;cursor: pointer;width:100px" ng-click="subtab12()" ng-hide="subtab1 == 3">Brand Info</a></li>
+      <!--    <li class={{selectedtab13}} ><a style="text-decoration: none;cursor: pointer;width:150px" ng-click="subtab13()">Package Info</a></li>-->
+    </ul>
+
+    <button type="button" ng-show="!getSearchProduct.state" style="
+            margin-right: 10px;
+            float: right;
+            width:75px;
+            margin-top: -36px;
+            height:30px;
+            float:right;
+            border:none;
+            background: #c3c3c3;
+            " ng-click="edit(getSearchProduct.productid)" value="ADD"><font>Edit</font></button>
+    <button style="
+            margin-top: -36px;
+            margin-right: 93px;
+            width:75px;
+            border:none;
+            float: right;
+            height:30px;
+            background: #c3c3c3;
+            " ng-click="productinfopageclose()"><img src="{{domainURL}}assets/icons/backicon.ico" style="width:25px;margin-top:-6px
+            "></button>
+    <div class="tabcontents1" class="scrollbar style-4" id="productinfodiv">
+      <div style="
+            width: 100%;
+            " class="row">
+        <center>
+          <div style="
+            margin-left: 50px;
+            margin-top: 20px;
+            ">
+            <div class="container1" ng-show="!newup" style="width:400px;height:300px;">
+              <input style="display:none;" type="file" id="fileInput" onchange="angular.element(this).scope().uploadFile(this.files[0])" />
+              <div class="overlay1" style="
+            border-style: solid;
+            border-width:1px;
+            border-color: #d0d4d8;
+            "></div>
+              <div class="button1" onclick="document.getElementById('fileInput').click();"><a> Upload</a></div>
+            </div>
+            <div ng-hide="!newup" class="cropAreaproduct">
+              <img-crop image="myImage" result-image="myCroppedImage" area-type="square" result-image-format="image/jpeg" result-image-size="200" result-image-quality="1.0" change-on-fly="true"></img-crop>
+            </div>
+
+            <button class="btn" ng-show="newup" style="border:none;color: #fafafb;background-color: #4c81bf;margin-top:10px;" ng-click="uploadimg()" align="right">upload me</button>
+          </div>
+          <div style="
+            margin-left: 0px;
+            margin-top: 20px;
+            height: 150px;
+            " id="imageList1" class="imageList1">
+            <button id="imgScrollLeftBnt1" ng-click="imgScrollLeftBntFn1()" style="font-size: 35px;display:block !important;position: absolute;margin-top: 45px;margin-left: -30px;border: none;padding: 10px;background: white;color: #b3b2b2;">&lt;</button>
+            <button id="imgScrollRightBnt1" ng-click="imgScrollRightBntFn1()" style="font-size: 35px; position: absolute;display:block !important;margin-top: 45px;margin-left: 360px;border: none;padding: 10px;background: white;color: #b3b2b2;">&gt;</button>
+            <a ng-repeat="imageSrc1 in productimages" my-post-repeat-directiv>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="deleteproductimage(imagesrc1)"><span aria-hidden="true">&times;</span></button>
+                      <img src={{imageSrc1.img}} style="height: 100px;width: 100px;">
+                    </a>
+          </div>
+        </center>
+        <div style="margin-left:30px;">
+          <div>
+            <div style="=margin:;padding: 10px;font-weight: 600;">Product Owner</div>
+            <div style="=margin:;padding: 10px;">
+              <input type="text" ng-model="productOwner" required class="inputAll auto-complete-off" validate-on="dirty" class=" auto-complete-off form-control input-sm loginInput inputMaxWidth ng-pristine ng-invalid ng-invalid-required ng-touched" required-message="'This field is required..'"
+                required="">
+            </div>
+          </div>
+          <div>
+            <div style="=margin:;padding: 10px;font-weight: 600;">Product Name</div>
+            <div style="=margin:;padding: 10px;">
+              <input type="text" ng-model="productname" required class="inputAll auto-complete-off" validate-on="dirty" class=" auto-complete-off form-control input-sm loginInput inputMaxWidth ng-pristine ng-invalid ng-invalid-required ng-touched" required-message="'This field is required..'"
+                required="">
+            </div>
+          </div>
+          <div>
+            <div style="=margin:;padding: 10px;font-weight: 600;">product category</div>
+            <div style="=margin:;padding: 10px;">
+              <select class="form-control selectpicker" ng-model="productcategory" ng-options="option._id as option.name for option in category" id="unit">
+                        </select>
+            </div>
+          </div>
+          <div style="=margin:;padding: 10px;">
+            <input type="radio" ng-model="producttype" value="public" name="type">public
+            <input type="radio" value="private" ng-model="producttype" style="
+            margin-left: 80px;
+            " name="type">private
+          </div>
+          <div>
+            <div style="=margin:;padding: 10px;font-weight: 600;">Product Manufacturer</div>
+            <div style="=margin:;padding: 10px;">
+              <input type="text" ng-model="productmanufacturer" required class="inputAll auto-complete-off" validate-on="dirty" class=" auto-complete-off form-control input-sm loginInput inputMaxWidth ng-pristine ng-invalid ng-invalid-required ng-touched" required-message="'This field is required..'"
+                required="">
+            </div>
+          </div>
+          <!--      <tr style="margin-top:10px">
+                      <td style="
+            height: 50px;
+            ">Brand</td>
+                      <td>
+                        <input type="text" style="width:300px" ng-change="sourceautocomplete()" id="sourceautocompletesearch" ng-model="sourcesearch" placeholder="Brand Name">
+                      </td>
+                    </tr>-->
+          <table>
+            <tr>
+              <td style="=margin:;padding: 10px;font-weight: 600;">Property</td>
+              <td style="=margin:;padding: 10px;font-weight: 600;">Description</td>
+            </tr>
+            <tr ng-repeat="x in productdescription">
+              <td><input type="text" style="width:300px;margin-left:10px;" ng-model="x.key" required class="inputAll auto-complete-off" validate-on="dirty" class=" auto-complete-off form-control input-sm loginInput inputMaxWidth ng-pristine ng-invalid ng-invalid-required ng-touched"
+                  required-message="'This field is required..'" required=""></td>
+              <td><input type="text" style="width:300px;" ng-model="x.value" required class="inputAll auto-complete-off" validate-on="dirty" class=" auto-complete-off form-control input-sm loginInput inputMaxWidth ng-pristine ng-invalid ng-invalid-required ng-touched"
+                  required-message="'This field is required..'" required=""></td>
+              <td>
+                <a href="#" class="btn btn-primary btn-rounded" ng-show="$last" style="padding-top: 10px;" ng-click="addproductdescription()">+</a>
+                <a href="#" class="btn btn-primary btn-rounded" ng-show="$last && !$first" style="padding-top: 10px;" ng-click="removeproductdescription()">-</a>
+              </td>
+            </tr>
+          </table>
+          <button type="button" style="
+            width:130px;
+            height:30px;
+            border:none;
+            margin-top:20px;
+            background: #4c81bf;
+            " ng-click="addproduct()" value="ADD"><font style="color:white">save</font></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
